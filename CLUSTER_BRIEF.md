@@ -148,47 +148,49 @@ checkpoint, not a bug in the eval code:
 
 ## 3. Getting the actual state onto this cluster
 
-**None of the local changes are pushed anywhere.** `OpenTSLM` (fork of
-`StanfordBDHG/OpenTSLM`) and `TimeNet` (fork of `OpenTSLM/TimeNet`) are both real git clones with
-their own remotes, but the ESA-specific work sits as **uncommitted/untracked local changes on
-top**: in `OpenTSLM`, `curriculum_learning.py` is modified in place and
-`src/opentslm/time_series_datasets/esa_mission1/` + `results/` are untracked; in `TimeNet`,
-`packages/timenet-connectors/src/timenet_connectors/datasets/esa/` is untracked. `git clone`ing
-either fork on the cluster gets you upstream + the fork's own history, but **not** this. You must
-transfer the actual working trees from the source machine.
+**The code is now on GitHub — clone it, don't rsync it.** Everything in §2 (the TimeNet connector,
+the OpenTSLM dataset loader + `stage6_esa_cot`, the CoT scripts/labels, `CLUSTER_BRIEF.md`, and the
+scoring/sync scripts) is committed on branch `hackathon-submission` of:
 
-Run `scripts/sync_to_cluster.sh` (repo root) from the source machine — it handles this in tiers:
-
-```bash
-# Fast path (~15MB): repo code + both cot_rationales*.json + the compiled registry.
-# Enough to reproduce the local training run and start scaling immediately.
-scripts/sync_to_cluster.sh <user>@<cluster-host>
-
-# Also bring the trained checkpoint (308MB) as a fallback/reference — note the epoch-3 checkpoint
-# described in §2.4/§2.4.1 was deleted and a retrain is in progress locally (§2.4.1); wait for that
-# retrain to produce a new checkpoints/best_model.pt before using --with-checkpoint:
-scripts/sync_to_cluster.sh <user>@<cluster-host> --with-checkpoint
-
-# Also bring the raw ESA-AD Mission1 extract (3.6GB) — only if you need to rebuild/widen
-# the connector's channel or window coverage on the cluster:
-scripts/sync_to_cluster.sh <user>@<cluster-host> --with-checkpoint --with-raw-data
+```
+git@github.com:eklavyagoyal/ehl-zurich-hackathon-submission.git
 ```
 
-It prints the exact `export ESA_MISSION1_SUBSYSTEM5_REGISTRY=...` /
-`ESA_MISSION1_SUBSYSTEM5_RATIONALES=...` (/ `ESA_MISSION1_DIR=...` if `--with-raw-data`) lines to
-run afterward — the connector and loader read these from the environment (see §2.1), and their
-hardcoded defaults point at the *source machine's* paths, not the cluster's, so skipping this step
-means every load silently falls back to a path that doesn't exist there.
+```bash
+git clone --branch hackathon-submission git@github.com:eklavyagoyal/ehl-zurich-hackathon-submission.git
+```
 
-Also: `.env` at the repo root holds `OPEN_API_KEY` and `HF_TOKEN` variable **names**, not real
-secret values in this repo snapshot — you'll need the real values re-supplied on the cluster
-(don't assume they carried over) before anything that calls the OpenAI API or downloads a gated
-HF model.
+Notes on what you're getting:
+- `OpenTSLM`, `TimeNet`, and `ESA-ADB` are **flattened plain directories in this repo**, not git
+  submodules — they started as forks with their own git history (`OpenTSLM` from
+  `StanfordBDHG/OpenTSLM`, `TimeNet` from `OpenTSLM/TimeNet`, `ESA-ADB` from `kplabs-pl/ESA-ADB`),
+  but all the ESA-specific work was uncommitted local changes on top of those clones, so they were
+  de-gitted and committed as regular files to make sure that work actually ships. You lose their
+  separate git history/identity as a result — if you need to diff against upstream, `git clone` the
+  original fork separately and diff by hand.
+- `.gitignore` excludes `.env`, model weight files (`*.pt`/`*.safetensors`/`*.ckpt`/`*.bin`),
+  `__pycache__/`, and `.venv/`. None of those are in the clone — see below for what to do about
+  each.
+- **Not in the repo, still needs manual transfer**: the compiled TimeNet registry
+  (`/var/tmp/hrm/zurich-hackathon/timenet_registry/`, ~2MB), any trained checkpoint
+  (`OpenTSLM/results/.../checkpoints/best_model.pt`, ~308MB, excluded by `.gitignore`), and the raw
+  ESA-AD Mission1 extract (3.6GB, only needed to rebuild/widen the connector). Run
+  `scripts/sync_to_cluster.sh <user>@<cluster-host> [--with-checkpoint] [--with-raw-data]` **from
+  the original source machine** (not the cluster) to rsync these — it no longer copies the repo
+  itself (that's what the git clone above is for), just these three data tiers. It prints the exact
+  `export ESA_MISSION1_SUBSYSTEM5_REGISTRY=...` / `ESA_MISSION1_DIR=...` lines to run afterward; the
+  connector/loader's hardcoded path defaults point at the *source machine's* paths, not the
+  cluster's, so skipping this means every load silently fails to find the data here.
+- `ESA_MISSION1_SUBSYSTEM5_RATIONALES` should point at `cot_rationales.json` inside your clone
+  (it's committed, no transfer needed for it).
+- `.env`'s real `OPEN_API_KEY` / `HF_TOKEN` values need to be supplied fresh on the cluster (they
+  were deliberately excluded from git) before anything that calls the OpenAI API or downloads a
+  gated HF model.
 
-Once transferred, `cd TimeNet && make sync` (uv workspace) and set up the OpenTSLM env per its
-`requirements.txt` / `pyproject.toml`. `huggingface-cli login` (or set `HF_TOKEN`) — Llama-3.2-3B
-access was already granted for the account behind that token; using a different HF account may
-need a fresh Meta access request.
+Once cloned and the data tiers above are in place, `cd TimeNet && make sync` (uv workspace) and set
+up the OpenTSLM env per its `requirements.txt` / `pyproject.toml`. `huggingface-cli login` (or set
+`HF_TOKEN`) — Llama-3.2-3B access was already granted for the account behind the source machine's
+token; using a different HF account may need a fresh Meta access request.
 
 ## 4. Hardware reality check
 
