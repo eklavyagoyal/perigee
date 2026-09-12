@@ -1,0 +1,21 @@
+for this project we can get access to 8xh100 gpus, will it help us somehow?
+
+---
+
+but we have 17 hours for the hackathon, maybe we can validate the pipeline here and then move to that cluster?
+
+---
+
+but we can already ask for it, create a message explaining whate we are going to do with it
+
+---
+
+but we are fine tuning smth and not llm, can we make that architecture larger. or for flamingo approach we can leverage that 8 h100 gpus
+
+---
+
+yes
+
+---
+
+can you create a md file that I will use on that cluster to tell claude what it should build. it must be as detailed as possible
