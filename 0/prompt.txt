@@ -1,0 +1,2 @@
+TimeNet docs → https://docs.timenet.ai/ 
+TimeNet on GitHub → https://github.com/OpenTSLM/TimeNet
