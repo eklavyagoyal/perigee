@@ -1,0 +1,48 @@
+Agentic Systems Lab X Aionic Labs X Nebius
+
+TEMPORAL AI CHALLENGE - Give AI a Sense of Time 🧠📈
+
+LLMs read text. The real world speaks in signals: vitals, sensors, markets, grids. This weekend, you'll build AI that understands how the world changes over time.
+
+🎯 The Mission 
+
+Use Aionic's TimeNet to prepare open-source time-series data, then train a TSLM (Time-Series Language Model) that connects temporal signals with language for a  useful task.
+
+Think: a patient's condition changing 🏥, a machine starting to fail 🏭, energy demand shifting ⚡ anywhere people act on signals.
+
+🛠️ From Problem to Proof — 4 Steps 
+
+1️⃣ PROBLEM + DATA — pick a target user & problem, source open data (agentic dataset-hunting pipelines encouraged!) 
+
+2️⃣ CONNECT — build/use a TimeNet connector for signals, metadata & annotations. Reusable ingestion pipelines welcome!
+
+3️⃣ TRAIN + EVALUATE — train or fine-tune a TSLM, compare vs. baseline on held-out data (no leakage across time/subjects/devices!) 
+
+4️⃣ DEMONSTRATE — real inputs, model outputs, and how it helps your user. Show evidence and limitations.
+
+📦 You Submit 
+✅ Working demo
+✅ Code + training config 
+✅ Checkpoint or adapter 
+✅ Dataset docs 
+✅ Short eval w/ baseline 
+
+Then a live demo to the jury: problem, approach, results, learnings.
+
+🏆 What Wins A useful problem 
+· thoughtful data prep 
+· adequate TSLM training 
+· rigorous evaluation ·
+ a clear demo.
+
+Bonus points 🌟 
+....for reusable TimeNet connectors & agentic data pipelines others can build on.
+
+⚡ Compute — NEBIUS saves the day 💸 $1,000 compute voucher per team — train on Nebius GPUs all weekend. Most promising teams get follow-on credits to keep building after Sunday. 
+
+🔗 Resources 
+TimeNet docs → https://docs.timenet.ai/ 
+TimeNet on GitHub → https://github.com/OpenTSLM/TimeNet 
+OpenTSLM paper → https://arxiv.org/abs/2510.02410 
+Aionic Labs → https://aioniclabs.ai/ 
+Agentic Systems Lab → https://agenticsystemslab.org/  now that we have read the open tslm paper and time net. this is the task. lets try to go step by step and build a pipleine. for task 1. we need to be able to agentically find a problem statement and dataset. the challeneg gives us a corpus of dataset /Volumes/AnniesSSD/ehl-zurich-hackathon-submission/challenge/ts-corpus-list.md but dont want to use any of these.
