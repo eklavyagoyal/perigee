@@ -1,0 +1,389 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2BCM16Q59CSQDQS7QTTS57Z",
+  "session_id": "f51b7bb9-b10c-4ef1-a6d3-b407c9c90752",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T18:03:49.909663039Z",
+  "branch": "hackathon-submission",
+  "checkpoints_count": 24,
+  "save_step_count": 24,
+  "files_touched": [
+    ".gitignore"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "62274ae7e843",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 558,
+    "cache_creation_tokens": 378896,
+    "cache_read_tokens": 78269274,
+    "output_tokens": 179832,
+    "api_call_count": 279
+  },
+  "session_metrics": {
+    "turn_count": 24
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T18:03:49.730006209Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 568858,
+    "human_modified": 60,
+    "human_removed": 0,
+    "total_committed": 568858,
+    "total_lines_changed": 568922,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 441,
+      "user_lines_removed": 1,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".env": 2,
+        "CLUSTER_BRIEF.md": 262,
+        "scripts/score_predictions.py": 87,
+        "scripts/sync_to_cluster.sh": 90
+      },
+      "user_removed_per_file": {
+        ".env": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 10,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 11,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 12,
+      "user_lines_added": 70,
+      "user_lines_removed": 21,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 63,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 18,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 13,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 14,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 15,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 16,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 17,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 18,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 19,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 20,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 21,
+      "user_lines_added": 66,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 22,
+      "user_lines_added": 70,
+      "user_lines_removed": 22,
+      "agent_lines_added": 441,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        ".gitignore": 4,
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 23,
+      "user_lines_added": 68,
+      "user_lines_removed": 22,
+      "agent_lines_added": 443,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        ".env": 2,
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 24,
+      "user_lines_added": 68,
+      "user_lines_removed": 22,
+      "agent_lines_added": 443,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        ".env": 2,
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    },
+    {
+      "checkpoint_number": 25,
+      "user_lines_added": 68,
+      "user_lines_removed": 22,
+      "agent_lines_added": 443,
+      "agent_lines_removed": 1,
+      "user_added_per_file": {
+        ".env": 2,
+        "CLUSTER_BRIEF.md": 59,
+        "scripts/sync_to_cluster.sh": 7
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 19,
+        "scripts/sync_to_cluster.sh": 3
+      }
+    }
+  ]
+}
