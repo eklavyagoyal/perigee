@@ -10,10 +10,13 @@ name: ESA-AD Mission1 Subsystem 5
 description: >-
   Six-hour multivariate telemetry windows from the six subsystem_5 channels (channel_41 through
   channel_46) of ESA's Anomaly Dataset (ESA-AD) Mission1, the benchmark's own lightweight subset.
-  Each labeled anomaly or rare event is paired with a matched nominal window from the same channel
-  and split, avoiding the raw 1.8% anomaly imbalance. Split follows the ESA-ADB benchmark's own
-  train/test boundary at 2007-01-01. Answers carry a chain-of-thought rationale ending in
-  "Answer: nominal" or "Answer: anomalous" when one has been generated.
+  Each labeled Anomaly or Rare Event is paired with a matched nominal window from the same channel
+  and split, avoiding the raw 1.8% anomaly imbalance. Communication Gap and Invalid Segment
+  intervals are excluded from the anomalous/nominal pairing: per the ESA-AD paper's own category
+  definitions, neither is "directly related to known anomalies" (missing or invalid data, not a
+  signal anomaly), and its alarming policy says neither should be flagged. Split follows the
+  ESA-ADB benchmark's own train/test boundary at 2007-01-01. Answers carry a chain-of-thought
+  rationale ending in "Answer: nominal" or "Answer: anomalous" when one has been generated.
 license: other
 license_url: https://creativecommons.org/licenses/by/3.0/igo/
 source_url: https://zenodo.org/records/12528696

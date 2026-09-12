@@ -53,6 +53,24 @@ def test_download_pairs_each_labeled_interval_with_one_nominal_window(monkeypatc
     assert sum(ref.label == "nominal" for ref in refs) == 2
 
 
+def test_excluded_categories_produce_no_window_but_still_guard(monkeypatch, tmp_path):
+    # id_3 (fixtures/anomaly_types.csv) is a Communication Gap on channel_41, alongside id_1's
+    # Anomaly. It must not produce any window of its own...
+    monkeypatch.setenv("ESA_MISSION1_DIR", str(_FIXTURES_DIR))
+    refs = ESAMission1Subsystem5Connector().download(tmp_path / "cache")
+    assert not any(ref.anomaly_id == "id_3" for ref in refs)
+    assert len(refs) == 4  # unchanged: only id_1 (Anomaly) and id_2 (Rare Event) pair
+
+    # ...but channel_41's nominal window (paired with id_1) must still avoid overlapping it.
+    id3_start = pd.Timestamp("2020-01-02T14:00:00")
+    id3_end = pd.Timestamp("2020-01-02T14:05:00")
+    window_len = pd.Timedelta(hours=6)
+    nominal = next(ref for ref in refs if ref.channel == "channel_41" and ref.label == "nominal")
+    start = pd.Timestamp(nominal.window_start_us, unit="us")
+    end = start + window_len
+    assert end <= id3_start or start >= id3_end
+
+
 def test_download_raises_a_clear_error_when_source_dir_is_missing(monkeypatch, tmp_path):
     monkeypatch.setenv("ESA_MISSION1_DIR", str(tmp_path / "does-not-exist"))
     with pytest.raises(FileNotFoundError, match="ESA_MISSION1_DIR"):
@@ -109,6 +127,16 @@ def test_convert_uses_rationale_file_when_present(monkeypatch, tmp_path):
     task = answer_tasks[anomalous_record_id]
     assert task.target == rationale_text
     assert task.rationale == rationale_text
+
+
+def test_periodicity_annotations_present_and_in_range(monkeypatch, tmp_path):
+    dataset = _download_and_convert(monkeypatch, tmp_path)
+    for record in dataset.records:
+        by_key = {ann.key: ann.value for ann in record.annotations}
+        assert "window_periodicity" in by_key
+        assert "context_periodicity" in by_key
+        assert 0.0 <= by_key["window_periodicity"] <= 1.0
+        assert 0.0 <= by_key["context_periodicity"] <= 1.0
 
 
 def test_label_and_split_annotations_present(monkeypatch, tmp_path):

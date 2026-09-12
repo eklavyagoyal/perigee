@@ -92,6 +92,12 @@ def load_esa_mission1_cot_splits() -> Tuple[Dataset, Dataset, Dataset]:
                     "channel": _annotation(record, "channel"),
                     "label": _annotation(record, "label"),
                     "answer": task.target,
+                    # Mean/std say nothing about whether a channel is oscillating, and several
+                    # subsystem_5 channels are periodic in some windows and not others. These two
+                    # scores (from the connector's autocorrelation-based _periodicity_score) let the
+                    # prompt contrast "normally periodic" against "not in this window" instead.
+                    "window_periodicity": _annotation(record, "window_periodicity"),
+                    "context_periodicity": _annotation(record, "context_periodicity"),
                 }
             )
 

@@ -3,13 +3,31 @@
 #
 # SPDX-License-Identifier: MIT
 
-from typing import List, Literal, Tuple
+from typing import List, Literal, Optional, Tuple
 
 from datasets import Dataset
 import numpy as np
 from opentslm.prompt.text_time_series_prompt import TextTimeSeriesPrompt
 from opentslm.time_series_datasets.esa_mission1.esa_mission1_cot_loader import load_esa_mission1_cot_splits
 from opentslm.time_series_datasets.QADataset import QADataset
+
+
+def _periodicity_phrase(score: Optional[float]) -> Optional[str]:
+    """Phrase a 0-1 autocorrelation-based periodicity score for the prompt text.
+
+    Args:
+        score: The periodicity score, or ``None`` if the connector couldn't compute one.
+
+    Returns:
+        A short phrase, or ``None`` to omit the sentence entirely.
+    """
+    if score is None:
+        return None
+    if score >= 0.6:
+        return f"strongly periodic (score {score:.2f})"
+    if score >= 0.3:
+        return f"weakly periodic (score {score:.2f})"
+    return f"not clearly periodic (score {score:.2f})"
 
 
 class ESAMission1CoTQADataset(QADataset):
@@ -64,7 +82,23 @@ class ESAMission1CoTQADataset(QADataset):
         series = np.array(row["values"], dtype=np.float32)
         mean = float(np.mean(series))
         std = float(np.std(series))
-        text = f"This is telemetry from {row['channel']}, it has mean {mean:.4f} and std {std:.4f}:"
+        text = f"This is telemetry from {row['channel']}, mean {mean:.4f} and std {std:.4f} in this window."
+
+        # Mean/std alone can't tell a clean sine wave from a signal that has stopped oscillating
+        # (itself often the anomalous condition) -- several subsystem_5 channels are periodic in
+        # some windows and not others. Contrasting the window's own periodicity against its
+        # 24-hour surroundings ("normally periodic, but not here") gives the model a signal
+        # mean/std cannot express; see the connector's _periodicity_score for how these are
+        # computed. Either may be absent (too few points or a constant sequence), so the sentence
+        # is only added when both are available.
+        context_phrase = _periodicity_phrase(row.get("context_periodicity"))
+        window_phrase = _periodicity_phrase(row.get("window_periodicity"))
+        if context_phrase is not None and window_phrase is not None:
+            text += (
+                f" Over the surrounding 24 hours this channel is typically {context_phrase}; in this "
+                f"specific six-hour window it is {window_phrase}."
+            )
+
         return [TextTimeSeriesPrompt(text, series.tolist())]
 
     def _format_sample(self, row):
