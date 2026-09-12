@@ -1,0 +1,171 @@
+name: Pre-commit hooks
+
+on:
+  pull_request:
+    # ready_for_review is load-bearing. The suites below do not run on a draft, so this is the
+    # event that runs them before the pull request can merge.
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+# github.ref is refs/pull/<n>/merge here: unique per pull request, stable across pushes. Cancelling
+# is scoped to pull_request so a run triggered by anything else is never superseded.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Everything a developer can act on in the first minute. Runs on every push, drafts included.
+  quick:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v8.2.0
+      with:
+        # Storing the uv cache is a net loss here. `uv cache prune --ci` strips it to 1 MB, because
+        # every dependency resolves to a pre-built wheel and that is exactly what --ci drops. Kept
+        # unpruned it is ~870 MB, and restoring that costs more than the cold sync it saves.
+        enable-cache: false
+    - name: Cache the pre-commit hook environments
+      # Read-write: a branch that misses seeds its own entry, and the prefix key lets the next
+      # branch restore it. Without the gitleaks Go toolchain this holds 103 MB, not 417 MB, so one
+      # entry per branch is cheap. A total miss costs about 13 seconds of hook installs.
+      uses: actions/cache@v5
+      with:
+        path: ~/.cache/pre-commit
+        key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
+        restore-keys: pre-commit-${{ runner.os }}-
+    - name: Install dependencies
+      run: make sync
+    - name: Lint, format and types
+      id: checks
+      continue-on-error: true
+      run: make check-ci
+    - name: Restore the working tree
+      # Undo pre-commit's in-place fixes so pytest sees the PR's source. Never `git clean` (venv).
+      run: git checkout -- .
+    - name: Unit tests
+      id: unit
+      continue-on-error: true
+      run: make test-unit
+    # Both steps above run to completion even when one fails, so the report lists every outcome
+    # instead of stopping at the first.
+    - name: Fail if a quick check failed
+      if: steps.checks.outcome == 'failure' || steps.unit.outcome == 'failure'
+      run: exit 1
+
+  # Does not run on a draft: a stack in progress only pays for quick. Waits on quick otherwise, so
+  # a branch that fails lint or a unit test costs one runner minute instead of seven, and so a
+  # 12-deep stack cannot queue a quick job behind a full suite (a Free plan allows 20 at a time).
+  tests:
+    if: ${{ !github.event.pull_request.draft }}
+    needs: [quick]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v8.2.0
+      with:
+        enable-cache: false
+    - name: Install dependencies
+      run: make sync
+    - name: Test with pytest (Python 3.13)
+      id: pytest
+      continue-on-error: true
+      run: make test
+    - name: Test connectors in per-connector environments
+      # Each connector's tests and type-check run in an environment built from its own
+      # requirements.txt, the same way a build runs.
+      id: connectors
+      continue-on-error: true
+      run: make test-connectors
+    - name: Check dependency licenses
+      id: license
+      continue-on-error: true
+      run: make license-check
+    - name: Fail if any check failed
+      if: >-
+        steps.pytest.outcome == 'failure'
+        || steps.connectors.outcome == 'failure'
+        || steps.license.outcome == 'failure'
+      run: exit 1
+
+  # Guards the minimum supported Python. Its own job, so it builds a 3.11 environment once instead
+  # of tearing down the 3.13 one mid-run.
+  tests_min:
+    if: ${{ !github.event.pull_request.draft }}
+    needs: [quick]
+    runs-on: ubuntu-latest
+    env:
+      # Threads the interpreter through `make sync` and `make test`.
+      UV_PYTHON: "3.11"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v8.2.0
+      with:
+        enable-cache: false
+    - name: Install dependencies
+      run: make sync
+    - name: Test with pytest (Python 3.11)
+      run: make test
+
+  # The ruleset on main requires one status check context named exactly `check`, and a check run
+  # takes its name from the job id. Do not add a `name:` here and do not turn this into a matrix:
+  # either one renames the context, after which nothing can satisfy the gate.
+  check:
+    needs: [quick, tests, tests_min]
+    # Nothing here runs on a draft. The check run then reports `skipped`, which a required check
+    # counts as a pass, and that is fine: GitHub will not merge a draft, and ready_for_review runs
+    # the suites before it can. No job runs purely to report a failure.
+    #
+    # Otherwise always(), not !cancelled(): a tier skipped by an `if` reports `skipped`, and a
+    # skipped required check counts as a pass, so this job has to run and decide for itself.
+    if: ${{ always() && !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v8.2.0
+      with:
+        enable-cache: false
+    - name: Report
+      # Skipped on forks, whose token has no pull-requests: write. A transient comment-API error
+      # must never decide the verdict, hence continue-on-error; the step below is the verdict.
+      if: >-
+        !cancelled()
+        && github.event.pull_request.head.repo.full_name == github.repository
+      continue-on-error: true
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        PR: ${{ github.event.pull_request.number }}
+        HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        QUICK: ${{ needs.quick.result }}
+        TESTS: ${{ needs.tests.result }}
+        TESTS_MIN: ${{ needs.tests_min.result }}
+      run: uv run --no-project .github/scripts/ci_report.py
+    - name: Verdict
+      # A tier that quick blocked reports `skipped`, which is not a pass: quick itself is in the
+      # list and reports the failure that stopped it.
+      env:
+        RESULTS: >-
+          ${{ needs.quick.result }}
+          ${{ needs.tests.result }}
+          ${{ needs.tests_min.result }}
+      run: |
+        for result in $RESULTS; do
+          if [ "$result" != "success" ]; then
+            echo "A required tier reported '$result'."
+            exit 1
+          fi
+        done
+        echo "All tiers passed."

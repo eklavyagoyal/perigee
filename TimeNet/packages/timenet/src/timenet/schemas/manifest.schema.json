@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.timenet.ai/schemas/manifest.schema.json",
+  "title": "TimeNet Dataset Manifest",
+  "description": "The compiled manifest.json: the single source a consumer reads to interpret a dataset version. Describes the serialized shape produced by Manifest.to_dict().",
+  "type": "object",
+  "required": ["timef_format_version", "dataset_id", "metadata", "files"],
+  "properties": {
+    "timef_format_version": { "type": "integer", "const": 1 },
+    "dataset_id": { "$ref": "#/$defs/datasetId" },
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "schema": { "$ref": "#/$defs/schema" },
+    "counts": { "$ref": "#/$defs/counts" },
+    "files": { "$ref": "#/$defs/files" },
+    "values_backend": {
+      "type": "string",
+      "enum": ["parquet", "zarr"],
+      "description": "Storage backend for the time-series values plane. Determines how files.time_series and the index's chunk locator are interpreted. Defaults to 'parquet' when absent."
+    },
+    "value_encoding": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/valueEncoding" },
+      "description": "Map of spec_type to the values-column encoding its shards carry. Provenance only: Parquet records the applied encoding in each file's footer, so a reader does not need this. Empty or absent for a backend with no such choice."
+    },
+    "build_env": {
+      "type": "object",
+      "description": "Provenance for the environment that produced the version. No reader consults it to interpret the data. Empty when a build records no provenance.",
+      "properties": {
+        "python": { "type": "string", "description": "The Python interpreter version, for example '3.13.12'." },
+        "packages": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Installed distribution name to version, sorted by name."
+        }
+      }
+    }
+  },
+  "$defs": {
+    "datasetId": {
+      "type": "string",
+      "pattern": "^(?!\\.)[A-Za-z0-9._-]+/(?!\\.)[A-Za-z0-9._-]+$",
+      "description": "HuggingFace-style org/name: exactly one slash, and no segment may start with '.'."
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "major.minor.patch with non-negative integer components."
+    },
+    "license": {
+      "type": "string",
+      "description": "SPDX-style license identifier. Kept in sync with timenet.types.License by a drift test.",
+      "enum": [
+        "MIT",
+        "Apache-2.0",
+        "BSD-2-Clause",
+        "BSD-3-Clause",
+        "GPL-3.0",
+        "LGPL-3.0",
+        "MPL-2.0",
+        "CC0-1.0",
+        "CC-BY-4.0",
+        "CC-BY-SA-4.0",
+        "CC-BY-NC-4.0",
+        "ODC-By-1.0",
+        "ODbL-1.0",
+        "other"
+      ]
+    },
+    "domain": {
+      "type": "string",
+      "description": "Kept in sync with timenet.types.Domain by a drift test.",
+      "enum": [
+        "health",
+        "cardiology",
+        "respiratory",
+        "sleep",
+        "activity",
+        "motion",
+        "economics",
+        "finance",
+        "environment",
+        "energy",
+        "transport",
+        "observability",
+        "audio",
+        "general"
+      ]
+    },
+    "annotationType": {
+      "type": "string",
+      "description": "Kept in sync with timenet.types.AnnotationType by a drift test.",
+      "enum": ["static", "point", "interval"]
+    },
+    "valueEncoding": {
+      "type": "string",
+      "description": "Parquet encoding of the shard values column. Kept in sync with timenet.writer.value_encoding.ValueEncoding by a drift test.",
+      "enum": [
+        "dictionary",
+        "byte_stream_split",
+        "plain"
+      ]
+    },
+    "valueType": {
+      "type": "string",
+      "description": "The manifest value_type tag for an annotation value. Kept in sync with timenet.types.value_type_of by a drift test.",
+      "enum": ["bool", "int", "float", "str", "list", "map"]
+    },
+    "taskType": {
+      "type": "string",
+      "description": "Kept in sync with timenet.types.TaskType by a drift test.",
+      "enum": [
+        "classification",
+        "answer",
+        "scalar_prediction",
+        "temporal_localization",
+        "forecasting",
+        "ts_editing",
+        "ts_generation",
+        "ts_correspondence"
+      ]
+    },
+    "access": {
+      "type": "string",
+      "description": "Kept in sync with timenet.types.Access by a drift test.",
+      "enum": ["open", "credentialed", "restricted"]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Descriptive identity. Unmodeled keys are tolerated (the codec drops them), so this block is not strict.",
+      "required": ["dataset_id", "dataset_version", "name", "description", "license"],
+      "properties": {
+        "dataset_id": { "$ref": "#/$defs/datasetId" },
+        "dataset_version": { "$ref": "#/$defs/semver" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "license": { "$ref": "#/$defs/license" },
+        "domains": { "type": "array", "items": { "$ref": "#/$defs/domain" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "source_url": { "type": ["string", "null"] },
+        "license_url": { "type": ["string", "null"] },
+        "citation": { "type": ["string", "null"] },
+        "access": { "$ref": "#/$defs/access" },
+        "access_url": { "type": ["string", "null"] },
+        "yaml_schema_version": { "type": "integer" }
+      }
+    },
+    "schema": {
+      "type": "object",
+      "description": "A faithful serialization of DatasetSchema (flat descriptors), derived from the data.",
+      "properties": {
+        "time_series_specs": { "type": "array", "items": { "$ref": "#/$defs/timeSeriesSpec" } },
+        "annotations": { "type": "array", "items": { "$ref": "#/$defs/annotation" } },
+        "tasks": { "type": "array", "items": { "$ref": "#/$defs/task" } }
+      }
+    },
+    "timeSeriesSpec": {
+      "type": "object",
+      "required": ["spec_type", "name", "unit_value"],
+      "properties": {
+        "spec_type": { "type": "string", "minLength": 1 },
+        "name": { "type": "string" },
+        "unit_value": { "type": "string", "minLength": 1, "description": "A pint unit name (dimensionality is unconstrained)." },
+        "data_source": { "oneOf": [{ "$ref": "#/$defs/dataSource" }, { "type": "null" }] },
+        "dtype": { "type": "string", "enum": ["bool", "enum", "float32", "float64", "int8", "int16", "int32", "str", "uint8", "uint16", "uint32"], "default": "float32" },
+        "categories": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [], "description": "Ordered codebook for dtype='enum'. Empty for every other dtype." },
+        "value_shape": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "default": [] },
+        "nullable": { "type": "boolean", "default": false, "description": "Whether whole timesteps can be missing. Arrow validity marks present timesteps. Zarr stores this validity in parallel arrays." },
+        "dimension_names": { "type": "array", "items": { "type": "string", "minLength": 1 }, "default": [] }
+      }
+    },
+    "dataSource": {
+      "type": "object",
+      "required": ["data_source_type", "name"],
+      "properties": {
+        "data_source_type": { "type": "string", "minLength": 1 },
+        "name": { "type": "string" },
+        "provider": { "type": ["string", "null"] }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "required": ["key", "annotation_type"],
+      "properties": {
+        "key": { "type": "string" },
+        "annotation_type": { "$ref": "#/$defs/annotationType" },
+        "value_type": { "anyOf": [{ "$ref": "#/$defs/valueType" }, { "type": "null" }] },
+        "unit": { "type": ["string", "null"] },
+        "description": { "type": ["string", "null"] }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["task_type"],
+      "properties": { "task_type": { "$ref": "#/$defs/taskType" } }
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "records": { "type": "integer" },
+        "annotations": { "type": "integer" },
+        "registered_annotations": { "type": "integer" },
+        "tasks": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "time_series_chunks": { "type": "integer" },
+        "time_series_index_rows": { "type": "integer" },
+        "time_series_specs": { "type": "object", "additionalProperties": { "type": "integer" } }
+      }
+    },
+    "files": {
+      "type": "object",
+      "description": "File descriptors, grouped by kind. Each artifact is a list of file parts, never a bare string.",
+      "required": ["records", "annotations", "time_series_index"],
+      "properties": {
+        "records": { "type": "array", "items": { "$ref": "#/$defs/filePart" } },
+        "annotations": { "type": "array", "items": { "$ref": "#/$defs/filePart" } },
+        "time_series_index": { "type": "array", "items": { "$ref": "#/$defs/filePart" } },
+        "tasks": { "type": "array", "items": { "$ref": "#/$defs/filePart" } },
+        "time_series": { "type": "array", "items": { "$ref": "#/$defs/filePart" } }
+      }
+    },
+    "filePart": {
+      "type": "object",
+      "description": "One data file: its version-relative path, checksum, and byte size.",
+      "required": ["path", "checksum", "size"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "description": "Version-relative POSIX path." },
+        "checksum": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$", "description": "The file's 'sha256:<hex>' digest." },
+        "size": { "type": "integer", "minimum": 0, "description": "The file's size in bytes." }
+      }
+    }
+  }
+}

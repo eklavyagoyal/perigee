@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://docs.timenet.ai/schemas/dataset-card-v1.schema.json
+# Dataset Card for the esa/mission1-subsystem5 connector: the single source for this dataset's
+# metadata. The connector loads it via DatasetMetadata.from_yaml(); the builder compiles it plus the
+# schema derived from the data into manifest.json. The connector package lives at
+# datasets/<org>/<name>/.
+yaml_schema_version: 1
+dataset_id: esa/mission1-subsystem5
+dataset_version: 1.0.0
+name: ESA-AD Mission1 Subsystem 5
+description: >-
+  Six-hour multivariate telemetry windows from the six subsystem_5 channels (channel_41 through
+  channel_46) of ESA's Anomaly Dataset (ESA-AD) Mission1, the benchmark's own lightweight subset.
+  Each labeled anomaly or rare event is paired with a matched nominal window from the same channel
+  and split, avoiding the raw 1.8% anomaly imbalance. Split follows the ESA-ADB benchmark's own
+  train/test boundary at 2007-01-01. Answers carry a chain-of-thought rationale ending in
+  "Answer: nominal" or "Answer: anomalous" when one has been generated.
+license: other
+license_url: https://creativecommons.org/licenses/by/3.0/igo/
+source_url: https://zenodo.org/records/12528696
+citation: >-
+  Kotowski, K. et al. (2024). European Space Agency Benchmark for Anomaly Detection in Satellite
+  Telemetry. arXiv:2406.17826.
+domains:
+  - observability
+  - general
+tags:
+  - anomaly-detection
+  - satellite
+  - telemetry
+  - multivariate
+  - chain-of-thought
