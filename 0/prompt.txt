@@ -1,0 +1,1 @@
+look into plan.md file, download the dataset in the /var/tmp folder, also create a conda environment in the var/tmp folder for this project
