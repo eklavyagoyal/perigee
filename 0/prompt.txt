@@ -1,0 +1,1 @@
+check the plan, move the dataset to var/tmp folder, create a conda env
