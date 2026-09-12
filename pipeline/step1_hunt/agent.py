@@ -32,7 +32,7 @@ from .tools.dataset_validator import validate_dataset_url, probe_temporal_struct
 from .tools.search_cache import cached_search, load_cache
 
 MODEL = "gpt-4o"
-MAX_TOOL_CALLS = 25
+MAX_TOOL_CALLS = 40
 TEMPERATURE = 0   # deterministic: same input → same tool-call sequence
 SEED = 42         # OpenAI system_fingerprint reproducibility seed
 

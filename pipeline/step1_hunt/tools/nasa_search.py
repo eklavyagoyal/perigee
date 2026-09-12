@@ -102,7 +102,7 @@ SPACE_SEED_CATALOG: list[dict[str, Any]] = [
         "name": "GAIA DR3 Stellar Variability Light Curves",
         "domain": "space_observation",
         "url": "https://gea.esac.esa.int/archive/",
-        "sample_url": "https://gea.esac.esa.int/tap-server/tap/sync",
+        "sample_url": "https://raw.githubusercontent.com/henrysky/astroNN_gaia_dr3_sample/main/sample_catalog.csv",
         "description": (
             "ESA GAIA Data Release 3: epoch photometry for ~10M variable stars, G/BP/RP bands, "
             "variability class labels (Cepheid, RR Lyrae, eclipsing binary, etc). "

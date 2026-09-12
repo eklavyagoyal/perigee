@@ -17,15 +17,34 @@ TIMEOUT = 20
 
 
 def validate_dataset_url(url: str) -> dict[str, Any]:
-    """HTTP HEAD check — is the URL reachable and how large is the file?"""
+    """
+    Check if a URL is reachable. Tries HEAD first; falls back to GET (first 1KB)
+    for servers that drop HEAD requests (e.g. NOAA, some GitHub redirects).
+    """
     try:
         resp = requests.head(url, timeout=10, allow_redirects=True)
+        if resp.ok:
+            size_bytes = int(resp.headers.get("Content-Length", 0) or 0)
+            return {
+                "accessible": True,
+                "status_code": resp.status_code,
+                "size_mb": round(size_bytes / 1e6, 2),
+                "content_type": resp.headers.get("Content-Type", ""),
+            }
+    except Exception:
+        pass
+
+    # HEAD failed or returned non-OK — try a minimal GET
+    try:
+        resp = requests.get(url, timeout=12, stream=True, allow_redirects=True)
+        chunk = next(resp.iter_content(1024), b"")
         size_bytes = int(resp.headers.get("Content-Length", 0) or 0)
         return {
             "accessible": resp.ok,
             "status_code": resp.status_code,
             "size_mb": round(size_bytes / 1e6, 2),
             "content_type": resp.headers.get("Content-Type", ""),
+            "fallback": "GET",
         }
     except Exception as e:
         return {"accessible": False, "error": str(e)}

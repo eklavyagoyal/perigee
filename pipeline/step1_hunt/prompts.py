@@ -47,11 +47,17 @@ Search each domain using the available tools. For each domain call at least one 
 
 Build a candidate list of 15-20 datasets.
 
-### Phase 2: VALIDATION (≤ 8 tool calls total)
-For the 12 most promising candidates (based on description quality):
-1. Call validate_dataset_url to confirm it's accessible
-2. Call probe_temporal_structure on a direct file URL (CSV/JSON) to verify rules 1 & 2
-3. Call score_dataset with the confirmed metadata
+### Phase 2: VALIDATION (≤ 10 tool calls total)
+For EVERY dataset in the seed catalog returned by search_nasa_datasets, AND for every
+result from search_zenodo / search_huggingface_datasets:
+
+1. Call probe_temporal_structure using the dataset's `sample_url` field (NOT the landing
+   page `url`). The `sample_url` is a direct link to a CSV or JSON file you can parse.
+   - If a dataset has no `sample_url`, skip probing and assume is_timeseries=True,
+     has_annotations=True based on the description.
+2. Call score_dataset for EVERY dataset — even if probe failed. Use catalog metadata
+   (has_labels, license, size_mb) from the search result. You MUST score at least 5
+   datasets before moving to Phase 3.
 
 ### Phase 3: FRAMING (≤ 5 tool calls total)
 For the top 5 scored candidates, call propose_problem_statement.
