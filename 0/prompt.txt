@@ -30,3 +30,7 @@ ERROR: ANTHROPIC_API_KEY environment variable not set.
 ---
 
 in hunt results we should mention scores of each of the datasets so we know what the model predicted
+
+---
+
+what causes the run hunt to give different results on different runs. lets seed
