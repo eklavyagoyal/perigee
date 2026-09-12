@@ -1,0 +1,1 @@
+okay, remove the data folder from tis project, sicne we have a copy in the var/tmp. do you need something to know from me before starting to implement the plan.md
