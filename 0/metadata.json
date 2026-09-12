@@ -1,0 +1,53 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BKVZBZXPPNMNVPD97GFG91",
+  "session_id": "df9ef30e-fa9d-4526-a64d-6ca5781e6ee3",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T20:10:18.15094Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/adr/ADR-0001-agentic-dataset-hunter.md",
+    "docs/adr/ADR-0002-dataset-selection-rules.md",
+    "docs/adr/ADR-0003-tslm-architecture.md",
+    "docs/adr/README.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-4-6",
+  "turn_id": "cfde88da9931",
+  "checkpoint_transcript_start": 12,
+  "transcript_lines_at_start": 12,
+  "compact_transcript_start": 1,
+  "token_usage": {
+    "input_tokens": 46,
+    "cache_creation_tokens": 69532,
+    "cache_read_tokens": 2080520,
+    "output_tokens": 34098,
+    "api_call_count": 36
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T20:10:17.821389Z",
+    "agent_lines": 181,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 2,
+    "human_removed": 0,
+    "total_committed": 183,
+    "total_lines_changed": 183,
+    "agent_percentage": 98.90710382513662,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
