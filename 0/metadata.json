@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BHSZX1E3PA0W65B6GWR03F",
+  "session_id": "2996eb52-cbb5-4efe-9fad-4791c49907ed",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T19:34:15.586368Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "challenge/ts-corpus-list.md",
+    "research-paper/2510.02410v3.pdf"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-4-6",
+  "turn_id": "4536654c472b",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T19:34:15.559319Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 0,
+    "total_lines_changed": 0,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 53748,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "challenge/ts-corpus-list.md": 78,
+        "research-paper/2510.02410v3.pdf": 53670
+      }
+    }
+  ]
+}
