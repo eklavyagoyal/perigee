@@ -1,0 +1,151 @@
+{
+  "73ef2b7d05362983e323dad128e3b060": [],
+  "725129df11e264324338db582c29ecfc": [],
+  "9b5b438ff52da1f3979adb131f2c3795": [],
+  "7ce7491d0fae94b86f6ac4cc567a565c": [
+    {
+      "name": "NASA SMAP/MSL Spacecraft Anomaly Dataset",
+      "domain": "space_satellite_anomaly",
+      "url": "https://github.com/khundman/telemanom",
+      "sample_url": "https://s3-us-west-2.amazonaws.com/telemanom-data/2018-05-19_15.00.10.tar.gz",
+      "description": "55-channel SMAP (Soil Moisture Active Passive) satellite telemetry and 27-channel MSL (Mars Science Lab / Curiosity) rover telemetry with expert-labeled anomaly spans. Canonical benchmark from Hundman et al. SIGKDD 2018.",
+      "license": "NASA Open",
+      "size_mb": 110,
+      "has_labels": true,
+      "signals": [
+        "command channel telemetry",
+        "engineering telemetry"
+      ],
+      "label_type": "anomaly spans (per-channel)",
+      "user": "Spacecraft operations engineer / mission control",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "TESS Exoplanet Transit Light Curves",
+      "domain": "space_observation",
+      "url": "https://archive.stsci.edu/missions-and-data/tess",
+      "sample_url": "https://archive.stsci.edu/missions/tess/tid/",
+      "description": "Transiting Exoplanet Survey Satellite (TESS) photometric time-series. 2-minute cadence flux measurements for hundreds of thousands of stars with confirmed exoplanet transit labels from NASA ExoFOP catalog.",
+      "license": "NASA Open / Public Domain",
+      "size_mb": 500,
+      "has_labels": true,
+      "signals": [
+        "flux (normalized)",
+        "centroid row",
+        "centroid col"
+      ],
+      "label_type": "transit event spans + planet confirmation flag",
+      "user": "Astronomer / exoplanet researcher",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "GOES X-ray Solar Flare Flux",
+      "domain": "space_observation",
+      "url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html",
+      "sample_url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
+      "description": "GOES satellite 1-minute X-ray flux (0.05-0.4 nm and 0.1-0.8 nm bands) from 1986 to present with NOAA-classified solar flare events (A/B/C/M/X class + peak time). Different from ts-gym spaceweather corpus (which uses Kp/sunspot/F10.7).",
+      "license": "NOAA Open / Public Domain",
+      "size_mb": 200,
+      "has_labels": true,
+      "signals": [
+        "xrs-a flux (W/m\u00b2)",
+        "xrs-b flux (W/m\u00b2)"
+      ],
+      "label_type": "flare class + onset/peak/end timestamps",
+      "user": "Space weather forecaster / satellite operator",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_satellite_anomaly",
+      "url": "https://github.com/waico/SKAB",
+      "sample_url": "https://raw.githubusercontent.com/waico/SKAB/master/data/valve1/1.csv",
+      "description": "Skoltech Anomaly Benchmark: 34 labeled multivariate time-series files from a real testbed (waterflow pipeline sensors). Used as a proxy for spacecraft fluid system anomaly detection. All files have anomaly timestamps + anomaly type labels.",
+      "license": "MIT",
+      "size_mb": 50,
+      "has_labels": true,
+      "signals": [
+        "accelerometer x/y/z",
+        "pressure",
+        "temperature",
+        "flow"
+      ],
+      "label_type": "point anomaly + collective anomaly spans",
+      "user": "Reliability engineer / spacecraft systems analyst",
+      "source": "nasa_catalog"
+    }
+  ],
+  "eab73a4f7401260b353e83d01a3b60d6": [
+    {
+      "name": "TESS Exoplanet Transit Light Curves",
+      "domain": "space_observation",
+      "url": "https://archive.stsci.edu/missions-and-data/tess",
+      "sample_url": "https://archive.stsci.edu/missions/tess/tid/",
+      "description": "Transiting Exoplanet Survey Satellite (TESS) photometric time-series. 2-minute cadence flux measurements for hundreds of thousands of stars with confirmed exoplanet transit labels from NASA ExoFOP catalog.",
+      "license": "NASA Open / Public Domain",
+      "size_mb": 500,
+      "has_labels": true,
+      "signals": [
+        "flux (normalized)",
+        "centroid row",
+        "centroid col"
+      ],
+      "label_type": "transit event spans + planet confirmation flag",
+      "user": "Astronomer / exoplanet researcher",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "GOES X-ray Solar Flare Flux",
+      "domain": "space_observation",
+      "url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html",
+      "sample_url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
+      "description": "GOES satellite 1-minute X-ray flux (0.05-0.4 nm and 0.1-0.8 nm bands) from 1986 to present with NOAA-classified solar flare events (A/B/C/M/X class + peak time). Different from ts-gym spaceweather corpus (which uses Kp/sunspot/F10.7).",
+      "license": "NOAA Open / Public Domain",
+      "size_mb": 200,
+      "has_labels": true,
+      "signals": [
+        "xrs-a flux (W/m\u00b2)",
+        "xrs-b flux (W/m\u00b2)"
+      ],
+      "label_type": "flare class + onset/peak/end timestamps",
+      "user": "Space weather forecaster / satellite operator",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "NASA C-MAPSS Turbofan Run-to-Failure (FD003/FD004)",
+      "domain": "space_launch_propulsion",
+      "url": "https://www.nasa.gov/intelligent-systems-division/pcoe-data-set-repository/",
+      "sample_url": "https://phm-datasets.s3.amazonaws.com/NASA/6.+Turbofan+Engine+Degradation+Simulation+Data+Set-2.zip",
+      "description": "Extended C-MAPSS dataset with two-fault-condition turbofan fleets (FD003/FD004). 21 sensor channels per flight cycle, remaining-useful-life ground truth. NOTE: Base C-MAPSS (cmapss) is in ts-gym; FD003/FD004 with dual faults are the distinct harder variants used in aerospace prognostics.",
+      "license": "NASA Open",
+      "size_mb": 15,
+      "has_labels": true,
+      "signals": [
+        "21 engine health sensors",
+        "3 operational settings"
+      ],
+      "label_type": "remaining useful life (RUL) per cycle",
+      "user": "Aerospace maintenance engineer",
+      "source": "nasa_catalog"
+    },
+    {
+      "name": "GAIA DR3 Stellar Variability Light Curves",
+      "domain": "space_observation",
+      "url": "https://gea.esac.esa.int/archive/",
+      "sample_url": "https://gea.esac.esa.int/tap-server/tap/sync",
+      "description": "ESA GAIA Data Release 3: epoch photometry for ~10M variable stars, G/BP/RP bands, variability class labels (Cepheid, RR Lyrae, eclipsing binary, etc). Distinct from ts-gym ASAS-SN (V-band) and ZTF (g/r-band).",
+      "license": "ESA / CC-BY",
+      "size_mb": 300,
+      "has_labels": true,
+      "signals": [
+        "G-band flux",
+        "BP flux",
+        "RP flux",
+        "epoch timestamps"
+      ],
+      "label_type": "variability class + period",
+      "user": "Astrophysicist / automated survey pipeline",
+      "source": "nasa_catalog"
+    }
+  ]
+}

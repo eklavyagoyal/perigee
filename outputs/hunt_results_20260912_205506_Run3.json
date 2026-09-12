@@ -1,0 +1,41 @@
+{
+  "all_candidates": [
+    {
+      "name": "ESA Anomaly Detection Benchmark (SKAB)",
+      "domain": "space_anomaly",
+      "score": 10.0,
+      "url": "https://github.com/waico/SKAB",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 1.0,
+        "novelty": 1.0,
+        "clear_user": 1.0,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "datetime;Accelerometer1RMS;Accelerometer2RMS;Current;Pressure;Temperature;Thermocouple;Voltage;Volume Flow RateRMS;anomaly;changepoint"
+        ]
+      }
+    }
+  ],
+  "top_datasets": [
+    {
+      "rank": 1,
+      "name": "ESA Anomaly Detection Benchmark (SKAB)",
+      "domain": "space_anomaly",
+      "score": 10.0,
+      "url": "https://github.com/waico/SKAB",
+      "problem_statement": "Develop a robust anomaly detection model using the ESA Anomaly Detection Benchmark (SKAB) dataset, which contains multivariate time-series data from a real testbed. The goal is to accurately identify and classify anomalies in sensor data, which can be applied to spacecraft systems for early fault detection.",
+      "user_story": "As a reliability engineer, I want to use the SKAB dataset to train a model that can detect anomalies in spacecraft sensor data, so that I can prevent potential system failures and ensure mission success.",
+      "cot_example": "Given a sequence of sensor readings from accelerometers, pressure, and temperature sensors, the model identifies a sudden spike in pressure as an anomaly, correlates it with a temperature rise, and suggests a potential valve malfunction.",
+      "timenet_task": "Anomaly Detection"
+    }
+  ],
+  "recommendation": "The ESA Anomaly Detection Benchmark (SKAB) dataset is the top pick due to its comprehensive multivariate time-series data with labeled anomalies. It provides a realistic testbed for developing anomaly detection models, which are crucial for ensuring the reliability of spacecraft systems. Its clear structure and annotations make it ideal for training a Time-Series Language Model to generate reasoning chains over sensor data.",
+  "run_timestamp": "20260912_205506"
+}

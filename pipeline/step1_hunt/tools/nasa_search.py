@@ -11,7 +11,7 @@ SPACE_SEED_CATALOG: list[dict[str, Any]] = [
         "name": "NASA SMAP/MSL Spacecraft Anomaly Dataset",
         "domain": "space_satellite_anomaly",
         "url": "https://github.com/khundman/telemanom",
-        "sample_url": "https://s3-us-west-2.amazonaws.com/telemanom-data/2018-05-19_15.00.10.tar.gz",
+        "sample_url": "https://raw.githubusercontent.com/khundman/telemanom/master/labeled_anomalies.csv",
         "description": (
             "55-channel SMAP (Soil Moisture Active Passive) satellite telemetry and "
             "27-channel MSL (Mars Science Lab / Curiosity) rover telemetry with expert-labeled "
@@ -29,7 +29,7 @@ SPACE_SEED_CATALOG: list[dict[str, Any]] = [
         "name": "TESS Exoplanet Transit Light Curves",
         "domain": "space_observation",
         "url": "https://archive.stsci.edu/missions-and-data/tess",
-        "sample_url": "https://archive.stsci.edu/missions/tess/tid/",
+        "sample_url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+top+20+pl_name,disc_year,pl_orbper,pl_rade,pl_bmasse,st_teff+from+ps+where+pl_orbper+is+not+null&format=csv",
         "description": (
             "Transiting Exoplanet Survey Satellite (TESS) photometric time-series. "
             "2-minute cadence flux measurements for hundreds of thousands of stars with "
@@ -46,7 +46,7 @@ SPACE_SEED_CATALOG: list[dict[str, Any]] = [
     {
         "name": "GOES X-ray Solar Flare Flux",
         "domain": "space_observation",
-        "url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html",
+        "url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
         "sample_url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
         "description": (
             "GOES satellite 1-minute X-ray flux (0.05-0.4 nm and 0.1-0.8 nm bands) from 1986 "

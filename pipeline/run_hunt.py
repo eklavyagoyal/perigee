@@ -24,6 +24,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Agentic time-series dataset hunter")
     parser.add_argument("--quiet", action="store_true", help="Suppress agent streaming output")
     parser.add_argument("--output-dir", default="outputs", help="Directory for reports (default: outputs/)")
+    parser.add_argument("--no-cache", action="store_true", help="Force fresh API searches, rebuild cache")
     args = parser.parse_args()
 
     if not os.environ.get("OPENAI_API_KEY"):
@@ -36,7 +37,7 @@ def main() -> None:
     print("Starting dataset hunt across 5 domains...")
     print("Domains: wind_turbine | mental_health | traffic | space_anomaly | space_observation\n")
 
-    result = run_hunt(verbose=verbose)
+    result = run_hunt(verbose=verbose, use_cache=not args.no_cache)
 
     if "error" in result:
         print(f"\nAgent returned an error: {result['error']}", file=sys.stderr)
