@@ -30,7 +30,7 @@ Build a **Claude-powered agentic dataset hunter** that:
 5. Outputs a ranked report
 
 **Entry point:** `pipeline/run_hunt.py`  
-**Model:** `claude-sonnet-4-6` (current env model)  
+**Model:** `gpt-4o` (OpenAI, switched from Anthropic for API key availability)  
 **Tool-use budget:** 25 calls max (bounded to avoid runaway cost)
 
 ---
