@@ -139,6 +139,20 @@ def test_periodicity_annotations_present_and_in_range(monkeypatch, tmp_path):
         assert 0.0 <= by_key["context_periodicity"] <= 1.0
 
 
+def test_minutes_since_command_annotation(monkeypatch, tmp_path):
+    # fixtures/telecommands.csv: telecommand_1 (priority 2) fires 2 min before id_2's Rare Event
+    # start (channel_42, 08:00:00); telecommand_2 (priority 0, below the min-priority threshold)
+    # fires 2 min before id_1's Anomaly start (channel_41, 12:00:00) and must not count.
+    dataset = _download_and_convert(monkeypatch, tmp_path)
+    by_record = {record.record_id: {ann.key: ann.value for ann in record.annotations} for record in dataset.records}
+
+    id2_pos = next(rid for rid in by_record if rid.startswith("id_2-") and rid.endswith("-pos"))
+    assert by_record[id2_pos]["minutes_since_command"] == pytest.approx(2.0)
+
+    id1_pos = next(rid for rid in by_record if rid.startswith("id_1-") and rid.endswith("-pos"))
+    assert "minutes_since_command" not in by_record[id1_pos]
+
+
 def test_label_and_split_annotations_present(monkeypatch, tmp_path):
     dataset = _download_and_convert(monkeypatch, tmp_path)
     for record in dataset.records:

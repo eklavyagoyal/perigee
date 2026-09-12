@@ -99,6 +99,17 @@ class ESAMission1CoTQADataset(QADataset):
                 f"specific six-hour window it is {window_phrase}."
             )
 
+        # A commanded manoeuvre/reset/calibration is exactly what separates a Rare Event from a
+        # true Anomaly (ESA's own category definition), and a priority>=2 telecommand shortly
+        # before this window's reference point (one hour after it begins) is a strong, direct
+        # signal for that -- 81.6% of Rare Events on these channels are preceded by one within 6h,
+        # versus 2.5% of Anomalies. None when no qualifying command fired in the lookback window.
+        minutes_since_command = row.get("minutes_since_command")
+        if minutes_since_command is not None:
+            text += f" A priority-2-or-higher telecommand executed {minutes_since_command:.1f} minutes before this window's reference point (one hour after it begins)."
+        else:
+            text += " No priority-2-or-higher telecommand executed in the six hours before this window's reference point."
+
         return [TextTimeSeriesPrompt(text, series.tolist())]
 
     def _format_sample(self, row):

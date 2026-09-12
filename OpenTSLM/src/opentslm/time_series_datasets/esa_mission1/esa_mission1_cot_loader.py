@@ -98,6 +98,13 @@ def load_esa_mission1_cot_splits() -> Tuple[Dataset, Dataset, Dataset]:
                     # prompt contrast "normally periodic" against "not in this window" instead.
                     "window_periodicity": _annotation(record, "window_periodicity"),
                     "context_periodicity": _annotation(record, "context_periodicity"),
+                    # A priority>=2 telecommand executing shortly before a window's reference
+                    # point is a strong, near-free signal: empirically 81.6% of Rare Events on
+                    # these channels are preceded by one within 6h, versus 2.5% of Anomalies and
+                    # 0.3% of nominal windows (a commanded manoeuvre/reset/calibration is exactly
+                    # what ESA's own "Rare Event" category definition describes). None when no
+                    # qualifying command fired in the lookback window.
+                    "minutes_since_command": _annotation(record, "minutes_since_command"),
                 }
             )
 
