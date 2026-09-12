@@ -1,0 +1,95 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2BD0DWD8508KTZ8QRG3JB84",
+  "session_id": "f51b7bb9-b10c-4ef1-a6d3-b407c9c90752",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T18:10:26.099961664Z",
+  "branch": "hackathon-submission",
+  "checkpoints_count": 6,
+  "save_step_count": 6,
+  "files_touched": [
+    "CLUSTER_BRIEF.md",
+    "scripts/sync_to_cluster.sh"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "841b4deb51f7",
+  "checkpoint_transcript_start": 1868,
+  "transcript_lines_at_start": 1868,
+  "compact_transcript_start": 344,
+  "token_usage": {
+    "input_tokens": 24,
+    "cache_creation_tokens": 6797,
+    "cache_read_tokens": 5446894,
+    "output_tokens": 2639,
+    "api_call_count": 12
+  },
+  "session_metrics": {
+    "turn_count": 30
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T18:10:25.887413116Z",
+    "agent_lines": 0,
+    "agent_removed": 29,
+    "human_added": 2,
+    "human_modified": 35,
+    "human_removed": 0,
+    "total_committed": 28,
+    "total_lines_changed": 66,
+    "agent_percentage": 43.93939393939394,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 140
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 140
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 140
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 37,
+      "user_lines_removed": 35,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 140,
+      "user_added_per_file": {
+        "CLUSTER_BRIEF.md": 37
+      },
+      "user_removed_per_file": {
+        "CLUSTER_BRIEF.md": 35
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 3,
+      "user_lines_removed": 0,
+      "agent_lines_added": 63,
+      "agent_lines_removed": 204,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt": 3
+      }
+    }
+  ]
+}
