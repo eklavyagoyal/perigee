@@ -1,0 +1,87 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BPVXVM3R461SG5AV2N9RH5",
+  "session_id": "df9ef30e-fa9d-4526-a64d-6ca5781e6ee3",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T21:02:42.651158Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "save_step_count": 3,
+  "files_touched": [
+    ".gitignore",
+    "pipeline/outputs/search_cache.json",
+    "pipeline/run_hunt.py",
+    "pipeline/step1_hunt/agent.py",
+    "pipeline/step1_hunt/tools/search_cache.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-4-6",
+  "turn_id": "25ceaf8e61e2",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 123,
+    "cache_creation_tokens": 116954,
+    "cache_read_tokens": 8162062,
+    "output_tokens": 62823,
+    "api_call_count": 95
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T21:02:42.407535Z",
+    "agent_lines": 0,
+    "agent_removed": 28,
+    "human_added": 464,
+    "human_modified": 91,
+    "human_removed": 0,
+    "total_committed": 489,
+    "total_lines_changed": 674,
+    "agent_percentage": 4.154302670623145,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 224,
+      "user_lines_removed": 1,
+      "agent_lines_added": 185,
+      "agent_lines_removed": 20,
+      "user_added_per_file": {
+        ".gitignore": 2,
+        "outputs/hunt_report_20260912_205506.md": 32,
+        "outputs/hunt_results_20260912_205506_Run3.json": 41,
+        "pipeline/outputs/search_cache.json": 149
+      },
+      "user_removed_per_file": {
+        ".gitignore": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 238,
+      "user_lines_removed": 89,
+      "agent_lines_added": 253,
+      "agent_lines_removed": 30,
+      "user_added_per_file": {
+        "outputs/hunt_report_20260912_203119_Run1.md": 35,
+        "outputs/hunt_report_20260912_204526_Run2.md": 53,
+        "outputs/hunt_report_20260912_205506_Run3.md": 32,
+        "outputs/hunt_results_20260912_205506_Run3.json": 41,
+        "pipeline/outputs/search_cache.json": 77
+      },
+      "user_removed_per_file": {
+        "outputs/hunt_report_20260912_203119_Run.md": 35,
+        "outputs/hunt_report_20260912_204526.md": 53,
+        "pipeline/outputs/search_cache.json": 1
+      }
+    }
+  ]
+}
