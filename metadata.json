@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BH8K5RBWS5Q9E80N5NN4VR",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "challenge/Aionic_Temporal_AI_Hackathon (2).pdf",
+    "challenge/challenge.txt"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 7,
+    "cache_creation_tokens": 15032,
+    "cache_read_tokens": 132114,
+    "output_tokens": 1535,
+    "api_call_count": 6
+  },
+  "has_investigation": true
+}
