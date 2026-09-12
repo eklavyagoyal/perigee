@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BQ1H9TYXE3PWHTZHBK9TTS",
+  "session_id": "2996eb52-cbb5-4efe-9fad-4791c49907ed",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T21:05:45.528421Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "pipeline/step1_hunt/__pycache__/prompts.cpython-314.pyc",
+    "pipeline/step1_hunt/agent.py",
+    "pipeline/step1_hunt/prompts.py",
+    "pipeline/step1_hunt/tools/dataset_validator.py",
+    "pipeline/step1_hunt/tools/nasa_search.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-4-6",
+  "turn_id": "4536654c472b",
+  "checkpoint_transcript_start": 19,
+  "transcript_lines_at_start": 19,
+  "compact_transcript_start": 4,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T21:05:45.507538Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 25,
+    "human_modified": 8,
+    "human_removed": 0,
+    "total_committed": 25,
+    "total_lines_changed": 33,
+    "agent_percentage": 0,
+    "metric_version": 2
+  }
+}

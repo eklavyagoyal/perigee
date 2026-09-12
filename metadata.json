@@ -1,0 +1,30 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2BQ1H9TYXE3PWHTZHBK9TTS",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "pipeline/step1_hunt/__pycache__/prompts.cpython-314.pyc",
+    "pipeline/step1_hunt/agent.py",
+    "pipeline/step1_hunt/prompts.py",
+    "pipeline/step1_hunt/tools/dataset_validator.py",
+    "pipeline/step1_hunt/tools/nasa_search.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
