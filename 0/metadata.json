@@ -1,0 +1,352 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2BX39QZXYA1EEDCWY3APQJ3",
+  "session_id": "f51b7bb9-b10c-4ef1-a6d3-b407c9c90752",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-12T22:51:37.05195994Z",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 25,
+  "save_step_count": 25,
+  "files_touched": [
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/fixtures/labels.csv",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/test_connector.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "ed113d1cc3b8",
+  "checkpoint_transcript_start": 3676,
+  "transcript_lines_at_start": 3676,
+  "compact_transcript_start": 670,
+  "token_usage": {
+    "input_tokens": 152,
+    "cache_creation_tokens": 72695,
+    "cache_read_tokens": 66813408,
+    "output_tokens": 49064,
+    "api_call_count": 76
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01FmG9Ri16JeJwb5q96xa9ws",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "dataviz"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "ed113d1cc3b8",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 2316,
+        "end": 2317,
+        "entry_ids": [
+          "ce237811-d02e-434a-9fe2-b4d08f784d04"
+        ],
+        "tool_use_id": "toolu_01FmG9Ri16JeJwb5q96xa9ws"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01FmG9Ri16JeJwb5q96xa9ws"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: dataviz",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_01D1Xj1pzhxdxNfQU2maxb2L",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "artifact-design"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "ed113d1cc3b8",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 2392,
+        "end": 2393,
+        "entry_ids": [
+          "5ce3239b-1c85-4e83-acd1-ce3503924b70"
+        ],
+        "tool_use_id": "toolu_01D1Xj1pzhxdxNfQU2maxb2L"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01D1Xj1pzhxdxNfQU2maxb2L"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: artifact-design",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_01N7vScsqZPrRzKsanbZT11D",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "claude-in-chrome"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "ed113d1cc3b8",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 2466,
+        "end": 2467,
+        "entry_ids": [
+          "e1ddab4e-acbd-47d9-98de-fb3bc97e4e34"
+        ],
+        "tool_use_id": "toolu_01N7vScsqZPrRzKsanbZT11D"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01N7vScsqZPrRzKsanbZT11D"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: claude-in-chrome",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 115
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-12T22:51:36.654750347Z",
+    "agent_lines": 170,
+    "agent_removed": 502,
+    "human_added": 341,
+    "human_modified": 5,
+    "human_removed": 0,
+    "total_committed": 516,
+    "total_lines_changed": 1018,
+    "agent_percentage": 66.01178781925344,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 117,
+      "user_lines_removed": 3,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py": 99,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/fixtures/labels.csv": 1,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/fixtures/telecommands.csv": 3,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/test_connector.py": 14
+      },
+      "user_removed_per_file": {
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py": 2,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/fixtures/labels.csv": 1
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 135,
+      "agent_lines_removed": 511
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 135,
+      "agent_lines_removed": 511
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 135,
+      "agent_lines_removed": 511
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 136,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 136,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 136,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 136,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 137,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 10,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 137,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 11,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 137,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 12,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 137,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 13,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 138,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 14,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 138,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 15,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 139,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 16,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 139,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 17,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 139,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 18,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 140,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 19,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 140,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 20,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 140,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 21,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 140,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 22,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 141,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 23,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 141,
+      "agent_lines_removed": 509
+    },
+    {
+      "checkpoint_number": 24,
+      "user_lines_added": 52,
+      "user_lines_removed": 0,
+      "agent_lines_added": 160,
+      "agent_lines_removed": 509,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 52
+      }
+    },
+    {
+      "checkpoint_number": 25,
+      "user_lines_added": 294,
+      "user_lines_removed": 2,
+      "agent_lines_added": 348,
+      "agent_lines_removed": 509,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json": 2,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 40
+      },
+      "user_removed_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json": 2
+      }
+    },
+    {
+      "checkpoint_number": 26,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 638,
+      "agent_lines_removed": 507
+    }
+  ]
+}
