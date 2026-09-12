@@ -1,0 +1,87 @@
+explore all but also add datasets in the space industry...
+
+---
+
+ill use open ai instead REDACTED
+
+---
+
+export REDACTED && python run_hunt.py 
+Traceback (most recent call last):
+  File "/Volumes/AnniesSSD/ehl-zurich-hackathon-submission/pipeline/run_hunt.py", line 19, in <module>
+    from step1_hunt.agent import run_hunt
+  File "/Volumes/AnniesSSD/ehl-zurich-hackathon-submission/pipeline/step1_hunt/agent.py", line 13, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+anniebhalla@Annies-Air-2 pipeline %
+
+---
+
+[notice] To update, run: pip install --upgrade pip
+(venv) anniebhalla@Annies-Air-2 ehl-zurich-hackathon-submission % export REDACTED && python3 pipeline/run_hunt.py 
+ERROR: ANTHROPIC_API_KEY environment variable not set.
+
+---
+
+run the run_hunt.pz [notice] To update, run: pip install --upgrade pip
+(venv) anniebhalla@Annies-Air-2 ehl-zurich-hackathon-submission % export REDACTED && python3 pipeline/run_hunt.py 
+ERROR: ANTHROPIC_API_KEY environment variable not set.
+
+---
+
+in hunt results we should mention scores of each of the datasets so we know what the model predicted
+
+---
+
+what causes the run hunt to give different results on different runs. lets seed
+
+---
+
+!  python3 pipeline/run_hunt.py
+ERROR: OPENAI_API_KEY environment variable not set.
+
+---
+
+"all_candidates": [
+    {
+      "name": "ESA Anomaly Detection Benchmark (SKAB)",
+      "domain": "space_anomaly",
+      "score": 10.0,
+      "url": "https://github.com/waico/SKAB",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 1.0,
+        "novelty": 1.0,
+        "clear_user": 1.0,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "datetime;Accelerometer1RMS;Accelerometer2RMS;Current;Pressure;Temperature;Thermocouple;Voltage;Volume Flow RateRMS;anomaly;changepoint"
+        ]
+      }
+    }
+  ], all datatsets have only 1 dataset
+
+---
+
+space domains:
+
+1. **NASA SMAP/MSL Spacecraft Anomaly Dataset**
+   - Domain...
+
+[TOOL #6] validate_dataset_url({"url": "https://github.com/khundman/telemanom"}) 
+  → {"accessible": true, "status_code": 200, "size_mb": 0.0, "content_type": "text/html; charset=utf-8"}
+[TOOL #7] validate_dataset_url({"url": "https://archive.stsci.edu/missions-and-data/tess"}) 
+  → {"accessible": true, "status_code": 200, "size_mb": 0.0, "content_type": "text/html;charset=UTF-8"}
+[TOOL #8] validate_dataset_url({"url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html"}) 
+  → {"accessible": false, "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"}
+[TOOL #9] validate_dataset_url({"url": "https://github.com/waico/SKAB"}) 
+  → {"accessible": true, "status_code": 200, "size_mb": 0.0, "content_type": "text/html; charset=utf-8"}
+[TOOL #10] validate_dataset_url({"url": "https://gea.esac.esa.int/archive/"}) 
+  → {"accessible": true, "status_code": 200, "size_mb": 0.0, "content_type": "text/html; charset=UTF-8"}
+[TOOL #11] probe_temporal_structure({"url": "https://s3-us-west-2.amazonaws.com/telemanom-data/2018-05-19_15
