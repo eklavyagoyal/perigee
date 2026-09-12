@@ -1,0 +1,94 @@
+{
+  "all_candidates": [
+    {
+      "name": "NASA SMAP/MSL Spacecraft Anomaly Dataset",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 0.7,
+        "novelty": 1.0,
+        "clear_user": 1.0,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "license": "NASA Open",
+      "size_mb": 110,
+      "signals": [
+        "command channel telemetry",
+        "engineering telemetry"
+      ],
+      "label_type": "anomaly spans (per-channel)",
+      "url": "https://github.com/khundman/telemanom",
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "chan_id",
+          "spacecraft",
+          "anomaly_sequences",
+          "class",
+          "num_values"
+        ]
+      }
+    },
+    {
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 0.7,
+        "novelty": 1.0,
+        "clear_user": 1.0,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "license": "MIT",
+      "size_mb": 50,
+      "signals": [
+        "accelerometer x/y/z",
+        "pressure",
+        "temperature",
+        "flow"
+      ],
+      "label_type": "point anomaly + collective anomaly spans",
+      "url": "https://github.com/waico/SKAB",
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "datetime;Accelerometer1RMS;Accelerometer2RMS;Current;Pressure;Temperature;Thermocouple;Voltage;Volume Flow RateRMS;anomaly;changepoint"
+        ]
+      }
+    }
+  ],
+  "top_datasets": [
+    {
+      "rank": 1,
+      "name": "NASA SMAP/MSL Spacecraft Anomaly Dataset",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "url": "https://github.com/khundman/telemanom",
+      "problem_statement": "Develop a time-series language model to detect and explain anomalies in spacecraft telemetry data, enhancing mission safety and operational efficiency.",
+      "user_story": "As a spacecraft operations engineer, I want to automatically detect and understand anomalies in telemetry data so that I can ensure the spacecraft operates safely and efficiently.",
+      "cot_example": "The telemetry data shows a sudden spike in temperature followed by a drop in pressure, indicating a potential leak. The model identifies this as an anomaly and suggests checking the valve system.",
+      "timenet_task": "Anomaly Detection"
+    },
+    {
+      "rank": 2,
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "url": "https://github.com/waico/SKAB",
+      "problem_statement": "Create a model to identify and explain anomalies in sensor data from a spacecraft fluid system, improving reliability and maintenance planning.",
+      "user_story": "As a reliability engineer, I need to detect anomalies in spacecraft fluid system data to prevent failures and optimize maintenance schedules.",
+      "cot_example": "The sensor data indicates a gradual increase in pressure and temperature, followed by a sudden drop in flow rate. The model flags this as a potential blockage and recommends inspecting the pipeline.",
+      "timenet_task": "Anomaly Detection"
+    }
+  ],
+  "recommendation": "The NASA SMAP/MSL Spacecraft Anomaly Dataset is the top pick due to its comprehensive labeled anomaly spans in spacecraft telemetry, which are ideal for developing advanced anomaly detection models. Its high score across all evaluation criteria makes it a perfect candidate for the hackathon's objectives.",
+  "run_timestamp": "20260912_210641"
+}

@@ -7,7 +7,7 @@
       "name": "NASA SMAP/MSL Spacecraft Anomaly Dataset",
       "domain": "space_satellite_anomaly",
       "url": "https://github.com/khundman/telemanom",
-      "sample_url": "https://s3-us-west-2.amazonaws.com/telemanom-data/2018-05-19_15.00.10.tar.gz",
+      "sample_url": "https://raw.githubusercontent.com/khundman/telemanom/master/labeled_anomalies.csv",
       "description": "55-channel SMAP (Soil Moisture Active Passive) satellite telemetry and 27-channel MSL (Mars Science Lab / Curiosity) rover telemetry with expert-labeled anomaly spans. Canonical benchmark from Hundman et al. SIGKDD 2018.",
       "license": "NASA Open",
       "size_mb": 110,
@@ -24,7 +24,7 @@
       "name": "TESS Exoplanet Transit Light Curves",
       "domain": "space_observation",
       "url": "https://archive.stsci.edu/missions-and-data/tess",
-      "sample_url": "https://archive.stsci.edu/missions/tess/tid/",
+      "sample_url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+top+20+pl_name,disc_year,pl_orbper,pl_rade,pl_bmasse,st_teff+from+ps+where+pl_orbper+is+not+null&format=csv",
       "description": "Transiting Exoplanet Survey Satellite (TESS) photometric time-series. 2-minute cadence flux measurements for hundreds of thousands of stars with confirmed exoplanet transit labels from NASA ExoFOP catalog.",
       "license": "NASA Open / Public Domain",
       "size_mb": 500,
@@ -41,7 +41,7 @@
     {
       "name": "GOES X-ray Solar Flare Flux",
       "domain": "space_observation",
-      "url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html",
+      "url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
       "sample_url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
       "description": "GOES satellite 1-minute X-ray flux (0.05-0.4 nm and 0.1-0.8 nm bands) from 1986 to present with NOAA-classified solar flare events (A/B/C/M/X class + peak time). Different from ts-gym spaceweather corpus (which uses Kp/sunspot/F10.7).",
       "license": "NOAA Open / Public Domain",
@@ -80,7 +80,7 @@
       "name": "TESS Exoplanet Transit Light Curves",
       "domain": "space_observation",
       "url": "https://archive.stsci.edu/missions-and-data/tess",
-      "sample_url": "https://archive.stsci.edu/missions/tess/tid/",
+      "sample_url": "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+top+20+pl_name,disc_year,pl_orbper,pl_rade,pl_bmasse,st_teff+from+ps+where+pl_orbper+is+not+null&format=csv",
       "description": "Transiting Exoplanet Survey Satellite (TESS) photometric time-series. 2-minute cadence flux measurements for hundreds of thousands of stars with confirmed exoplanet transit labels from NASA ExoFOP catalog.",
       "license": "NASA Open / Public Domain",
       "size_mb": 500,
@@ -97,7 +97,7 @@
     {
       "name": "GOES X-ray Solar Flare Flux",
       "domain": "space_observation",
-      "url": "https://www.ngdc.noaa.gov/stp/solar/solarflares.html",
+      "url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
       "sample_url": "https://services.swpc.noaa.gov/json/goes/primary/xrays-7-day.json",
       "description": "GOES satellite 1-minute X-ray flux (0.05-0.4 nm and 0.1-0.8 nm bands) from 1986 to present with NOAA-classified solar flare events (A/B/C/M/X class + peak time). Different from ts-gym spaceweather corpus (which uses Kp/sunspot/F10.7).",
       "license": "NOAA Open / Public Domain",
@@ -132,7 +132,7 @@
       "name": "GAIA DR3 Stellar Variability Light Curves",
       "domain": "space_observation",
       "url": "https://gea.esac.esa.int/archive/",
-      "sample_url": "https://gea.esac.esa.int/tap-server/tap/sync",
+      "sample_url": "https://raw.githubusercontent.com/henrysky/astroNN_gaia_dr3_sample/main/sample_catalog.csv",
       "description": "ESA GAIA Data Release 3: epoch photometry for ~10M variable stars, G/BP/RP bands, variability class labels (Cepheid, RR Lyrae, eclipsing binary, etc). Distinct from ts-gym ASAS-SN (V-band) and ZTF (g/r-band).",
       "license": "ESA / CC-BY",
       "size_mb": 300,
@@ -146,6 +146,225 @@
       "label_type": "variability class + period",
       "user": "Astrophysicist / automated survey pipeline",
       "source": "nasa_catalog"
+    }
+  ],
+  "3bbdc6f9bb38935967298a2fdd3cf2bf": [
+    {
+      "name": "Rb-85 Rydberg transition data set and RF receiver parameter registry",
+      "doi": "10.5281/zenodo.22729863",
+      "url": "",
+      "description": "<p>Two data files supporting a comparison of Rydberg electrometers, atomic magnetometers and classical antennas as radio-frequency receivers below 30 MHz: the tabulated Rydberg transition data set behind the atomic sensitivity envelope, and the parameter registry through which every other numerical input enters.</p>\n<p>The transition data set contains 1830 electric-dipole transitions in Rb-85 (n =",
+      "license": "cc-by-4.0",
+      "size_mb": 0.3,
+      "file_types": [
+        "txt",
+        "npz",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729863/files/parameter_registry.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "SoK Auxiliary Material \u2014 APT Detection in IT\u2013OT Converged Industrial Networks",
+      "doi": "10.5281/zenodo.22707187",
+      "url": "",
+      "description": "<div><br>Auxiliary research artifact (machine-readable dataset) accompanying the&nbsp;Systematization of Knowledge (SoK) paper:<br>\n<div>&nbsp;</div>\n<div><strong>Advanced Persistent Threat Detection in IT&ndash;OT Converged Industrial Networks: A Systematization of Knowledge</strong></div>\n<br>\n<div>This package contains the complete paper-level coding of the 64 reviewed&nbsp;studies that underpi",
+      "license": "cc-by-4.0",
+      "size_mb": 0.7,
+      "file_types": [
+        "pdf",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22707187/files/corpus.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "Data Extraction Grid: A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency, Bridging the IT Cooling Divide",
+      "doi": "10.5281/zenodo.22729524",
+      "url": "",
+      "description": "<p>Data extraction grid for the 45 studies included in the systematic review \"A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency: Bridging the IT Cooling Divide\" (submitted to Energies, MDPI). Fields: Study ID, authors, journal, year, subsystem (Cooling/ICT/Full-DC), main AI technique, dataset/validation context, and key quantitative result. Companion dataset to the m",
+      "license": "cc-by-4.0",
+      "size_mb": 0.0,
+      "file_types": [
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729524/files/Supplementary_Materials_S1_Extraction_Grid.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "Experimental and Validation Dataset for Smoke Image Velocimetry of Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator",
+      "doi": "10.5281/zenodo.22709063",
+      "url": "",
+      "description": "<p>This dataset contains the experimental and validation data supporting the study &ldquo;A Vision-Based Smoke Image Velocimetry Framework for Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator&rdquo;. The study investigates a vision-based approach for the quantitative characterization of airflow inside a robotic pharmaceutical isolator using glycerin-based smoke visualization and ima",
+      "license": "cc-by-4.0",
+      "size_mb": 72963.6,
+      "file_types": [
+        "zip",
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22709063/files/MANIFEST.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "A 200K Malware Hash Dataset with Experimental Splits for Machine Learning Classification",
+      "doi": "10.5281/zenodo.22728867",
+      "url": "",
+      "description": "<p>This dataset provides a comprehensive manifest of 201,549 SHA-256 hashes representing both malicious (malware) and benign (goodware) software samples. It is specifically designed to facilitate reproducibility in machine learning and artificial intelligence experiments for malware detection.</p>\n<p>The provided <code>manifest.csv</code> file includes the overarching binary labels as well as gran",
+      "license": "cc-by-4.0",
+      "size_mb": 22.3,
+      "file_types": [
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22728867/files/manifest.csv/content",
+      "source": "zenodo"
+    }
+  ],
+  "92b71a1d665644fb0426b7b7f58c9bca": [
+    {
+      "name": "Rb-85 Rydberg transition data set and RF receiver parameter registry",
+      "doi": "10.5281/zenodo.22729863",
+      "url": "",
+      "description": "<p>Two data files supporting a comparison of Rydberg electrometers, atomic magnetometers and classical antennas as radio-frequency receivers below 30 MHz: the tabulated Rydberg transition data set behind the atomic sensitivity envelope, and the parameter registry through which every other numerical input enters.</p>\n<p>The transition data set contains 1830 electric-dipole transitions in Rb-85 (n =",
+      "license": "cc-by-4.0",
+      "size_mb": 0.3,
+      "file_types": [
+        "txt",
+        "npz",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729863/files/parameter_registry.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "SoK Auxiliary Material \u2014 APT Detection in IT\u2013OT Converged Industrial Networks",
+      "doi": "10.5281/zenodo.22707187",
+      "url": "",
+      "description": "<div><br>Auxiliary research artifact (machine-readable dataset) accompanying the&nbsp;Systematization of Knowledge (SoK) paper:<br>\n<div>&nbsp;</div>\n<div><strong>Advanced Persistent Threat Detection in IT&ndash;OT Converged Industrial Networks: A Systematization of Knowledge</strong></div>\n<br>\n<div>This package contains the complete paper-level coding of the 64 reviewed&nbsp;studies that underpi",
+      "license": "cc-by-4.0",
+      "size_mb": 0.7,
+      "file_types": [
+        "pdf",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22707187/files/corpus.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "Data Extraction Grid: A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency, Bridging the IT Cooling Divide",
+      "doi": "10.5281/zenodo.22729524",
+      "url": "",
+      "description": "<p>Data extraction grid for the 45 studies included in the systematic review \"A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency: Bridging the IT Cooling Divide\" (submitted to Energies, MDPI). Fields: Study ID, authors, journal, year, subsystem (Cooling/ICT/Full-DC), main AI technique, dataset/validation context, and key quantitative result. Companion dataset to the m",
+      "license": "cc-by-4.0",
+      "size_mb": 0.0,
+      "file_types": [
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729524/files/Supplementary_Materials_S1_Extraction_Grid.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "MetaSplice: training data, feature matrices, trained models and reproducibility package.",
+      "doi": "10.5281/zenodo.22728913",
+      "url": "",
+      "description": "<p>&nbsp; Data, trained models and analysis code underlying the manuscript \"MetaSplice: an ensemble<br>&nbsp; pathogenicity predictor for intronic splice variants\".</p>\n<p>&nbsp; MetaSplice is a 53-feature gradient-boosted ensemble that scores single-nucleotide variants<br>&nbsp; for pathogenicity across seven non-exonic splice regions: the canonical donor and acceptor<br>&nbsp; sites, the extende",
+      "license": "cc-by-4.0",
+      "size_mb": 518.6,
+      "file_types": [
+        "zip"
+      ],
+      "sample_file_url": "",
+      "source": "zenodo"
+    },
+    {
+      "name": "Experimental and Validation Dataset for Smoke Image Velocimetry of Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator",
+      "doi": "10.5281/zenodo.22709063",
+      "url": "",
+      "description": "<p>This dataset contains the experimental and validation data supporting the study &ldquo;A Vision-Based Smoke Image Velocimetry Framework for Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator&rdquo;. The study investigates a vision-based approach for the quantitative characterization of airflow inside a robotic pharmaceutical isolator using glycerin-based smoke visualization and ima",
+      "license": "cc-by-4.0",
+      "size_mb": 72963.6,
+      "file_types": [
+        "zip",
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22709063/files/MANIFEST.csv/content",
+      "source": "zenodo"
+    }
+  ],
+  "f5969ad3d5e9f51922e764d9bc73498f": [
+    {
+      "name": "Rb-85 Rydberg transition data set and RF receiver parameter registry",
+      "doi": "10.5281/zenodo.22729863",
+      "url": "",
+      "description": "<p>Two data files supporting a comparison of Rydberg electrometers, atomic magnetometers and classical antennas as radio-frequency receivers below 30 MHz: the tabulated Rydberg transition data set behind the atomic sensitivity envelope, and the parameter registry through which every other numerical input enters.</p>\n<p>The transition data set contains 1830 electric-dipole transitions in Rb-85 (n =",
+      "license": "cc-by-4.0",
+      "size_mb": 0.3,
+      "file_types": [
+        "txt",
+        "npz",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729863/files/parameter_registry.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "SoK Auxiliary Material \u2014 APT Detection in IT\u2013OT Converged Industrial Networks",
+      "doi": "10.5281/zenodo.22707187",
+      "url": "",
+      "description": "<div><br>Auxiliary research artifact (machine-readable dataset) accompanying the&nbsp;Systematization of Knowledge (SoK) paper:<br>\n<div>&nbsp;</div>\n<div><strong>Advanced Persistent Threat Detection in IT&ndash;OT Converged Industrial Networks: A Systematization of Knowledge</strong></div>\n<br>\n<div>This package contains the complete paper-level coding of the 64 reviewed&nbsp;studies that underpi",
+      "license": "cc-by-4.0",
+      "size_mb": 0.7,
+      "file_types": [
+        "pdf",
+        "csv",
+        "md"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22707187/files/corpus.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "Data Extraction Grid: A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency, Bridging the IT Cooling Divide",
+      "doi": "10.5281/zenodo.22729524",
+      "url": "",
+      "description": "<p>Data extraction grid for the 45 studies included in the systematic review \"A Systematic Review of Artificial Intelligence for Data Center Energy Efficiency: Bridging the IT Cooling Divide\" (submitted to Energies, MDPI). Fields: Study ID, authors, journal, year, subsystem (Cooling/ICT/Full-DC), main AI technique, dataset/validation context, and key quantitative result. Companion dataset to the m",
+      "license": "cc-by-4.0",
+      "size_mb": 0.0,
+      "file_types": [
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22729524/files/Supplementary_Materials_S1_Extraction_Grid.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "Experimental and Validation Dataset for Smoke Image Velocimetry of Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator",
+      "doi": "10.5281/zenodo.22709063",
+      "url": "",
+      "description": "<p>This dataset contains the experimental and validation data supporting the study &ldquo;A Vision-Based Smoke Image Velocimetry Framework for Robot-Induced Airflow Disturbances in a Pharmaceutical Isolator&rdquo;. The study investigates a vision-based approach for the quantitative characterization of airflow inside a robotic pharmaceutical isolator using glycerin-based smoke visualization and ima",
+      "license": "cc-by-4.0",
+      "size_mb": 72963.6,
+      "file_types": [
+        "zip",
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22709063/files/MANIFEST.csv/content",
+      "source": "zenodo"
+    },
+    {
+      "name": "A 200K Malware Hash Dataset with Experimental Splits for Machine Learning Classification",
+      "doi": "10.5281/zenodo.22728867",
+      "url": "",
+      "description": "<p>This dataset provides a comprehensive manifest of 201,549 SHA-256 hashes representing both malicious (malware) and benign (goodware) software samples. It is specifically designed to facilitate reproducibility in machine learning and artificial intelligence experiments for malware detection.</p>\n<p>The provided <code>manifest.csv</code> file includes the overarching binary labels as well as gran",
+      "license": "cc-by-4.0",
+      "size_mb": 22.3,
+      "file_types": [
+        "csv"
+      ],
+      "sample_file_url": "https://zenodo.org/api/records/22728867/files/manifest.csv/content",
+      "source": "zenodo"
     }
   ]
 }
