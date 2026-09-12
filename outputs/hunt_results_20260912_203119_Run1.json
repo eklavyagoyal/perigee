@@ -1,0 +1,25 @@
+{
+  "top_datasets": [
+    {
+      "rank": 1,
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_anomaly",
+      "score": 10.0,
+      "url": "https://github.com/waico/SKAB",
+      "problem_statement": "Detect anomalies in spacecraft systems using temporal patterns in multivariate sensor data.",
+      "user_story": "As a reliability engineer, I need to predict potential faults in spacecraft systems by analyzing sensor data so that mission risks are minimized.",
+      "cot_example": "Given a sequence of sensor readings from a spacecraft's fluid system, identify a deviation pattern that suggests a leak or pressure anomaly, considering historical similar patterns associated with system faults.",
+      "timenet_task": "Multivariate Anomaly Detection",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0
+      },
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true
+      }
+    }
+  ],
+  "recommendation": "The ESA Anomaly Detection Benchmark (SKAB - Space-adjacent) stands out due to its rich multivariate time-series data with labeled anomalies. It is explicitly designed for detecting faults in complex systems, akin to spacecraft operations. This dataset's clear structure, comprehensive recording of multiple sensor channels, and detailed annotations enable robust training of Time-Series Language Models to develop sophisticated anomaly detection mechanisms.",
+  "run_timestamp": "20260912_203119"
+}

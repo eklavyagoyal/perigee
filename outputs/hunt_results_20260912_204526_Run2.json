@@ -1,0 +1,79 @@
+{
+  "all_candidates": [
+    {
+      "name": "Experimental and Validation Dataset for Smoke Image Velocimetry",
+      "domain": "space_observation",
+      "score": 9.59,
+      "url": "https://zenodo.org/api/records/22709063/files/MANIFEST.csv/content",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 1.0,
+        "novelty": 1.0,
+        "clear_user": 0.7,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "archive",
+          "source_relative_path",
+          "archived_filename",
+          "size_bytes",
+          "dtype",
+          "shape"
+        ]
+      }
+    },
+    {
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "url": "https://raw.githubusercontent.com/waico/SKAB/master/data/valve1/1.csv",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 0.7,
+        "novelty": 1.0,
+        "clear_user": 1.0,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "probe_result": {
+        "is_timeseries": true,
+        "has_annotations": true,
+        "columns": [
+          "datetime;Accelerometer1RMS;Accelerometer2RMS;Current;Pressure;Temperature;Thermocouple;Voltage;Volume Flow RateRMS;anomaly;changepoint"
+        ]
+      }
+    }
+  ],
+  "top_datasets": [
+    {
+      "rank": 1,
+      "name": "Experimental and Validation Dataset for Smoke Image Velocimetry",
+      "domain": "space_observation",
+      "score": 9.59,
+      "url": "https://zenodo.org/api/records/22709063/files/MANIFEST.csv/content",
+      "problem_statement": "This dataset enables the study of dynamic airflow disturbances in controlled environments, providing insights into real-time changes and anomalies.",
+      "user_story": "As a researcher in aerospace, I want to use smoke image velocimetry data to understand airflow dynamics, so I can improve the design of ventilation systems.",
+      "cot_example": "Given the change in smoke flow pattern at T1, explain the possible reasons and predict the subsequent airflow behavior.",
+      "timenet_task": "Airflow pattern recognition and anomaly detection in controlled environments."
+    },
+    {
+      "rank": 2,
+      "name": "ESA Anomaly Detection Benchmark (SKAB - Space-adjacent)",
+      "domain": "space_anomaly",
+      "score": 9.45,
+      "url": "https://raw.githubusercontent.com/waico/SKAB/master/data/valve1/1.csv",
+      "problem_statement": "The dataset provides a foundation for developing anomaly detection algorithms that identify potential failures in spacecraft systems.",
+      "user_story": "As a systems engineer, I want to analyze spacecraft telemetry data for anomalies to predict and mitigate system failures.",
+      "cot_example": "Observe the pressure and temperature changes leading to an identified anomaly and determine potential causes.",
+      "timenet_task": "Multivariate anomaly detection for spacecraft telemetry."
+    }
+  ],
+  "recommendation": "The 'Experimental and Validation Dataset for Smoke Image Velocimetry' stands out as the top choice due to its robust time-series structure and rich annotation for CoT reasoning. It offers unique opportunities for understanding airflow dynamics, which are critical in diverse fields from environmental sciences to aerospace engineering. The dataset's versatility and scientific relevance make it an ideal candidate for time-series language models focused on natural-language reasoning.",
+  "run_timestamp": "20260912_204526"
+}

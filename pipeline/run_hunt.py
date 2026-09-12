@@ -26,8 +26,8 @@ def main() -> None:
     parser.add_argument("--output-dir", default="outputs", help="Directory for reports (default: outputs/)")
     args = parser.parse_args()
 
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("ERROR: ANTHROPIC_API_KEY environment variable not set.", file=sys.stderr)
+    if not os.environ.get("OPENAI_API_KEY"):
+        print("ERROR: OPENAI_API_KEY environment variable not set.", file=sys.stderr)
         sys.exit(1)
 
     output_dir = Path(args.output_dir)

@@ -14,7 +14,6 @@ def search_huggingface_datasets(query: str, limit: int = 10) -> list[dict[str, A
             search=query,
             limit=limit,
             sort="downloads",
-            direction=-1,
         )
         for ds in datasets:
             results.append({

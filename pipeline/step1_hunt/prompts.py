@@ -57,9 +57,33 @@ For the 12 most promising candidates (based on description quality):
 For the top 5 scored candidates, call propose_problem_statement.
 
 ## Output Format
-After Phase 3, output a JSON block with this exact structure:
+After Phase 3, output a JSON block with this exact structure.
+
+CRITICAL RULES for the JSON:
+1. `all_candidates` must list EVERY dataset you called score_dataset on — include all of them, not just the winner.
+2. `score_breakdown` must copy ALL 7 fields returned by score_dataset exactly: temporal_structure, has_labels, cot_potential, novelty, clear_user, license, size.
+3. `top_datasets` contains only the top 5 (with problem statements). `all_candidates` contains everything scored.
+
 ```json
 {
+  "all_candidates": [
+    {
+      "name": "...",
+      "domain": "...",
+      "score": 9.2,
+      "url": "...",
+      "score_breakdown": {
+        "temporal_structure": 1.0,
+        "has_labels": 1.0,
+        "cot_potential": 1.0,
+        "novelty": 1.0,
+        "clear_user": 0.7,
+        "license": 1.0,
+        "size": 1.0
+      },
+      "probe_result": {"is_timeseries": true, "has_annotations": true, "columns": ["..."]}
+    }
+  ],
   "top_datasets": [
     {
       "rank": 1,
@@ -70,9 +94,7 @@ After Phase 3, output a JSON block with this exact structure:
       "problem_statement": "...",
       "user_story": "...",
       "cot_example": "...",
-      "timenet_task": "...",
-      "score_breakdown": {"temporal_structure": 1.0, "has_labels": 1.0},
-      "probe_result": {"is_timeseries": true, "has_annotations": true}
+      "timenet_task": "..."
     }
   ],
   "recommendation": "One paragraph explaining the top pick and why it wins."
