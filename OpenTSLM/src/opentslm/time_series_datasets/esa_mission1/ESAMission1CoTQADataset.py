@@ -53,12 +53,19 @@ class ESAMission1CoTQADataset(QADataset):
         - Please now write your rationale. Make sure that your last word is the answer. You MUST end your response with "Answer: """
 
     def _get_text_time_series_prompt_list(self, row) -> List[TextTimeSeriesPrompt]:
+        # Deliberately NOT per-window z-score normalized. In this dataset the label is largely
+        # carried by absolute level and variance (nominal windows sit in a tight band around one
+        # level with a near-constant, small noise floor; anomalous windows are exactly the ones
+        # that drift off that level or blow up in variance -- see the mean/std stats gathered in
+        # esa_mission1_cot_loader's module docstring era of analysis). Normalizing each window by
+        # its own mean and std would force every window to look like mean=0, std=1, erasing that
+        # signal before the encoder ever sees it. The raw channel values are already a bounded,
+        # small-magnitude series (no rescaling needed for numerical stability).
         series = np.array(row["values"], dtype=np.float32)
         mean = float(np.mean(series))
-        std = max(float(np.std(series)), 1e-6)
-        normalized = (series - mean) / std
+        std = float(np.std(series))
         text = f"This is telemetry from {row['channel']}, it has mean {mean:.4f} and std {std:.4f}:"
-        return [TextTimeSeriesPrompt(text, normalized.tolist())]
+        return [TextTimeSeriesPrompt(text, series.tolist())]
 
     def _format_sample(self, row):
         sample = super()._format_sample(row)
