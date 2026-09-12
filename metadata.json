@@ -1,0 +1,28 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2BMY1RY7WTH6X3VQRHY42KY",
+  "strategy": "manual-commit",
+  "branch": "hackathon-submission",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 28,
+    "cache_creation_tokens": 265701,
+    "cache_read_tokens": 3860416,
+    "output_tokens": 10879,
+    "api_call_count": 14
+  }
+}
