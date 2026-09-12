@@ -1,0 +1,32 @@
+explore all but also add datasets in the space industry...
+
+---
+
+ill use open ai instead REDACTED
+
+---
+
+export REDACTED && python run_hunt.py 
+Traceback (most recent call last):
+  File "/Volumes/AnniesSSD/ehl-zurich-hackathon-submission/pipeline/run_hunt.py", line 19, in <module>
+    from step1_hunt.agent import run_hunt
+  File "/Volumes/AnniesSSD/ehl-zurich-hackathon-submission/pipeline/step1_hunt/agent.py", line 13, in <module>
+    from openai import OpenAI
+ModuleNotFoundError: No module named 'openai'
+anniebhalla@Annies-Air-2 pipeline %
+
+---
+
+[notice] To update, run: pip install --upgrade pip
+(venv) anniebhalla@Annies-Air-2 ehl-zurich-hackathon-submission % export REDACTED && python3 pipeline/run_hunt.py 
+ERROR: ANTHROPIC_API_KEY environment variable not set.
+
+---
+
+run the run_hunt.pz [notice] To update, run: pip install --upgrade pip
+(venv) anniebhalla@Annies-Air-2 ehl-zurich-hackathon-submission % export REDACTED && python3 pipeline/run_hunt.py 
+ERROR: ANTHROPIC_API_KEY environment variable not set.
+
+---
+
+in hunt results we should mention scores of each of the datasets so we know what the model predicted
