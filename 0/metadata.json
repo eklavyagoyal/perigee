@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2C86A8PYTZ80FTR20WZJQZG",
+  "session_id": "13f12110-8fc1-4a84-80af-9976981ecdc4",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T02:05:29.001452533Z",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "94c71347b271",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 388,
+    "cache_creation_tokens": 585289,
+    "cache_read_tokens": 32803941,
+    "output_tokens": 126550,
+    "api_call_count": 194,
+    "subagent_tokens": {
+      "input_tokens": 0,
+      "cache_creation_tokens": 0,
+      "cache_read_tokens": 0,
+      "output_tokens": 0,
+      "api_call_count": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 37
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1541,
+      "agent_lines_removed": 30
+    }
+  ]
+}
