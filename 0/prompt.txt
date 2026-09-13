@@ -1,0 +1,9 @@
+again, what should I do on the another pc
+
+---
+
+can you give me exact commands
+
+---
+
+now you can ssh to that new machine, its hostname is zurich. can you do everything that you need alone?
