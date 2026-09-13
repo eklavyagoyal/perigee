@@ -3,13 +3,18 @@
   "checkpoint_id": "01M2C28RJ79PZ1C2SMQ88RHARJ",
   "strategy": "manual-commit",
   "branch": "feature/periodicity-telecommand-signals",
-  "checkpoints_count": 11,
+  "checkpoints_count": 31,
   "files_touched": [
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json",
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json",
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl",
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_noncausal_leaky_20260913_015104/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/metrics.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/test_predictions.jsonl",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/test_predictions_rank_0.jsonl",
     "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py",
     "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py",
     "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py",
@@ -29,14 +34,21 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 132,
-    "cache_creation_tokens": 247308,
-    "cache_read_tokens": 5541266,
-    "output_tokens": 47406,
-    "api_call_count": 66,
+    "input_tokens": 380,
+    "cache_creation_tokens": 389065,
+    "cache_read_tokens": 43771864,
+    "output_tokens": 117957,
+    "api_call_count": 190,
     "subagent_tokens": {
       "input_tokens": 82,
       "cache_creation_tokens": 215598,
