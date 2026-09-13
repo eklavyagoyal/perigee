@@ -1047,3 +1047,7 @@ create a new artifact with this new resutls, only results, prompt example, expla
 ---
 
 how is it possible that we have 100% precision
+
+---
+
+can you try other approach and not 3?
