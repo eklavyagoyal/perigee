@@ -37,4 +37,4 @@ class BalancedBatchSampler(Sampler):
 
     def __len__(self):
         min_class_len = min([len(self.label_to_indices[label]) for label in self.labels_set])
-        return (min_class_len // self.samples_per_class) * self.num_classes 
+        return min_class_len // self.samples_per_class 
