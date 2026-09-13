@@ -813,3 +813,7 @@ Anomalous-class precision: 1.000  recall: 0.732  F1: 0.845</event>
 <status>completed</status>
 <summary>Monitor "Flamingo eval_only retry (post-EOS fix): confirm speed + auto-score" stream ended</summary>
 </task-notification>
+
+---
+
+use the local version of the code there (maybe migrate it through git there), then try gradient checlpoints technique, while it is training create an artifact explaining this
