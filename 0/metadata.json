@@ -1,0 +1,266 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2CFRE2JK6MQQ32PXKFHQCVE",
+  "session_id": "13f12110-8fc1-4a84-80af-9976981ecdc4",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T04:17:43.032018582Z",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 8,
+  "save_step_count": 9,
+  "files_touched": [
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "23241a7c4f60",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 612,
+    "cache_creation_tokens": 1038563,
+    "cache_read_tokens": 74125752,
+    "output_tokens": 225958,
+    "api_call_count": 306,
+    "subagent_tokens": {
+      "input_tokens": 0,
+      "cache_creation_tokens": 0,
+      "cache_read_tokens": 0,
+      "output_tokens": 0,
+      "api_call_count": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01T6ww5bhY2TdpcfCRb68tKv",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "artifact-design"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "23241a7c4f60",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 1276,
+        "end": 1277,
+        "entry_ids": [
+          "ecb634c7-6660-426b-a01d-d0fe9e78c975"
+        ],
+        "tool_use_id": "toolu_01T6ww5bhY2TdpcfCRb68tKv"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01T6ww5bhY2TdpcfCRb68tKv"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: artifact-design",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_011cmbc1531BQToVFAt9C6dD",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "dataviz"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "23241a7c4f60",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 1290,
+        "end": 1291,
+        "entry_ids": [
+          "06f2a6cc-1a18-4f55-ac26-b0b123b3aef4"
+        ],
+        "tool_use_id": "toolu_011cmbc1531BQToVFAt9C6dD"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_011cmbc1531BQToVFAt9C6dD"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: dataviz",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 69
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-13T04:17:42.831535976Z",
+    "agent_lines": 29,
+    "agent_removed": 60,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 29,
+    "total_lines_changed": 89,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 522,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1054,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 18,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 1498,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1063,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 1498,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1063,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 1498,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1063,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 7,
+      "user_lines_added": 1498,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1063,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 8,
+      "user_lines_added": 1498,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1063,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v14_noperiodicity_20260913_060913/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 9,
+      "user_lines_added": 993,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1568,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246
+      }
+    },
+    {
+      "checkpoint_number": 10,
+      "user_lines_added": 993,
+      "user_lines_removed": 0,
+      "agent_lines_added": 1568,
+      "agent_lines_removed": 64,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 237,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_v13_paperconvention_20260913_054506/results/test_predictions_rank_0.jsonl": 246
+      }
+    }
+  ]
+}
