@@ -1,0 +1,201 @@
+muss ich in ienern uen claude code session nohcaml enable entire machen?
+
+---
+
+if we decide to implement @plan_nikita_claude.md what do we need actually from that dataset?
+
+---
+
+it is in the docs folder isn't it?
+
+---
+
+why do we have only 3 channels?
+
+---
+
+Okay, pass auf, wir haben einen MD-File für ESA Command-Context Handoff.md. Erstell bitte einen neuen Ordner, der Docs heißt, wo du die MD-File
+  reinpackst und dann schau dir die Empfehlung an. Und schaue, wie du sie umsetzen würdest. Wenn du Compute Power brauchst, uh wir haben ordentlich H
+  einhundert Chips zur Verfügung.
+
+---
+
+Okay, der andere Agent hatte noch eine Idee und die hat er jetzt wieder in Data MD abgespeichert. Packt die Datei wieder rüber in Docs.Ähm, und dann mach nichts weiter.
+
+---
+
+The other agent is implementing it already. Uh look over the data that's getting added to EHL uh repository and see if it's misbehaving on the plan. And he has also access to the GPUs, so he's gonna use that probably soon. Um look over it everything is documented well and if so don't notify me.
+
+---
+
+Okay, let's um do one thing. Um let's try to build in the repository an fully functional website with um a starting frame which is basically um a satellite um in orbit and um while scrolling down you see the satellite slowly deorbiting with with flames and stuff um and burning up in the atmosphere and then you have basically um uh you then you scroll into the world and then there's a screen with uh saying um prevent your uh spacecraft from burning up of unexpected anomalies Webseite bauen und dieses visuelle machen und auch die Videos machen, dass es richtig hochprofessionell aussieht, muss man noch sagen. Das finden wir noch heraus, aber das wäre meine Idee erstmal.
+
+---
+
+Also nimmst du keine vernünftige Next React Seite oder so? Also eigentlich macht es vielleicht mehr Sinn, mit der neuen OpenAI Videagenerung halt ein vernünftiges Video zu machen oder nicht? Und das dann vernünftige Frames zu unterteilen und die danach abzuspielen oder so? Oder habe ich da was missverstanden? ok weißt du was das extra video was du geacmht hast ist nciht nötig so lange wir die wbeiste haben ist ok laos die extra siete für das video ich überleg nur ob wir hal ien richit ges video nehem ndaüfr oder so und heir paar zaheln dei es besser machen:Hard numbers you can quote.
+
+Where failures concentrate: roughly 59% of all spacecraft anomalies involve the attitude control and power subsystems. Useful for justifying your subsystem choice. 
+ResearchGate
+
+Cost: a catalogue of 158 power-related failures between 1990 and spring 2013, accounting for a reported cumulative loss of $4.4 billion — and that's one subsystem category alone. 
+ResearchGate
+
+Severity: in a study of deployables failures, 32% of spacecraft overcame the anomaly without loss of mission goals or performance, while 68% suffered some degree of mission or performance loss. 
+NASA Technical Reports Server
+
+And the framing fact that gets closest to your question: of large GEO satellites declared a total loss, 34 of 328 — 10.4% — were lost during the launch phase, with the remaining total losses occurring during on-orbit checkout or subsequent lifetime operations. So roughly nine in ten total losses happen on orbit, in the window where telemetry monitoring is the defence. 
+uspto
+
+The anecdote I'd actually lead with. The SOHO mission interruption investigation found that three of four battery discharge regulators were disconnected from the bus, and analysis indicated this condition had occurred several months prior and no one had recognised this change in the spacecraft configuration. A documented, official, famous case of a precursor sitting in telemetry for months, unnoticed. One slide, one sentence, and the jury understands the problem. 
+Nasa
+
+---
+
+Okay, bau die Website dann bitte zu einer Next.js und Rex Seite weite um. HTML-Kanal weg und da soll ja auch später die ganze Pipeline laufen, also wir müssen die schon vernünftig machen. Währenddessen hole ich das, äh, organisiere ich das Video. Kannst du mir davon einen guten Prompt geben, der das genau beschreibt, den ich dann uh Video K.I. geben kann?
+
+---
+
+ok ich komm nciht an ein vidoe leider aber könen wir für ien pwoerpoint ein video von der start sqeuenz ahben? alos ein sldie mit dme vdeio wie der satelit abschmirt , und dann ein start video auf der setr nslide mit dem satltien der abschmirt udn dann ein wietre sldie relativ minimalisisitcih wneigh text nur wenig inahlt also zahlen oder so und dann eine lsdie mit demo
+
+---
+
+What You Get, What You Submit
+YOUR RESOURCES
+• TimeNet access
+• Access to training compute
+• OpenTSLM as a reference
+• Technical guidance from Aionic Labs + ASL
+→ Discord
+YOU SUBMIT
+• Working demo
+• Code + training configuration
+• Checkpoint or adapter
+• Dataset documentation
+• Short evaluation with baseline comparison
+FINAL PRESENTATION Live demo to the jury: problem, approach, results, and key learnings
+WHAT MAKES A STRONG PROJECT
+• A useful problem
+• Thoughtful data preparation
+• Adequate TSLM training
+• Rigorous evaluation
+• A clear demonstration
+
+---
+
+From Problem to Proof
+01
+02
+PROBLEM + DATA
+Identify a target user and
+problem, then source open data.
+Where useful, build an agentic
+pipeline to search, assess, select,
+retrieve, or validate datasets.
+CONNECT
+Use or build a TimeNet connector
+for signals, metadata, and
+annotations. Define the questions,
+labels, or other learning targets.
+Reusable ingestion pipelines are
+especially valuable.
+Ideal Data Profile
+• A dataset with time-series and
+text reasoning over it / or
+describing it
+• In some cases, you might
+consider generating text
+annotations with LLMs (as in
+OpenTSLM paper)
+Open infrastructure that standardises time-
+series data and metadata for TSLM training.
+03
+TRAIN + EVALUATE
+Train or fine-tune a TSLM.
+Compare it with a baseline on held-
+out data, avoiding leakage across
+time, subjects, or devices.
+04
+DEMONSTRATE
+Show how you sourced the data,
+real inputs, model outputs, and how
+the result helps the target user.
+Explain the evid
+
+---
+
+From Problem to Proof
+01
+02
+PROBLEM + DATA
+Identify a target user and
+problem, then source open data.
+Where useful, build an agentic
+pipeline to search, assess, select,
+retrieve, or validate datasets.
+CONNECT
+Use or build a TimeNet connector
+for signals, metadata, and
+annotations. Define the questions,
+labels, or other learning targets.
+Reusable ingestion pipelines are
+especially valuable.
+Ideal Data Profile
+• A dataset with time-series and
+text reasoning over it / or
+describing it
+• In some cases, you might
+consider generating text
+annotations with LLMs (as in
+OpenTSLM paper)
+Open infrastructure that standardises time-
+series data and metadata for TSLM training.
+03
+TRAIN + EVALUATE
+Train or fine-tune a TSLM.
+Compare it with a baseline on held-
+out data, avoiding leakage across
+time, subjects, or devices.
+04
+DEMONSTRATE
+Show how you sourced the data,
+real inputs, model outputs, and how
+the result helps the target user.
+Explain the evid
+
+---
+
+Okay, was ist alles noch da, was wir nicht mehr brauchen in dem Webrepository oder Web Ordner?
+
+---
+
+> Soll ich die Website jetzt auch auf Next.js/React umstellen? Die Quellenprüfung und das Entfernen des separaten Film-Players mache ich bereits unabhängig davon.
+
+Ja, auf Next.js/React umstellen
+
+---
+
+what do you know about current machine>
+
+---
+
+di you see somewhere gpu h100
+
+---
+
+how can I connect to it?
+
+---
+
+warts dz an der pp dran?
+
+---
+
+ok hast die requierments gesheen? die .md fiel? die ist wichtig
+
+---
+
+also erstaml das vidio inder powerpoint hat noch oben links noch ein schritzug oder so da soll ncihts außer das vdeio elsebr sein nciht noch im video das hinschieben bitte, änder das und ruckc es nue afu wbeiste udn auf poweproint
+
+---
+
+ok aber bei der webiset kann man ruihig was darüberlegen an texten die wr da hatte naber halt nur auf grundlgade der pitch reqiurments checklist, also daür msüsne wir jetzt die demo bauen, laso zuerst die text und zaen auf derlandig page , dann die komplett wbeist da hinter aber da mnch nur mal ei nbeispiel was leer ist dann diskutierne wir daüebr wie iwr das genau desginen
