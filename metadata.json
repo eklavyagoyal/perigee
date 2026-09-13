@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2D31YM6GZ0DSB4CMQX257T4",
   "strategy": "manual-commit",
   "branch": "publish/web-baseline-update",
-  "checkpoints_count": 24,
+  "checkpoints_count": 25,
   "files_touched": [
     "web/Docs/PITCH_REQUIREMENTS_CHECKLIST.md",
     "web/README.md",
@@ -22,13 +22,20 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 487406,
+    "input_tokens": 649250,
     "cache_creation_tokens": 0,
-    "cache_read_tokens": 15361792,
-    "output_tokens": 43851,
-    "api_call_count": 124
+    "cache_read_tokens": 16504832,
+    "output_tokens": 54057,
+    "api_call_count": 132
   }
 }
