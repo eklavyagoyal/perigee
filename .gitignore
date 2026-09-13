@@ -1,4 +1,8 @@
-/pipeline/step1_hunt/tools/__pycache__
-/pipeline/.venv
-/pipeline/step1_hunt/__pycache__
 .env
+__pycache__/
+*.pyc
+.venv/
+*.pt
+*.safetensors
+*.ckpt
+*.bin

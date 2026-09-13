@@ -5,5 +5,5 @@
     }
   },
   "enabled": true,
-  "telemetry": true
+  "telemetry": false
 }

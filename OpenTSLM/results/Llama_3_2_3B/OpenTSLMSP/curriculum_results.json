@@ -1,0 +1,8 @@
+{
+  "stage6_esa_cot": {
+    "test_loss": NaN,
+    "epoch": 3,
+    "completed": true,
+    "completion_epoch": 3
+  }
+}

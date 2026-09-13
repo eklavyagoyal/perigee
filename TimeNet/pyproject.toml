@@ -1,0 +1,121 @@
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv]
+default-groups = ["dev"]
+required-version = ">=0.10.10"
+
+[dependency-groups]
+dev = [
+    "huggingface-hub>=0.20",
+    "hypothesis>=6.140",
+    "moto[server]>=5",
+    "pre-commit>=4.6.0",
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+    "ty>=0.0.34",
+    "edfio>=0.4.14",
+    "wfdb>=4.1",
+    "xlrd>=2.0",
+]
+docs = [
+    "zensical",
+    "mkdocstrings-python",
+    "griffe",
+    "beautifulsoup4",
+    "markdownify",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+# Members live under packages/*/src; the glob makes isort treat each package as
+# first-party. Config is discovered from the repo root, not shared by uv.
+src = ["packages/*/src"]
+# Local git worktrees carry their own (possibly unrelated) configs.
+extend-exclude = [".worktrees"]
+
+[tool.ruff.format]
+# quote-style (double) and indent-style (space) are ruff's defaults; only the non-default is set here.
+docstring-code-format = true
+
+[tool.ruff.lint]
+# Required for the DOC (pydoclint) rules, which are still in preview.
+preview = true
+select = [
+    "SIM",    # flake8-simplify — simplify needlessly verbose code
+    "C4",     # flake8-comprehensions — better list/set/dict comprehensions
+    "PIE",    # flake8-pie — misc lints (unnecessary pass, dup class fields)
+    "RET",    # flake8-return — consistent return statements
+    "PTH",    # flake8-use-pathlib — prefer pathlib over os.path
+    "ARG",    # flake8-unused-arguments — flag unused function arguments
+    "ASYNC",  # flake8-async — async/await pitfalls
+    "UP",     # pyupgrade — modern Python syntax
+    "RUF",    # Ruff-specific rules
+    "E",      # pycodestyle errors
+    "N",      # pep8-naming — naming conventions
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes — undefined names, unused imports
+    "I",      # isort — import sorting
+    "B",      # flake8-bugbear — likely bugs and design problems
+    "S",      # flake8-bandit — security issues
+    "D",      # pydocstyle — docstring presence and formatting
+    "DOC",    # pydoclint — args/returns match signatures
+    "PL",     # Pylint — error/warning/convention rules (opinionated metrics dropped in `ignore`)
+]
+ignore = [
+    "E501",  # Line too long — handled by the formatter
+    "F722",  # jaxtyping shape strings (e.g. Float32[np.ndarray, " time"]) read as forward references
+    "D417",  # Don't require documentation for every function parameter
+    "D105",  # Missing docstring in magic method
+    "D107",  # Missing docstring in __init__
+    "RET505",  # Allow elif/else after a return, for explicit if/elif/else branching
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Pytest uses bare asserts by design; token-like literals in tests are fixtures.
+# Don't require docstrings for test modules and functions. Pickle round-trips are intentional
+# (they prove serializability), and we deserialize only our own freshly-pickled objects.
+# Tests legitimately import private helpers to exercise them, assert self-equality, compare to "",
+# call context-manager dunders directly, and compare against literal fixture values. Async test
+# stubs (MockTransport handlers, awaited download fakes) must be `async` for their interface even
+# when their body doesn't await (RUF029).
+"**/tests/**/*.py" = ["S101", "S105", "S106", "D", "DOC", "S301", "S403", "S404", "S603", "ARG", "ASYNC240", "PLC2701", "PLR0124", "PLC1901", "PLC2801", "PLR2004", "PLR6301", "RUF029"]
+# timenet.testing is a test-support subpackage; assert-based comparison helpers are its purpose.
+"**/src/timenet/testing/*.py" = ["S101"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-bugbear]
+# Typer expects Option/Argument descriptors as parameter defaults.
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+lines-after-imports = 2
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib", "--strict-markers"]
+testpaths = ["packages", "benchmarks/end_to_end/tests"]
+markers = [
+    "slow: full-disk round-trip and property tests (deselect with '-m \"not slow\"')",
+    "value_dtypes: scalar value-dtype round-trip tests (run with '-m value_dtypes')",
+]
+
+[tool.ty.src]
+# Local git worktrees carry their own (possibly unrelated) copies of the code.
+exclude = [".worktrees/**"]
+
+[tool.ty.environment]
+python-version = "3.13"
+
+[[tool.ty.overrides]]
+# examples/** imports scikit-learn; .github/scripts/** and docs/scripts/** declare their deps inline
+# (PEP 723) and run standalone under `uv run` (PyGithub for the CI report, matplotlib for the figure
+# generator). None is a project dependency, so don't fail type-checking on their unresolved imports.
+include = ["examples/**", ".github/scripts/**", "docs/scripts/**"]
+
+[tool.ty.overrides.rules]
+unresolved-import = "ignore"
