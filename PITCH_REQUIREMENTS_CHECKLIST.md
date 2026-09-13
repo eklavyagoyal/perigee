@@ -57,6 +57,7 @@ Three baseline variants plus the classical one, run against the identical 246-ro
 | v13 (fine-tuned, mean/std + periodicity + telecommand) | 86.99% | 1.000 | 0.740 | 0.850 | For reference — see `PITCH_REQUIREMENTS_CHECKLIST.md`'s sibling artifact for the full v10–v14 ablation. |
 | v14 (fine-tuned, mean/std + telecommand, no periodicity) | 82.52% | 0.817 | 0.837 | 0.827 | |
 | **Classical baseline** (`scripts/classical_baseline.py`) — logistic regression on 5 engineered numbers (`level_zscore`, `scale_ratio`, periodicity drop, telecommand presence/timing), no LLM, no GPU at inference | **89.84%** | **0.990** | 0.805 | **0.888** | Strongest predictors: `scale_ratio` (+5.43), `has_telecommand` (+3.68), periodicity drop (+1.63), `level_zscore` (−1.36). **Caveat below — not apples-to-apples with the prompt actually in use now.** |
+| **Classical, RAW values only** (`scripts/classical_baseline_raw.py`) — logistic regression on 120 resampled raw points, zero engineered features, not even mean/std | 57.59% | 0.623 | 0.384 | 0.475 | The important negative result: a plain linear model **cannot** find the signal directly in raw digits — it needs mean/std computed *for* it (see the 90%+ restricted-features baseline above/below). This is the real bar the trained time-series encoder needs to clear: if the fine-tuned LLM (reading the raw series through its encoder) lands meaningfully above 57.59%, that's evidence the encoder does something a plain linear model over raw values fundamentally can't. |
 
 ### Apples-to-apples: the baseline vs. the *current* prompt
 
@@ -78,6 +79,35 @@ and F1 (at the cost of one false positive the classical model doesn't make). `wi
 has a standardized coefficient of **+10.4** in the restricted model, dwarfing every other feature
 (`has_telecommand` +2.34, `window_mean` +0.29, `minutes_since_command` −0.23) — almost this entire
 task reduces to "does this window have unusually high variance."
+
+**This comparison is from the old, leaky split** (see [Data leakage found and
+fixed](#data-leakage-found-and-fixed-split-was-by-per-channel-pair-not-by-event) below) and needs
+redoing once the fine-tuned LLM is retrained on the fixed split. The restricted classical baseline
+has already been rerun on the fixed split and *improved* to **90.18%** acc / 1.000 P / **0.804** R
+/ **0.891** F1 (`window_std` coefficient essentially unchanged, +10.3).
+
+**The fine-tuned LLM's fixed-split number is now in, and it fell — clearly, not marginally.**
+SP + sub-category-balanced sampling (the same configuration that scored 86.99%/F1 0.852 on the
+leaky split), retrained from scratch on the corrected 2046/192/224 split (best checkpoint at
+epoch 7, val loss 0.4377, 224-row test set):
+
+| Metric | Leaky split (old) | Fixed split (new) |
+|---|---|---|
+| Accuracy | 86.99% | **75.89%** (170/224) |
+| Precision | 0.989 | 0.837 |
+| Recall | 0.748 | **0.643** |
+| F1 | 0.852 | **0.727** |
+
+Confusion matrix (fixed split): nominal [98 correct, 14 false positives], anomalous [40 missed, 72
+caught]. Category breakdown: **Rare Event recall 66.2%** (49/74), **True Anomaly recall 60.5%**
+(23/38) — both dropped from their leaky-split values (75.6%/73.0%), and precision is no longer
+perfect (14 real false positives, vs. 0-1 on every leaky-split run).
+
+So the leak wasn't cosmetic: it was worth roughly **11 points of accuracy and 0.125 F1** on this
+exact configuration. It also now falls clearly *behind* the fixed-split classical baseline
+(90.18%/F1 0.891 vs. 75.89%/F1 0.727) — on the leaky split the two were essentially tied; on the
+honest split, the encoder is now the clear loser to plain summary statistics, not a close call.
+That's the real, load-bearing number for the pitch, not the leaky one.
 
 ### All fine-tuned runs on the current (refined) prompt
 
@@ -151,6 +181,8 @@ pairs), still exactly 50/50 nominal:anomalous in every split.
 | Approach | Old split (leaky) | Fixed split (event-grouped) | Change |
 |---|---|---|---|
 | Classical baseline (logistic regression, 5 engineered features) | 89.84% acc / 0.990 P / 0.805 R / 0.888 F1 | **92.86%** acc / 1.000 P / **0.857** R / **0.923** F1 | Slightly *better*, not worse — this baseline uses only summary statistics, not raw series shape, so it likely wasn't benefiting much from the leak in the first place. |
+| Classical baseline, restricted to current prompt's features (mean/std/telecommand) | 86.99% acc / 1.000 P / 0.740 R / 0.850 F1 | **90.18%** acc / 1.000 P / **0.804** R / **0.891** F1 | Also improved. `window_std` remains overwhelmingly dominant (+10.3). This is the number the retrained LLM should be compared against. |
+| Classical baseline, RAW values only (no engineered features at all, not even mean/std) | not run on old split | 57.59% acc / 0.623 P / 0.384 R / 0.475 F1 | New this session — the real floor a trained encoder needs to clear. A plain linear model over raw digits does much worse than one given mean/std directly, showing feature engineering (even trivial mean/std) is doing real work a linear model can't replicate on its own. |
 | Two-shot LLM baseline, no fine-tuning | 50.81% acc / 1.000⚠️ P / 0.016 R | 50.45% acc / 1.000⚠️ P / 0.009 R | Unchanged (expected — this baseline never trains, so the split doesn't affect it). |
 
 **Not yet reproduced**: every *fine-tuned* result (v10-v14, the sub-category-balanced run, the
