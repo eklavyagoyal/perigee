@@ -1,0 +1,428 @@
+muss ich in ienern uen claude code session nohcaml enable entire machen?
+
+---
+
+if we decide to implement @plan_nikita_claude.md what do we need actually from that dataset?
+
+---
+
+it is in the docs folder isn't it?
+
+---
+
+why do we have only 3 channels?
+
+---
+
+Okay, pass auf, wir haben einen MD-File für ESA Command-Context Handoff.md. Erstell bitte einen neuen Ordner, der Docs heißt, wo du die MD-File
+  reinpackst und dann schau dir die Empfehlung an. Und schaue, wie du sie umsetzen würdest. Wenn du Compute Power brauchst, uh wir haben ordentlich H
+  einhundert Chips zur Verfügung.
+
+---
+
+Okay, der andere Agent hatte noch eine Idee und die hat er jetzt wieder in Data MD abgespeichert. Packt die Datei wieder rüber in Docs.Ähm, und dann mach nichts weiter.
+
+---
+
+The other agent is implementing it already. Uh look over the data that's getting added to EHL uh repository and see if it's misbehaving on the plan. And he has also access to the GPUs, so he's gonna use that probably soon. Um look over it everything is documented well and if so don't notify me.
+
+---
+
+Okay, let's um do one thing. Um let's try to build in the repository an fully functional website with um a starting frame which is basically um a satellite um in orbit and um while scrolling down you see the satellite slowly deorbiting with with flames and stuff um and burning up in the atmosphere and then you have basically um uh you then you scroll into the world and then there's a screen with uh saying um prevent your uh spacecraft from burning up of unexpected anomalies Webseite bauen und dieses visuelle machen und auch die Videos machen, dass es richtig hochprofessionell aussieht, muss man noch sagen. Das finden wir noch heraus, aber das wäre meine Idee erstmal.
+
+---
+
+Also nimmst du keine vernünftige Next React Seite oder so? Also eigentlich macht es vielleicht mehr Sinn, mit der neuen OpenAI Videagenerung halt ein vernünftiges Video zu machen oder nicht? Und das dann vernünftige Frames zu unterteilen und die danach abzuspielen oder so? Oder habe ich da was missverstanden? ok weißt du was das extra video was du geacmht hast ist nciht nötig so lange wir die wbeiste haben ist ok laos die extra siete für das video ich überleg nur ob wir hal ien richit ges video nehem ndaüfr oder so und heir paar zaheln dei es besser machen:Hard numbers you can quote.
+
+Where failures concentrate: roughly 59% of all spacecraft anomalies involve the attitude control and power subsystems. Useful for justifying your subsystem choice. 
+ResearchGate
+
+Cost: a catalogue of 158 power-related failures between 1990 and spring 2013, accounting for a reported cumulative loss of $4.4 billion — and that's one subsystem category alone. 
+ResearchGate
+
+Severity: in a study of deployables failures, 32% of spacecraft overcame the anomaly without loss of mission goals or performance, while 68% suffered some degree of mission or performance loss. 
+NASA Technical Reports Server
+
+And the framing fact that gets closest to your question: of large GEO satellites declared a total loss, 34 of 328 — 10.4% — were lost during the launch phase, with the remaining total losses occurring during on-orbit checkout or subsequent lifetime operations. So roughly nine in ten total losses happen on orbit, in the window where telemetry monitoring is the defence. 
+uspto
+
+The anecdote I'd actually lead with. The SOHO mission interruption investigation found that three of four battery discharge regulators were disconnected from the bus, and analysis indicated this condition had occurred several months prior and no one had recognised this change in the spacecraft configuration. A documented, official, famous case of a precursor sitting in telemetry for months, unnoticed. One slide, one sentence, and the jury understands the problem. 
+Nasa
+
+---
+
+Okay, bau die Website dann bitte zu einer Next.js und Rex Seite weite um. HTML-Kanal weg und da soll ja auch später die ganze Pipeline laufen, also wir müssen die schon vernünftig machen. Währenddessen hole ich das, äh, organisiere ich das Video. Kannst du mir davon einen guten Prompt geben, der das genau beschreibt, den ich dann uh Video K.I. geben kann?
+
+---
+
+ok ich komm nciht an ein vidoe leider aber könen wir für ien pwoerpoint ein video von der start sqeuenz ahben? alos ein sldie mit dme vdeio wie der satelit abschmirt , und dann ein start video auf der setr nslide mit dem satltien der abschmirt udn dann ein wietre sldie relativ minimalisisitcih wneigh text nur wenig inahlt also zahlen oder so und dann eine lsdie mit demo
+
+---
+
+What You Get, What You Submit
+YOUR RESOURCES
+• TimeNet access
+• Access to training compute
+• OpenTSLM as a reference
+• Technical guidance from Aionic Labs + ASL
+→ Discord
+YOU SUBMIT
+• Working demo
+• Code + training configuration
+• Checkpoint or adapter
+• Dataset documentation
+• Short evaluation with baseline comparison
+FINAL PRESENTATION Live demo to the jury: problem, approach, results, and key learnings
+WHAT MAKES A STRONG PROJECT
+• A useful problem
+• Thoughtful data preparation
+• Adequate TSLM training
+• Rigorous evaluation
+• A clear demonstration
+
+---
+
+From Problem to Proof
+01
+02
+PROBLEM + DATA
+Identify a target user and
+problem, then source open data.
+Where useful, build an agentic
+pipeline to search, assess, select,
+retrieve, or validate datasets.
+CONNECT
+Use or build a TimeNet connector
+for signals, metadata, and
+annotations. Define the questions,
+labels, or other learning targets.
+Reusable ingestion pipelines are
+especially valuable.
+Ideal Data Profile
+• A dataset with time-series and
+text reasoning over it / or
+describing it
+• In some cases, you might
+consider generating text
+annotations with LLMs (as in
+OpenTSLM paper)
+Open infrastructure that standardises time-
+series data and metadata for TSLM training.
+03
+TRAIN + EVALUATE
+Train or fine-tune a TSLM.
+Compare it with a baseline on held-
+out data, avoiding leakage across
+time, subjects, or devices.
+04
+DEMONSTRATE
+Show how you sourced the data,
+real inputs, model outputs, and how
+the result helps the target user.
+Explain the evid
+
+---
+
+From Problem to Proof
+01
+02
+PROBLEM + DATA
+Identify a target user and
+problem, then source open data.
+Where useful, build an agentic
+pipeline to search, assess, select,
+retrieve, or validate datasets.
+CONNECT
+Use or build a TimeNet connector
+for signals, metadata, and
+annotations. Define the questions,
+labels, or other learning targets.
+Reusable ingestion pipelines are
+especially valuable.
+Ideal Data Profile
+• A dataset with time-series and
+text reasoning over it / or
+describing it
+• In some cases, you might
+consider generating text
+annotations with LLMs (as in
+OpenTSLM paper)
+Open infrastructure that standardises time-
+series data and metadata for TSLM training.
+03
+TRAIN + EVALUATE
+Train or fine-tune a TSLM.
+Compare it with a baseline on held-
+out data, avoiding leakage across
+time, subjects, or devices.
+04
+DEMONSTRATE
+Show how you sourced the data,
+real inputs, model outputs, and how
+the result helps the target user.
+Explain the evid
+
+---
+
+Okay, was ist alles noch da, was wir nicht mehr brauchen in dem Webrepository oder Web Ordner?
+
+---
+
+> Soll ich die Website jetzt auch auf Next.js/React umstellen? Die Quellenprüfung und das Entfernen des separaten Film-Players mache ich bereits unabhängig davon.
+
+Ja, auf Next.js/React umstellen
+
+---
+
+what do you know about current machine>
+
+---
+
+di you see somewhere gpu h100
+
+---
+
+how can I connect to it?
+
+---
+
+warts dz an der pp dran?
+
+---
+
+ok hast die requierments gesheen? die .md fiel? die ist wichtig
+
+---
+
+also erstaml das vidio inder powerpoint hat noch oben links noch ein schritzug oder so da soll ncihts außer das vdeio elsebr sein nciht noch im video das hinschieben bitte, änder das und ruckc es nue afu wbeiste udn auf poweproint
+
+---
+
+ok aber bei der webiset kann man ruihig was darüberlegen an texten die wr da hatte naber halt nur auf grundlgade der pitch reqiurments checklist, also daür msüsne wir jetzt die demo bauen, laso zuerst die text und zaen auf derlandig page , dann die komplett wbeist da hinter aber da mnch nur mal ei nbeispiel was leer ist dann diskutierne wir daüebr wie iwr das genau desginen
+
+---
+
+ok kannst ud die wbieste dann so auf github comitten in das repo? alis /web ? da ist schon einiegsa ufdme repo aber solte keine conflikte auslösen, dasm it dme dmeo degsin für die showcase macht ein adnenr agnet
+
+---
+
+bitte mit entire logs
+
+---
+
+ok folegdne ädnerung an der wbiese bitte, cleaner, deer text besser ,also dramtische das war voerh besser am nafang der text der beim scrollen kommnt , dann das logo oben links udn so unnötige inhalt auf der siete weg ruhig, wärehndessen bau ich die piplien auf mission corntol mit ien mit ienem adnner agnte
+
+---
+
+ok gut für die pwoerpoint brauchne wir leider dochdie texte im vdieo mit drin weißt du? also die text die wir jetzt afu der webiste haben vertshet du ? also msüsneri die poweoriint da wieder weriertn
+
+---
+
+ok mach ein folei an den anfang die nur schwarz ist mit sowas wie: On January 30, 2026, SpaceX applied for permission to launch and operate up to one million satellites. also hookc aienfhac nur weißer text auf scharezme hintergund
+
+---
+
+Für Mission 1, Kanal 41–46 erreicht Telemanom-ESA-Pruned laut ESA-Paper (https://arxiv.org/pdf/2406.17826) ereignisbezogen 99,9 % Precision, 42,4 % Recall und 0,786 F₀․₅ für Anomalien plus seltene normale
+  Ereignisse; werden seltene normale Ereignisse aus der Bewertung ausgeschlossen, sind es 99,9 % Precision, 86,2 % Recall und 0,968 F₀․₅.
+
+
+› wir köenne es als balsenin nehmen bei uns im papae? hben die cnn benutzt im paper?
+
+
+• Searching the web
+
+• Searched the web for 'LSTM' in https://arxiv.org/pdf/2406.17826
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+• Ja, wir können es als Baseline verwenden, müssen für einen fairen Vergleich aber dieselben Testdaten, Ereigniskategorien und Metriken nutzen oder das Verfahren auf unserem Datensplit neu ausführen;
+  Telemanom-ESA-Pruned verwendet LSTM, kein CNN, während das ESA-Paper (https://arxiv.org/pdf/2406.17826) zusätzlich das CNN-basierte Verfahren DC-VAE-ESA untersucht. macht das nicht sinn als werte mit ienzubauen? alos baselien des datenstazees?
+
+---
+
+Welche von diesen Ergebnissen würde unser am nächsten kommen, also inhaltlich?
+
+---
+
+Okay, das sollten wir kurz in der PowerPoint erwähnen. Also erstmal einen Slider mit Data machen vielleicht. Oder mit also halt die Pipeline durchgehen. Ich weiß nicht, wie genau das Agentic Labs ahben möchet aber , wir können dann für jeden der 4 puntke die sie aufschieben sien lsdie machen kurz knapp wneig text prägnate zaheln und so   Slide title: “ESA telemetry with operational context”
+
+  Data source: ESA Anomaly Dataset — Mission1
+
+   Information          What it provides
+  ━━━━━━━━━━━━━━━━━━━  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Telemetry            Timestamped measurements from satellite channels
+  ───────────────────  ─────────────────────────────────────────────────────────────────────────────────
+   Telecommands         Command execution timestamps and command priorities
+  ───────────────────  ─────────────────────────────────────────────────────────────────────────────────
+   Event annotations    Affected channels, event intervals and categories such as Anomaly or Rare Event
+  ───────────────────  ─────────────────────────────────────────────────────────────────────────────────
+   Metadata             Channel names, subsystems and physical units
+
+  How our current OpenTSLM pipeline uses it
+
+  - Signal input: One six-hour window from a channel in 41–46 → normalization → time-series encoder → signal embeddings.
+  - Text context: Channel name, raw mean, standard deviation and time since the most recent qualifying telecommand.
+  - Output: A window-level classification: nominal or anomalous.
+  - Evaluation: Compare the prediction with the ESA annotations; reference labels are excluded from the input.
+
+  Suggested visual: Two branches — telemetry → signal embeddings and telecommands → timing context — merging at OpenTSLM, followed by the classification. Put ESA reference labels beside the evaluation stage.
+
+  Speaker notes / implementation limits
+
+  - Command context currently contains only a time interval, not command identity, meaning or a channel-specific relationship.
+  - It considers commands with priority ≥ 2 within six hours before a reference point one hour into the window.
+  - The current training target groups Anomaly and Rare Event together as anomalous. We should therefore not claim that this model already distinguishes faults from commanded rare events.
+  - The website demonstrates saved predictions; it does not run live inference. das sagt der ander eanget dazu
+
+---
+
+Okay, ich verstehe die PowerPoint noch nicht ganz. Lass uns mal kurz drüber durchgehen. Also die ersten zwei Folien checke ich. Die dritte Folie checke ich auch. Wir haben Engine Failures in einem gewissen Zeitslot und wir sagen so und so vi Proelezent davon gehen auf Additude and Orbital Control. Und sowieso viel hat es gekostet, verstehe ich. Aber Folie 3, da ist sehr viel Text drauf, ich verstehe nicht, wo das herkommt. Wir erklären das Problem nicht genau genug und wir müssen da genauer hergehen. Also sagen, was du dahin machen würdest so wie du es machen würdest und dann gehen wir darüber
+
+---
+
+Okay, ja, ich finde das sinnvoll, ähm, was du hier geschrieben hast. Aber The Signal Chain, should be worry, ist irgendwie ein bisschen sehr KI-generiert. Schreib einfach die Situation, two situations und dann Expected Change, Unexpected Change. Und vielleicht schiebt das ein bisschen nach rechts auf der PowerPoint und mach links daneben, was wir zur Verfügung haben. Also what we've got, dann das Column darunter halt bei die beiden Sachen hinschreiben. Wir haben channel data und wir haben hier diese command data und dann rechts daneben what we expected change unexpected change und und dann ist es quasi die eine folie so Genau, dann ist ja die Frage, dass wir, wie finden wir heraus, ob das jetzt eine Anomalie ist oder nicht. Und da finde ich halt, also wieder wenig Text auf der Folie. Wenn es geht, Diagramme, Darstellungen, vielleicht irgendwie man das visualisieren kann. Genau. Dann vielleicht genau, welche Daten wir genutzt haben, für our use case, for our training, welche Daten wir genutzt haben und wie wir das in diese Time-Series integriert haben, um das zu entwickeln. Genau, die drei Dinge du drauf geschrieben hast. Telemetry, what changed? Telekommands, what was the comment expected nearby and ESA Notation, what was the event labeled as.
+
+---
+
+Okay, was machen wir jetzt? Also welche Folien sind noch über die 6, 7 und so? Was ist da nochmal drauf?Also bilden wir damit das komplette kompletten Weg ab.
+
+---
+
+Hast du einen Screenshot von der Webseite auf die Demo-Seite gepackt, man dann draufklickt und dann quasi das aktiviert? Also halt über den Link dann da reingeht, zum Mission Control oder so.From Problem to Proof – 4 Schritte
+Problem + Data: Zielnutzer und konkretes Problem definieren, passende offene Daten beschaffen. Bei Bedarf eine agentische Pipeline nutzen, um Datensätze zu suchen, bewerten, auswählen und validieren. Ideal sind Datensätze mit Zeitreihen plus Text/Erklärungen; Textannotationen können ggf. auch mit LLMs erzeugt werden.
+Connect: Einen TimeNet-Connector nutzen oder bauen, der Signale, Metadaten und Annotationen einbindet. Fragen, Labels bzw. Lernziele definieren. Wiederverwendbare Datenpipelines sind besonders wertvoll. TimeNet standardisiert Zeitreihendaten und Metadaten für das TSLM-Training.
+Train + Evaluate: Ein TSLM trainieren oder fine-tunen und auf zurückgehaltenen Daten mit einer Baseline vergleichen. Dabei Datenlecks über Zeit, Personen oder Geräte hinweg vermeiden.
+Demonstrate: Zeigen, woher die Daten stammen, welche realen Inputs und Modelloutputs verwendet wurden und wie das Ergebnis dem Zielnutzer hilft. Außerdem Evidenz und Grenzen des Ansatzes erklären. Das sind so die Bedingungen oder die Vorgaben, die wir quasi haben, um eine gute Vorstellung unseres Produkts zu haben.Ähm, füllen wir das und funktioniert das inhaltlich?
+
+---
+
+Okay, packen Screenshot auf die Seite, dass wir auf die PowerPoint, dass wir das halt draufklicken können. Yeah, die Baseline und den ergebnisgetrennten Text hole ich.
+
+---
+
+Ein PNG ist unter Downloads gespeichert, mit Mission Control.
+
+---
+
+mission control unter dokumnete
+
+---
+
+Requirements checklist — vs. slides 16 & 17 (Temporal AI Challenge deck)
+
+Source: `Aionic_Temporal_AI_Hackathon.pdf`, slides "From Problem to Proof" (16) and
+"What You Get, What You Submit" (17).
+
+## Slide 16 — From Problem to Proof
+
+| Step | Requirement | Status | Notes |
+|---|---|---|---|
+| 01 Problem + Data | Target user, open data, optional agentic sourcing pipeline | ✅ | Target user is explicit in the prompt itself ("ESA spacecraft operations engineer"). Data is ESA-AD (open, Zenodo 12528696). |
+| 01 Problem + Data | Agentic pipeline to search/assess/select/retrieve/validate datasets | ❌ (optional) | Not attempted — the dataset was picked manually. Optional per the slide, but also listed as a bonus point. |
+| 01 Ideal Data Profile | "time-series + text reasoning over/describing it," LLM-generated annotations "as in OpenTSLM paper" | ✅ | Exact match — CoT rationales generated via `scripts/generate_cot.py`, one per window. |
+| 02 Connect | TimeNet connector for signals/metadata/annotations, reusable | ✅ | Full custom connector (`mission1_subsystem5/connector.py`) emitting time series plus channel, category/class, periodicity, telecommand, and level/scale annotations. Reusable, well-documented. |
+| 03 Train + Evaluate | Fine-tune a TSLM | ✅ | OpenTSLMSP (Llama-3.2-3B backbone) fine-tuned with LoRA. |
+| 03 Train + Evaluate | Compare with a baseline on held-out data | ✅ | Two baselines added — see [Baseline results](#baseline-results) below. |
+| 03 Train + Evaluate | Avoid leakage across time, subjects, or devices | ⚠️ | Split is 80/10/10 by anomaly-pair, shuffled with a fixed seed — deliberately *not* ESA-ADB's own date-based train/test boundary, because that date split wastes over half the labeled events. Defensible, but it does mean train/test are not strictly time-separated. Have this answer ready if asked. |
+| 04 Demonstrate | Real inputs/outputs, evidence + limitations | ✅ | Real prompts and generated rationales exist (`test_predictions.jsonl`); the pitch artifact states limitations honestly (small test set, `test_loss: NaN` bug, precision/recall tradeoff). |
+| 04 Demonstrate | How the result helps the target user | ⚠️ | Implicit in the prompt framing, not yet stated as an explicit takeaway for the pitch. |
+
+## Slide 17 — What You Get, What You Submit
+
+| Item | Status | Notes |
+|---|---|---|
+| Working demo | ❌ **gap** | Nothing runs live yet — only a static eval script and results artifact. Needs something that can generate a rationale on the spot in front of the jury. |
+| Code + training configuration | ✅ | `curriculum_learning.py` invocation, connector, dataset loader — all present and runnable. |
+| Checkpoint or adapter | ✅ | LoRA adapters saved for every run (v10/v11/v13/v14 checkpoints preserved on disk under `OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/`). |
+| Dataset documentation | ✅ | Connector's module docstring is thorough (window construction, split rationale, every feature's definition). No separate README, but the docstring covers it. |
+| Short evaluation with baseline comparison | ✅ | See [Baseline results](#baseline-results) below. |
+| Live demo to jury | ⚠️ | Depends on building the "working demo" item above. |
+
+### What makes a strong project
+
+| Criterion | Status |
+|---|---|
+| A useful problem | ✅ |
+| Thoughtful data preparation | ✅ — modality dropout, CoT generation, engineered signals, and a real ablation on what to expose in the prompt |
+| Adequate TSLM training | ⚠️ — hardware-capped at `batch_size=1` on a single RTX 5090; `--gradient_checkpointing` turned out to be a no-op bug for OpenTSLMSP in `curriculum_learning.py`. Have this answer ready if asked why training looks constrained. |
+| Rigorous evaluation | ✅ — real ablation methodology, category-level (Anomaly vs. Rare Event) breakdown, two baselines, statistical caution about the small test set (123 positive examples). |
+| A clear demonstration | ⚠️ — good written analysis, no live demo yet |
+
+### Bonus points
+
+| Item | Status |
+|---|---|
+| Well-chosen datasets and reusable TimeNet connectors | ✅ — directly matches |
+| Agentic pipelines for  wir haben eien üebrabiret version des pitch requiermtnes check bitte pass die .md an die neuen stand hier an
+
+---
+
+Ich habe die Details selber umgeschrieben, die müsste jetzt neu sein.
+
+---
+
+Jetzt müssen wir PowerPoint und Webseite darauf verändern, wenn wir da Daten haben, die neu sind. Und hilft das uns dabei zu dem oben angenommenen Punkt für einer Baseline, die wir dagegen halten können?
+
+---
+
+Äh, push das. Also push die ähm Webseite.
+
+---
+
+Zero-shot Llama-3.2-3B (scripts/zeroshot_baseline.py) — no fine-tuning, no time-series encoder, text-only prompt
+
+---
+
+111/246 (45%) never produced a parseable Answer: at all — degenerated into echoing the instructions back. Of the rows it did answer, worse than a coin flip, heavily biased toward guessing "anomalous." Bitte nimm das hier als Baseline und nicht das an, was sie genommen haben.
+
+---
+
+23.6% overall (42.96% of the 55% it could even answer)
+
+---
+
+0.374
+
+---
+
+0.896
+
+---
+
+0.528
+
+---
+
+Erklär es noch mal in Englisch, bitte kurz.
+
+---
+
+What meinst du mit unpassable?
+
+---
+
+why do zou think so
+
+---
+
+can you rerun this test
+
+---
+
+Äh, bitte nutze die H einhundert Grafikkarte, die wir über die Gpu angebunden haben hier.
+
+---
+
+So. Okay, um dann nimm die bitte. Die H zweihundert.
+
+---
+
+Geb mir Ihnen ganz kurz einen Prompt, der das beschreibt, was wir machen wollen, und dann mache ich das auf der richtigen KI.
+
+---
+
+Okay, solange kümmern wir uns hier weiter um die Webseite. Also die Frage dieses Slide 01 mit The Problem macht irgendwie wenig Sinn, weil wir annext, also expected Changes davonänderungen uns gar nicht anschauen.
+
+---
+
+Ja, das finde ich gut. Mach den einen Satz dahin und dann diese drei Stichpunkte und dann ist das das für die Folie.
