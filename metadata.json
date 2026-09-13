@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.10.6",
+  "checkpoint_id": "01M2CVF796GK579KW7JRBE8ES0",
+  "strategy": "manual-commit",
+  "branch": "publish/web-baseline-update",
+  "checkpoints_count": 17,
+  "files_touched": [
+    "web/Docs/PITCH_REQUIREMENTS_CHECKLIST.md",
+    "web/README.md",
+    "web/public/mission-control/README.md",
+    "web/src/app/landing.css",
+    "web/src/app/mission-control/page.tsx",
+    "web/src/app/page.tsx",
+    "web/src/components/descent.tsx",
+    "web/src/components/evidence.tsx",
+    "web/src/components/mission-control-replay.tsx",
+    "web/src/lib/pitch-content.ts",
+    "web/tests/experience.spec.ts",
+    "web/tests/unit/mission-control-replay.test.ts",
+    "web/tests/unit/pitch-content.test.ts",
+    "web/tests/workspace.spec.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 471687,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 16457856,
+    "output_tokens": 63750,
+    "api_call_count": 140
+  }
+}
