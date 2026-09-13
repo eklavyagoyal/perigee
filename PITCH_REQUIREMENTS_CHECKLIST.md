@@ -185,17 +185,21 @@ pairs), still exactly 50/50 nominal:anomalous in every split.
 | Classical baseline, RAW values only (no engineered features at all, not even mean/std) | not run on old split | 57.59% acc / 0.623 P / 0.384 R / 0.475 F1 | New this session — the real floor a trained encoder needs to clear. A plain linear model over raw digits does much worse than one given mean/std directly, showing feature engineering (even trivial mean/std) is doing real work a linear model can't replicate on its own. |
 | Two-shot LLM baseline, no fine-tuning | 50.81% acc / 1.000⚠️ P / 0.016 R | 50.45% acc / 1.000⚠️ P / 0.009 R | Unchanged (expected — this baseline never trains, so the split doesn't affect it). |
 
-**Not yet reproduced**: every *fine-tuned* result (v10-v14, the sub-category-balanced run, the
-Flamingo/8B run) — those are exactly the numbers most likely to have benefited from the leak,
-since a trained time-series encoder reading raw shape is what could actually exploit cross-channel
-correlation on a repeated event. **A full task brief for retraining these on the fixed split is
-in `RETRAIN_ON_FIXED_SPLIT.md`** — hand that to another session/agent to run in parallel, since
-each fine-tuned run takes real GPU training time.
+**Reproduced on the fixed split**: SP + sub-category-balanced sampling (the headline candidate) —
+see [the table above](#apples-to-apples-the-baseline-vs-the-current-prompt), retrained on
+`zurich`'s H200. Result: 75.89% acc / 0.837 P / 0.643 R / 0.727 F1, down from 86.99%/0.852 F1 on
+the leaky split, and now clearly behind the fixed-split classical baseline (90.18%/0.891 F1) —
+confirms the encoder *was* benefiting from the leak on this run.
+
+**Still not reproduced**: v10-v14 and the Flamingo/8B run. Per `RETRAIN_ON_FIXED_SPLIT.md`, these
+don't need redoing unless there's spare time — the *relative* prompt-design comparisons between
+them likely still hold since the leak affected every run roughly equally. Only the headline
+candidate needed reproducing for the pitch, and that's now done.
 
 ## Priority before presenting
 
 1. ~~Baseline comparison~~ — done, see above.
-2. **Retrain the headline fine-tuned model on the fixed split** — see `RETRAIN_ON_FIXED_SPLIT.md`. Every LLM accuracy/recall number currently in this document was measured under the leaky split and needs reproducing before it goes on a slide.
+2. ~~Retrain the headline fine-tuned model on the fixed split~~ — done, see above. **The honest headline number for the pitch is now 75.89% acc / F1 0.727, behind the classical baseline (90.18%/F1 0.891) — not the earlier 86.99%/F1 0.852 leaky-split number.**
 3. **A live/interactive demo** — something that can run in front of the jury rather than only a static report.
 
 Everything else is either solidly covered or an optional bonus.
