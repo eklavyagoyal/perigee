@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 """Loads the esa/mission1-subsystem5 TimeF dataset (built by the TimeNet connector in the
-zurich-hackathon project) and splits it 80/10/10 by anomaly-pair for OpenTSLM training.
+zurich-hackathon project) and splits it 80/10/10 by anomaly EVENT for OpenTSLM training.
 
 The connector tags every record "train" or "test" by ESA-ADB's own 2007-01-01 benchmark boundary
 (Mission1_semisupervised_prep_from_raw.py's test_data_split). That boundary is a date, not an event
@@ -12,14 +12,29 @@ count, and it happens to fall almost exactly in the middle of the labeled events
 2,510 windows land after it), leaving less than half the data for training. That split makes sense for
 ESA-ADB's own unsupervised reconstruction-error benchmark (train only on nominal data, detect anomalies
 after a cutoff), but this project fine-tunes a generative QA model instead, so the date boundary buys no
-comparable benchmark number and just wastes labeled events. This loader instead shuffles anomaly-pairs
-with a fixed seed and cuts 80/10/10 by count, keeping each pair's anomalous and nominal window together
-so every split stays exactly balanced.
+comparable benchmark number and just wastes labeled events. This loader instead shuffles by
+``anomaly_id`` (the underlying labeled event, shared across every channel and pos/neg record derived
+from it) with a fixed seed and cuts 80/10/10 by event count, keeping every record tied to the same
+event together so every split stays exactly balanced.
+
+**Split granularity is by event, not by per-channel pair, on purpose.** ESA-AD labels each anomaly
+event on every channel that recorded it (subsystem_5's six channels all monitor the same physical
+unit per ``channels.csv``), so ``id_84`` for example produces one ``pos``/``neg`` pair on
+``channel_41``, another on ``channel_42``, etc. -- all sharing one ``anomaly_id``. An earlier version
+of this loader split by the per-channel pair key (``<id>-<channel>-<occurrence>``) instead, which let
+the *same* event land in train on one channel and in test on another. Since these channels aren't
+independent -- empirically ~0.56 mean absolute correlation across same-event channel pairs, and the
+ESA-AD paper's own description says channels sharing a group are "similar in their nature" precisely
+so correlations *within* a group can be exploited -- that was closer to a real leak than a fair
+generalization test: 68 of 69 anomaly events in the old test split had already been seen (on a
+different, correlated channel) during training. Splitting by ``anomaly_id`` instead means an event a
+model is evaluated on was never seen on any channel during training.
 
 The connector pairs each anomalous window with one nominal window sampled independently, anywhere in
 the same channel's full 2000-2013 span (its own "<id>-<channel>-<occurrence>-pos"/"-neg" record ids
-share a pair key). Splitting by pair, not by individual record, keeps every split's label distribution
-identical (50/50) regardless of how the underlying dates fall.
+share a pair key, and both sides of a pair carry the same ``anomaly_id``). Splitting by event, not by
+individual record, keeps every split's label distribution identical (50/50) regardless of how the
+underlying dates or channel assignments fall.
 
 Every window needs a chain-of-thought rationale for this split policy to pay off: scripts/generate_cot.py
 generates one for every anomalous/nominal pair in the dataset (not just a fixed subset), so whichever
@@ -84,16 +99,33 @@ def load_esa_mission1_cot_splits() -> Tuple[Dataset, Dataset, Dataset]:
     pair_keys = sorted(
         record.record_id.removesuffix("-pos") for record in dataset.records if record.record_id.endswith("-pos")
     )
-    rng = random.Random(_SPLIT_SEED)
-    rng.shuffle(pair_keys)
 
-    n = len(pair_keys)
+    # Group pair keys by the underlying anomaly EVENT (shared across every channel that recorded
+    # it, and across both the -pos and -neg side of a pair -- see the module docstring), not by
+    # the per-channel pair key itself, so every channel's window from the same event stays in one
+    # split.
+    pair_keys_by_event: dict[str, list[str]] = {}
+    for pair_key in pair_keys:
+        record = records_by_id[pair_key + "-pos"]
+        event_id = _annotation(record, "anomaly_id")
+        pair_keys_by_event.setdefault(event_id, []).append(pair_key)
+
+    event_ids = sorted(pair_keys_by_event)
+    rng = random.Random(_SPLIT_SEED)
+    rng.shuffle(event_ids)
+
+    n = len(event_ids)
     n_train = round(n * _TRAIN_FRAC)
     n_val = round(n * _VAL_FRAC)
+    split_by_event = {
+        **{event_id: "train" for event_id in event_ids[:n_train]},
+        **{event_id: "validation" for event_id in event_ids[n_train : n_train + n_val]},
+        **{event_id: "test" for event_id in event_ids[n_train + n_val :]},
+    }
     split_by_pair = {
-        **{key: "train" for key in pair_keys[:n_train]},
-        **{key: "validation" for key in pair_keys[n_train : n_train + n_val]},
-        **{key: "test" for key in pair_keys[n_train + n_val :]},
+        pair_key: split_by_event[event_id]
+        for event_id, keys in pair_keys_by_event.items()
+        for pair_key in keys
     }
 
     rows_by_split: dict[str, list] = {"train": [], "validation": [], "test": []}
