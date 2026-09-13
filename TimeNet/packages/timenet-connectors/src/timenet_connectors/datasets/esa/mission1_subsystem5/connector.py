@@ -23,10 +23,23 @@ Channel timestamps in the raw pickles are timezone-naive, while ``labels.csv`` t
 naive UTC-equivalent microseconds before comparing or slicing; nothing here claims a real timezone.
 
 Each record also carries two periodicity scores (``window_periodicity``, over the record's own
-6-hour window, and ``context_periodicity``, over the surrounding 24 hours): mean and standard
+6-hour window, and ``context_periodicity``, over the preceding 24 hours): mean and standard
 deviation say nothing about whether a channel is oscillating, and several subsystem_5 channels are
 periodic in some windows and not others (see :func:`_periodicity_score`). Comparing the two -- "this
 channel is normally periodic, but not in this window" -- is a signal mean/std cannot express.
+
+Each record also carries ``level_zscore`` and ``scale_ratio``: the window's own mean and standard
+deviation, contrasted against that same preceding-24-hour context (see
+:func:`_level_scale_features`). The window's raw mean/std alone can't say whether that level or
+spread is normal for the channel -- nominal windows sit in a narrow band, and anomalous ones are
+exactly the ones that drift off it or blow up in variance -- so, like periodicity, the contrast
+against a baseline is the signal, not the number itself.
+
+Both context features are strictly causal: the 24-hour context ends exactly where the window
+begins and never includes the window's own values or anything after it (see
+:func:`_context_features`), matching the same backward-only discipline as
+``minutes_since_command`` below -- nothing here is computed from data that would not yet exist at
+the window's own start.
 
 Each record also carries ``minutes_since_command`` when a priority>=2 telecommand executed within
 the preceding 6 hours of the window's reference point (the labeled start for an anomalous window,
@@ -50,7 +63,7 @@ import json
 import os
 from pathlib import Path
 from types import ModuleType
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, NamedTuple
 import zipfile
 
 import numpy as np
@@ -74,9 +87,8 @@ _WINDOW_BEFORE_US = 3_600_000_000  # 1 hour of context before a labeled interval
 _WINDOW_AFTER_US = 18_000_000_000  # 5 hours after: 6 hours total
 _WINDOW_LEN_US = _WINDOW_BEFORE_US + _WINDOW_AFTER_US
 _OVERLAP_GUARD_US = 3_600_000_000  # 1 hour buffer kept clear of every labeled interval
-_CONTEXT_LEN_US = 86_400_000_000  # 24h context window for the periodicity baseline, centered on
-# the same point as the 6h window (window_start + 3h): 9h before window_start, 15h after.
-_CONTEXT_BEFORE_US = 32_400_000_000
+_CONTEXT_LEN_US = 86_400_000_000  # 24h of context immediately preceding window_start -- causal
+# only, so the periodicity/level/scale baseline never sees data from the window itself or later.
 _MIN_PERIODICITY_POINTS = 50  # below this, an autocorrelation peak is unreliable; omit the score
 _ZERO_VARIANCE_TOLERANCE = 1e-9  # below this stdev, treat the sequence as constant
 _TELECOMMAND_MIN_PRIORITY = 2  # empirically the cleanest threshold; see module docstring
@@ -322,21 +334,27 @@ def _periodicity_score(values: np.ndarray) -> float | None:
     return round(float(autocorr[exclude:].max()), 3)
 
 
-def _window_annotations(
-    ref: "ESAWindowRef",
-    window_periodicity: float | None,
-    context_periodicity: float | None,
-    minutes_since_command: float | None,
-) -> list[Annotation]:
+class WindowFeatures(NamedTuple):
+    """Every optional, context-derived feature computed for one window.
+
+    Bundled into one value so :func:`_window_annotations` and its callers don't have to carry five
+    separate optional-float parameters. Any field may be ``None`` -- see the function that computes
+    it (:func:`_periodicity_score`, :func:`_level_scale_features`, :func:`_minutes_since_command`).
+    """
+
+    window_periodicity: float | None
+    context_periodicity: float | None
+    level_zscore: float | None
+    scale_ratio: float | None
+    minutes_since_command: float | None
+
+
+def _window_annotations(ref: "ESAWindowRef", features: WindowFeatures) -> list[Annotation]:
     """Build the fixed and optional annotations for one window's record.
 
     Args:
         ref: The window reference the record is built from.
-        window_periodicity: The window's own periodicity score, or ``None`` (see
-            :func:`_periodicity_score`).
-        context_periodicity: The surrounding 24-hour context's periodicity score, or ``None``.
-        minutes_since_command: Minutes since the most recent priority>=2 telecommand before the
-            window's reference point, or ``None`` (see :func:`_minutes_since_command`).
+        features: The window's optional context-derived features.
 
     Returns:
         The annotations to attach to the record.
@@ -351,27 +369,46 @@ def _window_annotations(
         annotations.append(Annotation(key="category", value=ref.category, id=f"{ref.window_id}-category"))
     if ref.anomaly_class is not None:
         annotations.append(Annotation(key="class", value=ref.anomaly_class, id=f"{ref.window_id}-class"))
-    if window_periodicity is not None:
-        annotations.append(
-            Annotation(key="window_periodicity", value=window_periodicity, id=f"{ref.window_id}-window-periodicity")
-        )
-    if context_periodicity is not None:
-        annotations.append(
-            Annotation(key="context_periodicity", value=context_periodicity, id=f"{ref.window_id}-context-periodicity")
-        )
-    if minutes_since_command is not None:
-        annotations.append(
-            Annotation(
-                key="minutes_since_command", value=minutes_since_command, id=f"{ref.window_id}-minutes-since-command"
-            )
-        )
+    for key, value in features._asdict().items():
+        if value is not None:
+            annotations.append(Annotation(key=key, value=value, id=f"{ref.window_id}-{key.replace('_', '-')}"))
     return annotations
 
 
-def _periodicity_pair(
+def _level_scale_features(values: np.ndarray, context_values: np.ndarray) -> tuple[float | None, float | None]:
+    """Score how far a window's level and spread sit from its 24-hour context baseline.
+
+    Nominal windows on these channels sit in a narrow band of level and noise floor; anomalous
+    ones are exactly the ones that drift off that level or blow up in variance (see the module
+    docstring's stats). The window's own mean/std say nothing about whether *that* level or spread
+    is normal for the channel -- these two features make the comparison explicit, the same idea
+    :func:`_periodicity_score` applies to oscillation.
+
+    Args:
+        values: The window's own values (already sliced).
+        context_values: The surrounding 24-hour context's values (already sliced).
+
+    Returns:
+        ``(level_zscore, scale_ratio)``: how many context-standard-deviations the window's mean
+        sits from the context mean, and the ratio of the window's standard deviation to the
+        context's. Either may be ``None`` if there are too few context points or the context is
+        constant (zero variance).
+    """
+    if len(context_values) < _MIN_PERIODICITY_POINTS:
+        return None, None
+    context_mean = float(np.mean(context_values))
+    context_std = float(np.std(context_values))
+    if context_std < _ZERO_VARIANCE_TOLERANCE:
+        return None, None
+    level_zscore = round((float(np.mean(values)) - context_mean) / context_std, 3)
+    scale_ratio = round(float(np.std(values)) / context_std, 3)
+    return level_zscore, scale_ratio
+
+
+def _context_features(
     values: np.ndarray, series: "pd.Series", window_start: "pd.Timestamp"
-) -> tuple[float | None, float | None]:
-    """Score periodicity both for a window and for its surrounding 24-hour context.
+) -> tuple[float | None, float | None, float | None, float | None]:
+    """Compute every context-comparison feature for one window: periodicity, level, and scale.
 
     Args:
         values: The window's own values (already sliced).
@@ -379,14 +416,20 @@ def _periodicity_pair(
         window_start: The window's start timestamp.
 
     Returns:
-        ``(window_periodicity, context_periodicity)``, either possibly ``None`` (see
-        :func:`_periodicity_score`).
+        ``(window_periodicity, context_periodicity, level_zscore, scale_ratio)``, each possibly
+        ``None`` (see :func:`_periodicity_score` and :func:`_level_scale_features`).
     """
     pd = _import_pandas()
-    context_start = window_start - pd.Timedelta(microseconds=_CONTEXT_BEFORE_US)
-    context_end = context_start + pd.Timedelta(microseconds=_CONTEXT_LEN_US)
-    context = series[(series.index >= context_start) & (series.index < context_end)]
-    return _periodicity_score(values), _periodicity_score(context.to_numpy(dtype=np.float32))
+    # Causal only: the context ends exactly where the window begins, so it never includes the
+    # window's own values or anything after it (an operations engineer reviewing this window in
+    # real time could not have seen later data either).
+    context_start = window_start - pd.Timedelta(microseconds=_CONTEXT_LEN_US)
+    context_values = series[(series.index >= context_start) & (series.index < window_start)].to_numpy(dtype=np.float32)
+    return (
+        _periodicity_score(values),
+        _periodicity_score(context_values),
+        *_level_scale_features(values, context_values),
+    )
 
 
 def _load_telecommand_executions(source_dir: Path, cache_dir: Path) -> np.ndarray:
@@ -575,7 +618,7 @@ class ESAMission1Subsystem5Connector(BaseConnector[ESAWindowRef]):
 
             values = window.to_numpy(dtype=np.float32)
             offsets_us = ((window.index - window.index[0]).total_seconds() * 1_000_000).to_numpy().astype(np.int64)
-            periodicity = _periodicity_pair(values, series, window_start)
+            context_features = _context_features(values, series, window_start)
             time_series = TimeSeries.from_irregular(
                 values,
                 time_offsets_us=offsets_us,
@@ -591,7 +634,11 @@ class ESAMission1Subsystem5Connector(BaseConnector[ESAWindowRef]):
             )
             record.add_annotations(
                 _window_annotations(
-                    ref, *periodicity, _minutes_since_command(ref.window_start_us + _WINDOW_BEFORE_US, command_times)
+                    ref,
+                    WindowFeatures(
+                        *context_features,
+                        _minutes_since_command(ref.window_start_us + _WINDOW_BEFORE_US, command_times),
+                    ),
                 )
             )
 

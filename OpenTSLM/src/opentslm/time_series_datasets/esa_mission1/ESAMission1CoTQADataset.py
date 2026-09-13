@@ -110,6 +110,24 @@ class ESAMission1CoTQADataset(QADataset):
         else:
             text += " No priority-2-or-higher telecommand executed in the six hours before this window's reference point."
 
+        # Mean/std alone say nothing about whether THIS window's level or spread is unusual for
+        # THIS channel -- a level/scale pair that's normal for a naturally noisy channel would be
+        # a huge deviation for a quiet one. Contrasting the window's mean/std against its own
+        # surrounding 24h context (as a z-score and a ratio) expresses "unusual for this channel
+        # right now" directly, matching the same nominal-vs-anomalous contrast the periodicity
+        # signal draws for oscillation. Missing (None) when the context is too short or flat to
+        # normalize against; a fixed fraction of training rows also have this nulled out
+        # deliberately (see esa_mission1_cot_loader's modality-dropout) so the encoder still has
+        # to learn from raw shape some of the time.
+        level_zscore = row.get("level_zscore")
+        scale_ratio = row.get("scale_ratio")
+        if level_zscore is not None and scale_ratio is not None:
+            text += (
+                f" Relative to the surrounding 24-hour context, this window's mean is "
+                f"{level_zscore:+.2f} standard deviations from the context mean, and its standard "
+                f"deviation is {scale_ratio:.2f}x the context's standard deviation."
+            )
+
         return [TextTimeSeriesPrompt(text, series.tolist())]
 
     def _format_sample(self, row):

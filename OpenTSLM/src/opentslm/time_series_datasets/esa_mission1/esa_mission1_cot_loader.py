@@ -24,6 +24,15 @@ identical (50/50) regardless of how the underlying dates fall.
 Every window needs a chain-of-thought rationale for this split policy to pay off: scripts/generate_cot.py
 generates one for every anomalous/nominal pair in the dataset (not just a fixed subset), so whichever
 windows land in train here always have real CoT text rather than the bare "Answer: <label>" fallback.
+
+Modality dropout: the engineered text signals (periodicity contrast, level/scale deviation,
+telecommand timing) are strong, easy-to-read features, and a pretrained LLM will happily lean on
+them instead of learning anything from the raw time-series encoder branch (classic multimodal
+"shortcut learning" -- the text branch is trivial to fit, the encoder branch is not). To force the
+encoder to carry real signal, a fixed, seeded 40% of TRAIN rows only have every engineered signal
+field nulled out here, so ESAMission1CoTQADataset's `is not None` checks omit those sentences and
+the model must reason from the raw values for that fraction of training. Validation and test rows
+always keep every signal, so evaluation numbers stay comparable across runs.
 """
 
 import os
@@ -38,6 +47,15 @@ ESA_DATASET_ID = "esa/mission1-subsystem5"
 _SPLIT_SEED = 20260912  # fixed seed keeps the split deterministic across runs
 _TRAIN_FRAC = 0.8
 _VAL_FRAC = 0.1  # remainder goes to test
+_MODALITY_DROPOUT_SEED = 20260913  # separate seed from the split shuffle, kept independent
+_MODALITY_DROPOUT_FRAC = 0.4
+_ENGINEERED_SIGNAL_KEYS = (
+    "window_periodicity",
+    "context_periodicity",
+    "level_zscore",
+    "scale_ratio",
+    "minutes_since_command",
+)
 
 
 def _annotation(record, key):
@@ -105,11 +123,33 @@ def load_esa_mission1_cot_splits() -> Tuple[Dataset, Dataset, Dataset]:
                     # what ESA's own "Rare Event" category definition describes). None when no
                     # qualifying command fired in the lookback window.
                     "minutes_since_command": _annotation(record, "minutes_since_command"),
+                    # Level (mean) and scale (std) contrast between this window and its surrounding
+                    # 24h context: a z-scored level shift or a scale_ratio far from 1.0 is exactly
+                    # the "drifted off its usual level" / "variance blew up" pattern that separates
+                    # anomalous from nominal windows, expressed relative to the channel's own
+                    # recent behavior instead of a fixed global threshold.
+                    "level_zscore": _annotation(record, "level_zscore"),
+                    "scale_ratio": _annotation(record, "scale_ratio"),
                 }
             )
+
+    _apply_modality_dropout(rows_by_split["train"])
 
     return (
         Dataset.from_list(rows_by_split["train"]),
         Dataset.from_list(rows_by_split["validation"]),
         Dataset.from_list(rows_by_split["test"]),
     )
+
+
+def _apply_modality_dropout(train_rows: list) -> None:
+    """Null out every engineered signal field on a fixed, seeded fraction of train rows in place.
+
+    Args:
+        train_rows: The training split's row dicts, mutated in place.
+    """
+    rng = random.Random(_MODALITY_DROPOUT_SEED)
+    for row in train_rows:
+        if rng.random() < _MODALITY_DROPOUT_FRAC:
+            for key in _ENGINEERED_SIGNAL_KEYS:
+                row[key] = None
