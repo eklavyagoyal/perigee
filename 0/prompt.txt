@@ -1373,3 +1373,7 @@ how did we create that balanced dataset for the last run?
 ---
 
 but in our dataset there is much more nominal and rare events than anomalies
+
+---
+
+there is a new logic on this split machine use it to rerun the best training model on h100 and reevaluate the results
