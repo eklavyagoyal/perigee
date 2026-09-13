@@ -3,31 +3,13 @@
 #
 # SPDX-License-Identifier: MIT
 
-from typing import List, Literal, Optional, Tuple
+from typing import List, Literal, Tuple
 
 from datasets import Dataset
 import numpy as np
 from opentslm.prompt.text_time_series_prompt import TextTimeSeriesPrompt
 from opentslm.time_series_datasets.esa_mission1.esa_mission1_cot_loader import load_esa_mission1_cot_splits
 from opentslm.time_series_datasets.QADataset import QADataset
-
-
-def _periodicity_phrase(score: Optional[float]) -> Optional[str]:
-    """Phrase a 0-1 autocorrelation-based periodicity score for the prompt text.
-
-    Args:
-        score: The periodicity score, or ``None`` if the connector couldn't compute one.
-
-    Returns:
-        A short phrase, or ``None`` to omit the sentence entirely.
-    """
-    if score is None:
-        return None
-    if score >= 0.6:
-        return f"strongly periodic (score {score:.2f})"
-    if score >= 0.3:
-        return f"weakly periodic (score {score:.2f})"
-    return f"not clearly periodic (score {score:.2f})"
 
 
 class ESAMission1CoTQADataset(QADataset):
@@ -71,34 +53,30 @@ class ESAMission1CoTQADataset(QADataset):
         - Please now write your rationale. Make sure that your last word is the answer. You MUST end your response with "Answer: """
 
     def _get_text_time_series_prompt_list(self, row) -> List[TextTimeSeriesPrompt]:
-        # Deliberately NOT per-window z-score normalized. In this dataset the label is largely
-        # carried by absolute level and variance (nominal windows sit in a tight band around one
-        # level with a near-constant, small noise floor; anomalous windows are exactly the ones
-        # that drift off that level or blow up in variance -- see the mean/std stats gathered in
-        # esa_mission1_cot_loader's module docstring era of analysis). Normalizing each window by
-        # its own mean and std would force every window to look like mean=0, std=1, erasing that
-        # signal before the encoder ever sees it. The raw channel values are already a bounded,
-        # small-magnitude series (no rescaling needed for numerical stability).
+        # Per-window z-score normalized, matching every other published OpenTSLM stage
+        # (Sleep/HAR/PAMAP2 all state the window's raw mean/std in the text, then feed the
+        # *normalized* window to the encoder -- see e.g. SleepEDFCoTQADataset). The raw mean/std
+        # in the text still carries the absolute level/variance info the label leans on; the
+        # encoder branch is left free to focus on shape (trend, noise, spikes, oscillation) rather
+        # than relearning "what's a normal absolute level" per channel. A previous version of this
+        # file skipped normalization specifically to keep level/variance in the encoder input too,
+        # but that diverged from paper convention, so it's aligned back.
         series = np.array(row["values"], dtype=np.float32)
         mean = float(np.mean(series))
         std = float(np.std(series))
+        min_std = 1e-6
+        series_norm = (series - mean) / max(std, min_std)
         text = f"This is telemetry from {row['channel']}, mean {mean:.4f} and std {std:.4f} in this window."
 
-        # Mean/std alone can't tell a clean sine wave from a signal that has stopped oscillating
-        # (itself often the anomalous condition) -- several subsystem_5 channels are periodic in
-        # some windows and not others. Contrasting the window's own periodicity against its
-        # 24-hour surroundings ("normally periodic, but not here") gives the model a signal
-        # mean/std cannot express; see the connector's _periodicity_score for how these are
-        # computed. Either may be absent (too few points or a constant sequence), so the sentence
-        # is only added when both are available.
-        context_phrase = _periodicity_phrase(row.get("context_periodicity"))
-        window_phrase = _periodicity_phrase(row.get("window_periodicity"))
-        if context_phrase is not None and window_phrase is not None:
-            text += (
-                f" Over the surrounding 24 hours this channel is typically {context_phrase}; in this "
-                f"specific six-hour window it is {window_phrase}."
-            )
-
+        # window_periodicity/context_periodicity used to be stated here as a banded phrase
+        # ("typically strongly periodic (0.90); in this window it is strongly periodic (0.79)").
+        # Measured directly: a naive single-threshold classifier on
+        # (context_periodicity - window_periodicity) alone gets 68.3% test accuracy (correlation
+        # 0.28 with the label) -- more discriminative on its own than level_zscore (62.6%) or
+        # scale_ratio (65.4%), which were already removed from this prompt for being answer-leaking
+        # shortcuts. Stating it as a categorical band rather than a raw number doesn't make it any
+        # less of a shortcut, so it's out too, for the same reason.
+        #
         # A commanded manoeuvre/reset/calibration is exactly what separates a Rare Event from a
         # true Anomaly (ESA's own category definition), and a priority>=2 telecommand shortly
         # before this window's reference point (one hour after it begins) is a strong, direct
@@ -110,25 +88,16 @@ class ESAMission1CoTQADataset(QADataset):
         else:
             text += " No priority-2-or-higher telecommand executed in the six hours before this window's reference point."
 
-        # Mean/std alone say nothing about whether THIS window's level or spread is unusual for
-        # THIS channel -- a level/scale pair that's normal for a naturally noisy channel would be
-        # a huge deviation for a quiet one. Contrasting the window's mean/std against its own
-        # surrounding 24h context (as a z-score and a ratio) expresses "unusual for this channel
-        # right now" directly, matching the same nominal-vs-anomalous contrast the periodicity
-        # signal draws for oscillation. Missing (None) when the context is too short or flat to
-        # normalize against; a fixed fraction of training rows also have this nulled out
-        # deliberately (see esa_mission1_cot_loader's modality-dropout) so the encoder still has
-        # to learn from raw shape some of the time.
-        level_zscore = row.get("level_zscore")
-        scale_ratio = row.get("scale_ratio")
-        if level_zscore is not None and scale_ratio is not None:
-            text += (
-                f" Relative to the surrounding 24-hour context, this window's mean is "
-                f"{level_zscore:+.2f} standard deviations from the context mean, and its standard "
-                f"deviation is {scale_ratio:.2f}x the context's standard deviation."
-            )
+        # level_zscore/scale_ratio used to be stated directly here ("this window's mean is +2.1
+        # standard deviations from context, std is 3x context's"), which is the same shortcut
+        # problem as the raw mean/std sentence above -- it states the window's level/variance
+        # deviation as a number instead of requiring it be read off the raw series. Left out of
+        # the prompt text entirely (as a new test, alongside dropping the raw mean/std sentence
+        # above); window_periodicity and telecommand timing are kept since periodicity isn't a
+        # simple level/variance readout and telecommand timing is an external event, not a
+        # statistic of the window's own values.
 
-        return [TextTimeSeriesPrompt(text, series.tolist())]
+        return [TextTimeSeriesPrompt(text, series_norm.tolist())]
 
     def _format_sample(self, row):
         sample = super()._format_sample(row)
