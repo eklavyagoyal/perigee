@@ -103,6 +103,7 @@ class ESAMission1CoTQADataset(QADataset):
         sample = super()._format_sample(row)
         sample["label"] = row["label"]
         sample["channel"] = row["channel"]
+        sample["category"] = row["category"]
         return sample
 
     @staticmethod
