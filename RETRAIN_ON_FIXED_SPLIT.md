@@ -37,9 +37,25 @@ unevenly many pairs). Every split is still exactly 50/50 nominal:anomalous.
   on the old split — went up slightly, not down, likely because this baseline uses only summary
   statistics, not raw series shape, so it probably wasn't benefiting much from the leak in the
   first place).
-- Two-shot LLM baseline (`scripts/zeroshot_baseline.py`, no fine-tuning): being rerun in parallel,
-  check `PITCH_REQUIREMENTS_CHECKLIST.md` for the latest number if it's not there yet, this
-  should complete quickly (a few minutes, no training).
+- **Restricted classical baseline** (`scripts/classical_baseline_restricted.py`, fit on *only* what
+  the current prompt actually states: window mean, window std, telecommand presence/timing — no
+  `level_zscore`/`scale_ratio`/periodicity): **90.18%** accuracy, precision 1.000, recall 0.804, F1
+  0.891 (was 86.99%/1.000/0.740/0.850 on the old split). `window_std` is overwhelmingly the
+  strongest predictor (+10.3 standardized coefficient). **This is the number your retrained LLM
+  needs to be compared against** — on the old split the fine-tuned LLM and this exact restricted
+  baseline were tied (86.99% acc each); whether that tie holds, breaks in the LLM's favor, or
+  breaks in the classical model's favor once the leak is gone is the single most important result
+  to report back.
+- Two-shot LLM baseline (`scripts/zeroshot_baseline.py`, no fine-tuning): 50.45% accuracy,
+  precision 1.000, recall 0.009 — collapses to guessing one label regardless of input, unchanged
+  from the old split (expected, since it never trains on data at all).
+- **Raw-values-only classical baseline** (`scripts/classical_baseline_raw.py`, logistic regression
+  on 120 resampled raw points, zero engineered features -- not even mean/std): **57.59%** accuracy,
+  precision 0.623, recall 0.384, F1 0.475. This is the real floor: a plain linear model **cannot**
+  find the signal directly in raw digits, it needs mean/std computed *for* it. If your retrained
+  LLM (reading the raw series through its trained encoder) lands meaningfully above 57.59%, that's
+  real evidence the encoder is doing something a linear model over raw values fundamentally can't
+  -- report this comparison too, not just the one against the 90.18% restricted baseline.
 
 **What's NOT yet done, and is your job**: every *fine-tuned* result needs to be reproduced on the
 fixed split, since those are the numbers that actually matter for the pitch and are most likely to
