@@ -1,0 +1,56 @@
+would it be reasonable to move to h100 gpu for this project, will the training be faster?
+
+---
+
+<task-notification>
+<task-id>a199b4153231cf14a</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/a199b4153231cf14a.output</output-file>
+<status>completed</status>
+<summary>Agent "Find current GPU/training setup info" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Let me know if you want to chat while that runs — I'll follow up with a concrete H100 recommendation once I see what GPU/setup the project is actually using.</result>
+<usage><subagent_tokens>50998</subagent_tokens><tool_uses>1</tool_uses><duration_ms>8860</duration_ms></usage>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>aa40bfc2996a6fb71</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/aa40bfc2996a6fb71.output</output-file>
+<status>killed</status>
+<summary>Agent "placeholder - will not use" was stopped by Claude</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>That last call was a mistake on my part — I sent a placeholder fork with no real task. Let me disregard that and properly follow up on the actual research agent instead.</result>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>a199b4153231cf14a</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/a199b4153231cf14a.output</output-file>
+<status>completed</status>
+<summary>Agent "Find current GPU/training setup info" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Yes — worth doing, and it's already the documented plan for this project (`CLUSTER_BRIEF.md`, committed in `hackathon-submission`). A few concrete points from what's actually in the repo:
+
+- **Current setup**: local validation ran on a single RTX 5090 (32GB), training Llama-3.2-3B + LoRA (OpenTSLMSP) in bf16, `BATCH_SIZE=4` — sized specifically to fit that 32GB card.
+- **Target cluster**: 8×H100 (80GB each) is already provisioned for this hackathon, and `curriculum_learning.py` already has `torch.distributed`/DDP wired up (`torchrun --nproc_per_node=8 ...`) — no code changes needed to use it.
+- **Why it'll be faster**: H100 has meaningfully higher per-GPU throughput than a 5090 for bf16, and 80GB (vs 32GB) lets you raise `BATCH_SIZE` well above 4 — bigger batches = better GPU utilization = fewer wall-clock hours per epoch. With 8 GPUs and DDP that's roughly another ~8x on top for the same per-step cost, or the option to run several experiments in parallel instead of serially.
+- **Caveat**: the H100 move fixes throughput/scale, not the actual quality problem currently on record — the epoch-3 checkpoint only catches 38/198 real anomalies (a checkpoint-selection/overfitting issue, §2.4.1/§5.1 of the brief). A faster GPU won't fix that by itself; you'd still want the checkpoint-by-recall fix regardless of hardware. The brief's own priority order is: fix recall bias first (cheap, do on any GPU), then use the H100s for encoder scaling / bigger batch / Flamingo's frozen 8B+ backbone.
+
+So: reasonable, already planned, and yes meaningfully faster per epoch and for parallel experimentation — just don't expect it to improve the anomaly-detection quality issue on its own.
+
+(Side note: a subagent I'd spawned to do this lookup got stuck in a confused loop asking me for the answer instead of searching — I did the lookup directly instead of waiting on it.)</result>
+<usage><subagent_tokens>70143</subagent_tokens><tool_uses>6</tool_uses><duration_ms>92248</duration_ms></usage>
+</task-notification>
+
+---
+
+what should I do to move to a new pc?
+
+---
+
+can you push it

@@ -1,0 +1,119 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2C28RJ79PZ1C2SMQ88RHARJ",
+  "session_id": "13f12110-8fc1-4a84-80af-9976981ecdc4",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T00:21:57.683696455Z",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 5,
+  "save_step_count": 5,
+  "files_touched": [
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/test_connector.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "4d7feda94dbe",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 44,
+    "cache_creation_tokens": 40306,
+    "cache_read_tokens": 1426937,
+    "output_tokens": 12109,
+    "api_call_count": 22,
+    "subagent_tokens": {
+      "input_tokens": 22,
+      "cache_creation_tokens": 24898,
+      "cache_read_tokens": 583216,
+      "output_tokens": 9120,
+      "api_call_count": 11
+    }
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-13T00:21:57.60357756Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 554,
+    "total_committed": 0,
+    "total_lines_changed": 554,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 673,
+      "user_lines_removed": 554,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json": 1,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt": 3,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_noncausal_leaky_20260913_015104/checkpoints/loss_history.txt": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/checkpoints/loss_history.txt": 9,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_pre_levelscale_20260913_012856/results/test_predictions_rank_0.jsonl": 246,
+        "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py": 18,
+        "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py": 40,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py": 88,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/test_connector.py": 10
+      },
+      "user_removed_per_file": {
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json": 8,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt": 7,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json": 6,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl": 246,
+        "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl": 246,
+        "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py": 41
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 673,
+      "agent_lines_removed": 554
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 673,
+      "agent_lines_removed": 554
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 673,
+      "agent_lines_removed": 554
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 673,
+      "agent_lines_removed": 554
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 673,
+      "agent_lines_removed": 554
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2C28RJ79PZ1C2SMQ88RHARJ",
+  "strategy": "manual-commit",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 5,
+  "files_touched": [
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl",
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions_rank_0.jsonl",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/ESAMission1CoTQADataset.py",
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py",
+    "TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/tests/test_connector.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 44,
+    "cache_creation_tokens": 40306,
+    "cache_read_tokens": 1426937,
+    "output_tokens": 12109,
+    "api_call_count": 22,
+    "subagent_tokens": {
+      "input_tokens": 22,
+      "cache_creation_tokens": 24898,
+      "cache_read_tokens": 583216,
+      "output_tokens": 9120,
+      "api_call_count": 11
+    }
+  }
+}
