@@ -192,6 +192,16 @@ up the OpenTSLM env per its `requirements.txt` / `pyproject.toml`. `huggingface-
 `HF_TOKEN`) — Llama-3.2-3B access was already granted for the account behind the source machine's
 token; using a different HF account may need a fresh Meta access request.
 
+**Gap not covered by either package's own config**: neither `OpenTSLM/requirements.txt` nor
+`OpenTSLM/pyproject.toml` declares a dependency on `timenet`/`timenet-connectors`, but
+`esa_mission1_cot_loader.py` imports `timenet.client` directly. After `uv sync --all-groups` inside
+`OpenTSLM/`, also run (from `OpenTSLM/`):
+```bash
+uv pip install -e ../TimeNet/packages/timenet -e ../TimeNet/packages/timenet-connectors
+```
+Skipping this fails with `ModuleNotFoundError: No module named 'timenet'` the moment you try to load
+the ESA dataset.
+
 ## 4. Hardware reality check
 
 Local validation ran on **one RTX 5090 (32GB)**. This cluster has **8xH100 (80GB each)** — ~20x
