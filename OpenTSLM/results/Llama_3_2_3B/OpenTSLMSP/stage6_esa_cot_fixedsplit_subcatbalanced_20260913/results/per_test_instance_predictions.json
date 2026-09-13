@@ -1,0 +1,2242 @@
+[
+  {
+    "index": 0,
+    "record_id": "id_101-channel_41-104-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_41 displays a distinct pattern that suggests an anomaly. Initially, the data level remains relatively stable, but as time progresses, there is a noticeable upward trend, peaking sharply around the 1-hour mark. Following this peak, the data level decreases, forming a valley, which is then followed by a sharp rise, creating a sawtooth pattern. This repeated pattern of peaks and troughs indicates a consistent oscillation that is not typical of nominal operations. Additionally, the noise level appears to increase significantly, with more pronounced spikes and fluctuations, which further deviates from expected behavior. The absence of any prolonged stable periods or gaps in the data suggests that the anomaly is not due to data transmission issues, but rather reflects a systemic issue within the subsystem. The combination of these factors, particularly the pronounced oscillations and increased noise, supports the conclusion that this telemetry window is indeed a labeled Rare Event, class class_4. Answer: anomalous"
+  },
+  {
+    "index": 1,
+    "record_id": "id_101-channel_41-104-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 2,
+    "record_id": "id_101-channel_42-109-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_42 displays a consistent oscillatory pattern throughout the six-hour window, suggesting a stable and periodic behavior typical of many operational systems. The amplitude of the oscillations remains relatively constant, indicating no significant drift or trend over time. The noise level appears to be consistent with normal operational variability, showing minor fluctuations around the central waveform without any abrupt or unexpected changes. There are no significant spikes that deviate sharply from the overall pattern, and the data is continuous with no gaps, ensuring that the telemetry stream is complete and uninterrupted. Given these observations, the telemetry data is consistent with expected operational behavior. Answer: nominal"
+  },
+  {
+    "index": 3,
+    "record_id": "id_101-channel_42-109-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 4,
+    "record_id": "id_101-channel_43-103-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 exhibits several characteristics that suggest an anomaly. Initially, the data shows a relatively stable level around 0.75 with minor fluctuations, indicating normal noise. However, there is a sudden drop at the one-hour mark, where the level sharply falls to approximately 0.60. This drop is followed by a period of low-level fluctuations, indicating instability in the system. At around the four-hour mark, there is a significant spike, where the value abruptly rises above 0.90, which is much higher than the surrounding data points and suggests a transient event or error. Post-spike, the data returns to a level similar to the initial state but with increased noise and minor oscillations, indicating a system that may not have fully recovered from the earlier disturbance. The presence of a sharp drop, a high spike, and continued instability after the event are indicative of an unusual behavior in the telemetry data. Answer: anomalous"
+  },
+  {
+    "index": 5,
+    "record_id": "id_101-channel_43-103-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 shows a consistent pattern over the six-hour window, with values oscillating between 0.760 and 0.775. The level of the data remains within a narrow range, indicating stability in the system's performance. The trend does not show any significant upward or downward movement, suggesting that there are no gradual changes in the subsystem's behavior. The noise level appears to be low, with minor fluctuations that do not deviate significantly from the overall pattern. There are occasional spikes, but they are brief and return quickly to the baseline, which is typical for operational noise rather than indicative of any system faults. The data does not exhibit any drift, as the values consistently return to their baseline, and there are no gaps, indicating continuous data collection without interruptions. The absence of any erratic or unexpected behavior supports the conclusion that the telemetry is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 6,
+    "record_id": "id_101-channel_44-103-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 displays a consistent oscillating pattern throughout the six-hour window, indicating a stable cyclical behavior. The amplitude of the oscillations remains relatively uniform, suggesting no significant drift or unexpected changes in the system's baseline level. The frequency of the oscillations appears steady, without any abrupt shifts or irregularities that would indicate instability or interference. The noise level is moderate, but it does not obscure the overall pattern or suggest any underlying issues. There are occasional spikes present in the data, but they are neither frequent nor large enough to suggest a malfunction or external interference, as they quickly return to the baseline oscillations. Importantly, there are no gaps in the data, indicating continuous data acquisition and transmission without any interruptions. Overall, the telemetry data reflects a stable and expected operational behavior. Answer: nominal"
+  },
+  {
+    "index": 7,
+    "record_id": "id_101-channel_44-103-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 8,
+    "record_id": "id_101-channel_45-104-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_45 over the six-hour window shows a generally stable level with minor fluctuations around 0.80. However, there are significant spikes that occur intermittently, particularly noticeable at the beginning of each hour. These spikes are abrupt and sharply deviate from the surrounding data points, indicating sudden, sharp changes in the signal. Additionally, there is a noticeable pattern of these spikes occurring at regular intervals, suggesting a potential periodic anomaly. The trend remains relatively consistent throughout the window, but the presence of these spikes and the lack of any significant drift or gaps in the data indicate an underlying issue that deviates from expected behavior. Given these observations, the telemetry data is consistent with a labeled Rare Event. Answer: anomalous"
+  },
+  {
+    "index": 9,
+    "record_id": "id_101-channel_45-104-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 10,
+    "record_id": "id_101-channel_46-100-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_46 shows a complex pattern over the six-hour window. Initially, the level is relatively stable, hovering around 0.75, but it soon exhibits a series of sharp downward spikes, reaching lower values near 0.65. These spikes are abrupt and not preceded by any gradual trends, indicating potential transient disturbances or errors in the data acquisition process. Following each spike, the data quickly returns to its previous level, resuming the previous trend without any noticeable drift. The noise level appears consistent throughout the window, with small fluctuations around the baseline, but the presence of these sharp, isolated spikes is a significant anomaly. Given the abruptness and frequency of these drops, the telemetry is indicative of an unusual event or malfunction. Answer: anomalous"
+  },
+  {
+    "index": 11,
+    "record_id": "id_101-channel_46-100-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 12,
+    "record_id": "id_106-channel_41-110-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 13,
+    "record_id": "id_106-channel_41-110-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 14,
+    "record_id": "id_106-channel_41-111-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 15,
+    "record_id": "id_106-channel_41-111-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 16,
+    "record_id": "id_106-channel_41-112-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 17,
+    "record_id": "id_106-channel_41-112-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 18,
+    "record_id": "id_106-channel_42-115-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_42 exhibits a consistent oscillatory pattern throughout the six-hour window, indicating a stable and repeating trend. The level of the data remains centered around 0.78, with minor fluctuations that suggest normal operational noise rather than any underlying issues. There are occasional spikes, but they are neither extreme nor frequent enough to suggest any malfunction or anomaly, as they quickly return to the baseline. The data does not show any signs of drift, maintaining its range consistently over time without any gradual increase or decrease. Additionally, there are no gaps in the data, indicating continuous data transmission without interruptions. Overall, the characteristics of the data, including level, trend, noise, spikes, drift, and gaps, align with expected operational behavior. Answer: nominal"
+  },
+  {
+    "index": 19,
+    "record_id": "id_106-channel_42-115-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 20,
+    "record_id": "id_106-channel_42-116-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 21,
+    "record_id": "id_106-channel_42-116-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 22,
+    "record_id": "id_106-channel_42-117-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 exhibits a generally stable level with minor fluctuations around a baseline value, indicating normal noise levels. However, at approximately one hour into the window, there is a significant spike that deviates sharply from the surrounding data, suggesting a transient anomaly. This spike is followed by a return to the previous level, but the data does not resume its prior trend, indicating a potential underlying issue. The presence of this spike and the subsequent lack of a return to the baseline trend suggest an irregularity in the system's behavior. Answer: anomalous"
+  },
+  {
+    "index": 23,
+    "record_id": "id_106-channel_42-117-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 24,
+    "record_id": "id_106-channel_43-109-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 of subsystem_5 over the six-hour window displays several characteristics that indicate an anomaly. Initially, the level of the data hovers around 0.78, but as we approach the one-hour mark, there is a significant spike, sharply rising above 0.81, which is followed by a brief period of increased variability. This spike is not isolated, as similar behavior is observed again shortly after the one-hour mark, suggesting a recurring pattern rather than isolated noise. The trend after these spikes does not stabilize, indicating a lack of return to baseline levels, which typically suggests a persistent issue. Additionally, the noise level remains relatively consistent, but the presence of these sharp spikes and the lack of a smooth return to baseline indicate instability in the system. The absence of any significant drift or data gaps further emphasizes the irregularity of the signal, leading to the conclusion that this telemetry data is indeed anomalous. Answer: anomalous"
+  },
+  {
+    "index": 25,
+    "record_id": "id_106-channel_43-109-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 26,
+    "record_id": "id_106-channel_43-110-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window displays a consistent pattern without any significant deviations that might indicate an anomaly. The level of the data remains stable, fluctuating within a narrow range between 0.765 and 0.780, suggesting that the subsystem is operating within expected parameters. The trend appears cyclic, with regular oscillations that suggest a predictable and controlled behavior. The noise level is minimal and consistent, showing no excessive or unexpected variations that might suggest interference or instability. There are occasional spikes, but they are infrequent and do not significantly deviate from the overall pattern, indicating they are likely within normal operational limits. No drift is observed, as the data returns to its baseline level consistently over time. Additionally, there are no gaps in the data, ensuring continuous monitoring without any loss of information. Given these observations, the telemetry data is consistent with expected operational behavior. Answer: nominal"
+  },
+  {
+    "index": 27,
+    "record_id": "id_106-channel_43-110-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 28,
+    "record_id": "id_106-channel_43-111-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window exhibits a consistent cyclical pattern, suggesting a stable and predictable behavior of subsystem_5. The level of the data oscillates between approximately 0.765 and 0.780, maintaining this range throughout the duration, which indicates that the system is operating within expected limits. The trend does not show any significant upward or downward drift, maintaining a steady state without any unexpected deviations. The noise level appears to be low, with minor fluctuations that are typical for this type of data and do not suggest any underlying issues. There are occasional spikes, but they are infrequent and not extreme, falling within the range of normal operations. Importantly, there are no gaps in the data, ensuring continuous monitoring and confirming that the telemetry feed is complete and reliable. The overall stability and consistency of the data, coupled with the absence of any concerning anomalies, support the conclusion that the system is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 29,
+    "record_id": "id_106-channel_43-111-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 of subsystem_5 over the six-hour window shows a consistent and repeating pattern, indicating stable behavior. The level of the data remains within a narrow range between 0.765 and 0.780, suggesting that the system is operating within expected parameters. The trend is cyclical, with regular peaks and troughs that repeat at consistent intervals, indicating a predictable and stable system response. The noise level appears to be low, with minor fluctuations that do not deviate significantly from the main signal, suggesting minimal interference or instability in the system. There are occasional spikes, but they are brief and return quickly to the baseline, which is typical in telemetry data and does not suggest any underlying issues. There is no evidence of drift, as the data does not show any long-term increase or decrease in value, maintaining a steady state over the observed period. Additionally, there are no gaps in the data, ensuring continuous monitoring without any loss of information. Overall, the characteristics of the telemetry data align with expected operational behavior, confirming that the system is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 30,
+    "record_id": "id_106-channel_44-109-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 31,
+    "record_id": "id_106-channel_44-109-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 32,
+    "record_id": "id_106-channel_44-110-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_44 over the six-hour window exhibits a consistent oscillatory pattern, with peaks and troughs occurring at regular intervals. The amplitude of these oscillations remains relatively stable throughout the duration, suggesting no significant drift in the data. The noise level appears to be low, with minor fluctuations around the central trend, indicating a stable system performance. However, the presence of sharp, intermittent spikes throughout the data is noteworthy, as they deviate significantly from the surrounding values and suggest transient disturbances. These spikes are not typical of normal operational variability and are likely indicative of unexpected events or anomalies in the system. The absence of any data gaps indicates continuous data collection, but the presence of these irregular spikes amidst an otherwise stable trend is what classifies this telemetry as a labeled Rare Event. Answer: anomalous"
+  },
+  {
+    "index": 33,
+    "record_id": "id_106-channel_44-110-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 34,
+    "record_id": "id_106-channel_44-111-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 exhibits a consistent cyclical pattern throughout the six-hour window, with regular peaks and troughs indicating a stable oscillation. The amplitude of the oscillations remains relatively constant, suggesting no significant drift or long-term trend in the data. The noise level appears to be low, with minor fluctuations around the central waveform, indicating stable signal quality. There are occasional spikes, but they are brief and return to baseline quickly, which is typical in many telemetry datasets and likely represents transient events or minor environmental influences. Importantly, there are no gaps in the data, ensuring continuous monitoring without interruptions. The overall stability and regularity of the waveform, combined with the absence of concerning anomalies such as unexpected trends or persistent deviations, support the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 35,
+    "record_id": "id_106-channel_44-111-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_44 over the six-hour window displays a consistent pattern with a regular oscillation around a central level, approximately 0.800. This oscillation suggests a stable cyclic behavior, which is typical for many satellite subsystems. The trend of the data remains steady without any noticeable upward or downward drift, indicating that the system's baseline is not shifting over time. The noise level appears to be low, with minor fluctuations around the central trend, which is expected in normal operational conditions. There are occasional spikes, but they do not deviate significantly from the overall pattern and are likely within acceptable operational limits. Importantly, there are no gaps in the data, which suggests uninterrupted data transmission and reception. Overall, the telemetry data reflects a stable and expected performance of the subsystem. Answer: nominal"
+  },
+  {
+    "index": 36,
+    "record_id": "id_106-channel_45-110-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 37,
+    "record_id": "id_106-channel_45-110-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 38,
+    "record_id": "id_106-channel_45-111-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_45 shows a distinct pattern that deviates from expected nominal behavior. Initially, the data level is relatively stable, but there is a sudden and sharp spike just after the one-hour mark, reaching a peak significantly higher than the surrounding data points. This spike is followed by a rapid drop, indicating a brief anomaly that is not typical of nominal operations. The data thereafter resumes a more consistent level but exhibits increased noise and variability, with smaller, more frequent spikes that suggest instability. There is no evident drift or long-term trend, but the presence of these irregular spikes and the abrupt spike at the beginning of the window are indicative of a disturbance in the subsystem. The combination of these observations, particularly the initial spike, supports the conclusion that this telemetry window is indeed a labeled Rare Event. Answer: anomalous"
+  },
+  {
+    "index": 39,
+    "record_id": "id_106-channel_45-111-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 40,
+    "record_id": "id_106-channel_45-112-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 41,
+    "record_id": "id_106-channel_45-112-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 42,
+    "record_id": "id_106-channel_46-108-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 43,
+    "record_id": "id_106-channel_46-108-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 44,
+    "record_id": "id_106-channel_46-109-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 45,
+    "record_id": "id_106-channel_46-109-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 46,
+    "record_id": "id_106-channel_46-110-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_46 shows a consistent pattern over the six-hour window, with values oscillating between approximately 0.75 and 0.78. The level remains stable throughout the duration, indicating no significant drift or long-term trend. The noise level appears to be relatively low, with minor fluctuations around the central trend, suggesting good signal quality and stability. There are occasional spikes, but they do not deviate drastically from the overall pattern and seem to be within expected operational variations. Importantly, there are no gaps in the data, which implies continuous and reliable data transmission. The regularity and consistency of the data, combined with the absence of any concerning trends or anomalies, supports the conclusion that the telemetry is operating as expected. Answer: nominal"
+  },
+  {
+    "index": 47,
+    "record_id": "id_106-channel_46-110-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_46 over the six-hour window displays a consistent pattern that suggests normal operation. The level of the data remains within a narrow range, indicating stability in the readings. The trend does not show any significant upward or downward movement over the duration of the window, suggesting no drift in the readings. The noise level is relatively low, with minor fluctuations that are expected in normal operations and do not indicate any underlying issues. The presence of occasional spikes is minor and does not persist, implying that they are likely within acceptable limits for this subsystem. There are no gaps in the data, indicating continuous data transmission without interruptions. Overall, the combination of these factors supports the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 48,
+    "record_id": "id_118-channel_41-125-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 over the six-hour window displays a consistent pattern that suggests normal operation. The level of the data fluctuates within a narrow range, indicating stability in the subsystem's performance. The trend remains steady, with no significant upward or downward shifts over the period, suggesting no drift in the system's behavior. The noise level appears consistent, with minor variations that are typical for this type of data, indicating normal variability without any signs of erratic behavior. Occasional spikes are present but do not deviate significantly from the overall pattern and are likely due to transient events or minor sensor noise. There are no gaps in the data, ensuring continuous monitoring without any interruptions. Overall, the telemetry data maintains a consistent and expected pattern, supporting the conclusion that the system is functioning as anticipated. Answer: nominal"
+  },
+  {
+    "index": 49,
+    "record_id": "id_118-channel_41-125-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 50,
+    "record_id": "id_118-channel_42-130-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 51,
+    "record_id": "id_118-channel_42-130-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 of subsystem_5 exhibits a consistent pattern over the six-hour window. The level of the data remains within a narrow range, centered around 0.78, indicating stability in the system's performance. The trend does not show any significant upward or downward movement, suggesting that the system is maintaining its expected operational state. The noise level is relatively low, with minor fluctuations that are typical for this type of data and do not indicate any underlying issues. There are occasional spikes, but they are neither frequent nor extreme enough to suggest a malfunction or anomaly, as they quickly return to baseline levels. The data does not exhibit any signs of drift, as the values consistently return to their baseline after minor variations. Additionally, there are no gaps in the data, indicating that the telemetry feed is continuous and reliable throughout the observation period. The overall behavior of the data aligns with expected operational parameters, supporting the conclusion that the system is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 52,
+    "record_id": "id_118-channel_43-124-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 53,
+    "record_id": "id_118-channel_43-124-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_43 over the six-hour window exhibits a consistent pattern with no significant deviations that would suggest an anomaly. The level of the data remains stable, oscillating around a central value, indicating a lack of any abrupt changes in the subsystem's performance. The trend appears to be cyclical, suggesting a regular and expected operational behavior. The noise level is consistent throughout the window, with minor fluctuations that are typical for this type of data and do not indicate any underlying issues. The presence of occasional spikes is minor and does not disrupt the overall pattern, suggesting they are likely within normal operational limits. There is no evidence of drift, as the data does not show any gradual increase or decrease over time. Additionally, there are no gaps in the data, indicating continuous data transmission and reception. Given the absence of any irregularities or deviations from expected behavior, the telemetry data can be confidently assessed as normal. Answer: nominal"
+  },
+  {
+    "index": 54,
+    "record_id": "id_118-channel_44-124-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 55,
+    "record_id": "id_118-channel_44-124-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 56,
+    "record_id": "id_118-channel_45-125-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_45 shows a consistent pattern over the six-hour window, characterized by a stable level with minor fluctuations around a central value. The trend appears to be steady without any noticeable upward or downward drift, indicating stability in the subsystem's behavior. The noise level is relatively low, with small, regular variations that suggest normal operational variability rather than any erratic or unexpected behavior. There are no significant spikes that would suggest transient disturbances or anomalies, and the data continuity is intact with no gaps, ensuring that the telemetry feed is uninterrupted and reliable. Given these observations, the telemetry data can be confidently assessed as normal. Answer: nominal"
+  },
+  {
+    "index": 57,
+    "record_id": "id_118-channel_45-125-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 58,
+    "record_id": "id_118-channel_46-120-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 59,
+    "record_id": "id_118-channel_46-120-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 60,
+    "record_id": "id_134-channel_41-141-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 over the six-hour window shows a consistent pattern that suggests nominal behavior. The level of the data remains within a narrow range, indicating stability in the system's performance. There is no significant trend upward or downward, suggesting that the subsystem is maintaining its expected operational state without any unexpected changes. The noise level appears typical for this type of data, with minor fluctuations that do not indicate any underlying issues. Occasional spikes are present but are not extreme or frequent enough to suggest a malfunction, and they quickly return to baseline levels, which is typical for transient events in satellite telemetry. There is no evidence of drift, as the data does not show any systematic increase or decrease over time. Additionally, there are no gaps in the data, indicating continuous and reliable data transmission without interruptions. Overall, the telemetry data reflects a system that is functioning as expected without any signs of anomalies. Answer: nominal"
+  },
+  {
+    "index": 61,
+    "record_id": "id_134-channel_41-141-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 62,
+    "record_id": "id_134-channel_41-142-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 over the six-hour window shows a consistent pattern that suggests normal operations. The level of the data remains stable, fluctuating within a narrow range between 0.75 and 0.78, indicating no significant drift or unexpected shifts. The trend does not show any upward or downward movement, suggesting stability over time. The noise level appears to be consistent throughout the window, with minor variations that are typical for this type of data and do not indicate any underlying issues. The presence of occasional spikes is evident but does not deviate significantly from the expected range, suggesting they are within normal operational variability. There are no gaps in the data, indicating continuous monitoring without interruptions. Overall, the combination of these observations supports the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 63,
+    "record_id": "id_134-channel_41-142-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 64,
+    "record_id": "id_134-channel_41-143-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_41 over the six-hour window exhibits several notable characteristics. Initially, the level of the data fluctuates between 0.80 and 0.84, showing a generally consistent range without any significant drift. However, there are frequent and sharp spikes, particularly noticeable around the 1-hour and 4-hour marks, which indicate sudden and significant deviations from the baseline. These spikes are irregular and do not follow a predictable pattern, suggesting potential transient disturbances or noise in the system. The trend overall appears stable, with no clear upward or downward movement, indicating that the baseline performance is maintaining a steady state. The presence of these spikes, combined with the otherwise stable trend and level, suggests an anomaly in the system's behavior. Answer: anomalous"
+  },
+  {
+    "index": 65,
+    "record_id": "id_134-channel_41-143-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 66,
+    "record_id": "id_134-channel_41-144-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 67,
+    "record_id": "id_134-channel_41-144-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 68,
+    "record_id": "id_134-channel_42-143-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 shows a significant deviation from nominal behavior, characterized by a series of sharp, irregular spikes that disrupt the otherwise smooth trend. The level of the data fluctuates wildly between 0.2 and 0.5, indicating a potential instability or interference in the system. The trend, initially stable, soon develops a downward drift, suggesting a gradual degradation in performance or an underlying issue affecting the subsystem. The noise level appears to be consistently high, contributing to the erratic behavior. Additionally, there are multiple gaps where the data drops sharply, indicating possible transmission interruptions or sensor failures. The presence of these elements, particularly the pronounced spikes and drift, supports the conclusion that this telemetry window is indeed an anomaly. Answer: anomalous"
+  },
+  {
+    "index": 69,
+    "record_id": "id_134-channel_42-143-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 70,
+    "record_id": "id_134-channel_42-144-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_42 over the six-hour window shows a consistent pattern with minor fluctuations around a stable level, indicating a stable system behavior. The data exhibits a slight cyclical trend, suggesting normal operational cycles without any significant deviations. The noise level appears to be within expected limits, with minor variations that do not indicate any underlying issues. There are occasional spikes, but they are not extreme and fall within a range that is typical for this type of data, suggesting they are not indicative of any faults or anomalies. There is no evidence of drift, as the data does not show any long-term upward or downward trend, maintaining a steady average level. Additionally, there are no gaps in the data, indicating continuous and reliable telemetry transmission. Given the overall stability and regularity of the data, the telemetry from this channel can be confidently assessed as normal. Answer: nominal"
+  },
+  {
+    "index": 71,
+    "record_id": "id_134-channel_42-144-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 72,
+    "record_id": "id_134-channel_42-145-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 exhibits a consistent level with minor fluctuations around a baseline value, indicating some normal operational noise. However, there is a significant spike occurring just after the one-hour mark, where the value abruptly increases, which is not typical of normal operations and suggests a transient anomaly. Following this spike, the data returns to a more stable state, but with increased variability and minor oscillations, indicating a potential underlying issue. The presence of this spike and the subsequent behavior are indicative of a Rare Event, class class_4. Answer: anomalous"
+  },
+  {
+    "index": 73,
+    "record_id": "id_134-channel_42-145-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 74,
+    "record_id": "id_134-channel_42-146-pos",
+    "channel": "channel_42",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 75,
+    "record_id": "id_134-channel_42-146-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 76,
+    "record_id": "id_134-channel_43-139-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window shows a distinct pattern that is indicative of an anomaly. Initially, the data level remains relatively stable, but as we approach the one-hour mark, there is a sudden and sharp spike, followed by a rapid return to baseline. This spike is not isolated, as it is repeated multiple times throughout the window, suggesting a recurring issue. The noise level appears to be consistent, with minor fluctuations around the baseline, but the presence of these sharp, frequent spikes disrupts the expected pattern. Additionally, there is no evident drift, as the data does not show a gradual increase or decrease over time, maintaining a consistent average level. Furthermore, there are no gaps in the data, indicating continuous monitoring without interruptions. The repetitive and pronounced nature of these spikes, combined with the lack of any underlying trend or drift, strongly suggests that this behavior is not typical for this subsystem. Answer: anomalous"
+  },
+  {
+    "index": 77,
+    "record_id": "id_134-channel_43-139-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window displays a consistent pattern that suggests nominal behavior. The level of the data remains within a narrow range, centered around 0.77, with minor fluctuations that are expected in normal operations. The trend appears stable, with no significant upward or downward drift over the observed period. The noise level is consistent throughout the data, indicating normal variability rather than any erratic or unexpected behavior. There are occasional spikes, but they are brief and return to the baseline quickly, suggesting transient events that are not indicative of any underlying issues. Importantly, there are no gaps in the data, which implies continuous data collection without any interruptions. These observations collectively support the conclusion that the telemetry data is behaving as expected. Answer: nominal"
+  },
+  {
+    "index": 78,
+    "record_id": "id_134-channel_43-140-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 shows a distinct pattern over the six-hour window. Initially, the data level hovers around 0.72, with noticeable fluctuations and spikes, indicating some level of noise or variability in the readings. However, there is a noticeable downward trend in the data, suggesting a drift over time. The data does not exhibit any significant gaps, which would indicate missing data points, but the presence of sharp, vertical spikes at regular intervals is unusual and suggests an underlying issue. These spikes are abrupt and inconsistent with normal operational behavior, indicating potential transient disturbances or malfunctions in the subsystem. The overall shape of the data, with a downward trend and frequent spikes, supports the classification of this telemetry window as a labeled Rare Event. Answer: anomalous"
+  },
+  {
+    "index": 79,
+    "record_id": "id_134-channel_43-140-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 80,
+    "record_id": "id_134-channel_43-141-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 exhibits several characteristics that suggest an anomaly. Initially, the data level is relatively stable, but it shows a sudden spike upwards shortly after the first hour, peaking sharply and then quickly returning to a lower level. This spike is followed by a period of increased noise, indicated by the erratic fluctuations around the baseline, which is slightly higher than the initial level. Throughout the window, there is a discernible trend of oscillation, suggesting a repeating pattern or cyclic behavior that is unusual for this channel. Additionally, there are several smaller spikes and dips that appear intermittently, indicating transient disturbances. The presence of these spikes and the increased noise level, combined with the oscillatory trend, suggests instability or interference in the subsystem. The overall pattern deviates from expected nominal behavior, leading to the conclusion that this telemetry window is indeed anomalous. Answer: anomalous"
+  },
+  {
+    "index": 81,
+    "record_id": "id_134-channel_43-141-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 82,
+    "record_id": "id_134-channel_43-142-pos",
+    "channel": "channel_43",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 83,
+    "record_id": "id_134-channel_43-142-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 84,
+    "record_id": "id_134-channel_44-139-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_44 over the six-hour window exhibits a distinct pattern that deviates from expected behavior. Initially, the data level hovers around 0.4, with noticeable fluctuations and spikes, indicating some level of instability. As time progresses, the trend does not show a consistent upward or downward movement, suggesting that there is no clear drift in the data. However, the presence of sharp, irregular spikes throughout the window is unusual, as it indicates sudden, unexplained changes in the subsystem's performance. Additionally, the noise level appears elevated, with frequent, small variations that do not align with normal operational variability. The combination of these factors, particularly the pronounced spikes and elevated noise, points to an underlying issue affecting the subsystem's performance. Answer: anomalous"
+  },
+  {
+    "index": 85,
+    "record_id": "id_134-channel_44-139-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 86,
+    "record_id": "id_134-channel_44-140-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 exhibits a consistent oscillatory pattern over the six-hour window, indicating a stable and repeating cycle. The level of the data fluctuates between approximately 0.75 and 0.78, showing no signs of significant drift or long-term trend. The noise appears to be low, with the data points closely following the oscillatory trend without excessive random variation. There are occasional spikes, but they remain within the expected range and frequency, suggesting they are part of the normal operational behavior rather than anomalies. Importantly, there are no gaps in the data, indicating continuous and reliable data transmission. The overall behavior of the telemetry is consistent with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 87,
+    "record_id": "id_134-channel_44-140-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 88,
+    "record_id": "id_134-channel_44-141-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_44 over the six-hour window shows a notable deviation from expected behavior, indicating a significant anomaly. Initially, the data level is relatively stable, but it soon exhibits a pronounced spike, peaking sharply before returning to a baseline. This spike is followed by a series of smaller, irregular oscillations that indicate instability in the system. The trend does not show a consistent pattern, lacking a clear upward or downward movement over the observed period. Noise levels are elevated, contributing to the erratic fluctuations. Additionally, there are several sharp drops and recoveries, suggesting intermittent disturbances. The absence of a steady trend or smooth transitions further highlights the irregularity of the data. These characteristics collectively point to an unusual and unexpected behavior in the system. Answer: anomalous"
+  },
+  {
+    "index": 89,
+    "record_id": "id_134-channel_44-141-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 90,
+    "record_id": "id_134-channel_44-142-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 91,
+    "record_id": "id_134-channel_44-142-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 92,
+    "record_id": "id_134-channel_44-143-pos",
+    "channel": "channel_44",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_44 over the six-hour window exhibits a consistent pattern that suggests stable operations. The level of the data remains within a narrow range between 0.78 and 0.80, indicating that the subsystem is operating within expected parameters. The trend appears steady with no significant upward or downward movements over time, suggesting that there is no drift in the data. The noise level is consistent throughout the window, with minor fluctuations that are typical for this type of telemetry data. There are occasional spikes, but they are not extreme or frequent enough to suggest any underlying issues, as they quickly return to the baseline. Importantly, there are no gaps in the data, ensuring continuous monitoring and no loss of information. The overall behavior of the telemetry suggests that the subsystem is functioning as expected without any anomalies. Answer: nominal"
+  },
+  {
+    "index": 93,
+    "record_id": "id_134-channel_44-143-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 94,
+    "record_id": "id_134-channel_45-138-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_45 over the six-hour window shows a consistent pattern with minor fluctuations around a central level, indicating some degree of normal operational noise. The trend remains stable throughout the period, with no significant upward or downward drift, suggesting that the subsystem is maintaining its expected performance without any systemic degradation. The presence of occasional spikes is noted, but they are neither frequent nor extreme, implying that they are likely within acceptable operational limits. There are no gaps in the data, indicating continuous data transmission without interruptions. The overall behavior of the telemetry suggests that the subsystem is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 95,
+    "record_id": "id_134-channel_45-138-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 96,
+    "record_id": "id_134-channel_45-139-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_45 over the six-hour window shows a generally stable level with minor fluctuations around a baseline value. The trend does not indicate any significant upward or downward movement over time, suggesting stability in the system's performance. The noise level appears consistent throughout the window, with minor variations that are expected in normal operational data. However, there are several noticeable spikes that deviate sharply from the surrounding data points, indicating sudden and brief changes in the subsystem's behavior. These spikes are irregularly spaced and do not follow any predictable pattern, which might suggest transient disturbances or unexpected interactions within the system. There is no evidence of drift, as the data consistently returns to the baseline level after each spike. Additionally, there are no gaps in the data, indicating continuous monitoring without any loss of signal. The presence of these irregular spikes amidst otherwise stable data is the primary reason for categorizing this telemetry as anomalous. Answer: anomalous"
+  },
+  {
+    "index": 97,
+    "record_id": "id_134-channel_45-139-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 98,
+    "record_id": "id_134-channel_45-140-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_45 over the six-hour window shows a pattern that is characterized by a relatively stable level with minor fluctuations around 0.80, indicating normal noise levels. However, there is a significant spike just after the one-hour mark, where the value abruptly rises above 0.95 before returning to the baseline. This spike is sharp and isolated, suggesting an unusual transient event. Following this, the data resumes its previous pattern without any noticeable drift or trend, maintaining the same level and noise as before the spike. The presence of this isolated and pronounced spike amidst an otherwise stable dataset is indicative of an anomaly. Answer: anomalous"
+  },
+  {
+    "index": 99,
+    "record_id": "id_134-channel_45-140-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_45 over the six-hour window shows a consistent pattern that suggests normal operations. The level of the data remains within a narrow range between approximately 0.805 and 0.820, indicating stability in the subsystem's performance. The trend appears to be cyclical, with regular oscillations that suggest a predictable and expected behavior of the system. The noise level is low, with small fluctuations that do not deviate significantly from the overall pattern, indicating that the system is operating within its expected operational limits. There are occasional spikes, but they are infrequent and do not appear to impact the overall behavior of the data, suggesting they are within acceptable thresholds. There is no evidence of drift, as the data does not show any long-term increase or decrease, maintaining a consistent average level throughout the window. Additionally, there are no gaps in the data, indicating that telemetry transmission is consistent and uninterrupted. All these factors together suggest that the system is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 100,
+    "record_id": "id_134-channel_45-141-pos",
+    "channel": "channel_45",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_45 over the six-hour window displays a consistent pattern that suggests normal operations. The level of the data remains centered around a stable value, indicating that the system is maintaining expected performance. The trend is relatively flat, with minor fluctuations that are expected in normal operations and do not suggest any underlying issues. The noise level appears consistent throughout the window, with minor variations that are typical for this type of data. There are no significant spikes or drops that would indicate transient disturbances or anomalies. The absence of any drift suggests that the system is not experiencing gradual degradation or improvement, maintaining its performance over time. Additionally, there are no gaps in the data, which implies that the telemetry feed is continuous and reliable. Given these observations, the telemetry data can be confidently assessed as nominal. Answer: nominal"
+  },
+  {
+    "index": 101,
+    "record_id": "id_134-channel_45-141-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 102,
+    "record_id": "id_134-channel_46-133-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_46 exhibits a pattern that initially appears relatively stable, maintaining a consistent level around 0.40 for the first hour. However, a noticeable spike occurs just after the one-hour mark, where the value abruptly rises above 0.60, indicating a significant deviation from the initial trend. Following this spike, the data returns to a level closer to the initial baseline, but with increased noise and variability, showing small, frequent fluctuations around the new higher level. These fluctuations suggest instability or potential system instability. Throughout the remaining five hours, the data continues to oscillate between the two levels, with occasional smaller spikes that further indicate instability. The presence of these spikes and the increased variability post-spike suggest a drift from the initial stable trend, which is unusual for this subsystem. The combination of a sharp spike, increased noise, and sustained oscillation around a new level indicates an anomalous behavior in the telemetry. Answer: anomalous"
+  },
+  {
+    "index": 103,
+    "record_id": "id_134-channel_46-133-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 104,
+    "record_id": "id_134-channel_46-134-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_46 over the six-hour window shows a generally stable level with minor fluctuations around 0.72, indicating normal operational noise. The trend does not show any significant upward or downward movement, suggesting that the system is maintaining its expected performance over time. However, there are several sharp spikes that intermittently disrupt the otherwise smooth data pattern, which could indicate transient disturbances or sensor noise. These spikes are irregular and do not appear to be part of the normal operational behavior, suggesting potential anomalies. Additionally, there are no noticeable gaps in the data, indicating continuous data transmission without any loss. The presence of these spikes, combined with the otherwise stable trend, points to the telemetry being anomalous. Answer: anomalous"
+  },
+  {
+    "index": 105,
+    "record_id": "id_134-channel_46-134-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 106,
+    "record_id": "id_134-channel_46-135-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_46 shows a distinct pattern that deviates from expected nominal behavior. Initially, the data level is relatively stable, but it exhibits frequent spikes and drops, indicating sudden changes in the signal. These spikes are irregular and do not follow a consistent pattern, suggesting potential disturbances or noise in the system. Additionally, there is a noticeable upward trend in the data, with values gradually increasing over time, which may indicate a drift or a gradual change in the system's state. The presence of these spikes and the upward trend together suggest instability in the system, which is unusual compared to expected operational patterns. The combination of these characteristics, particularly the presence of irregular spikes and the upward trend, leads to the conclusion that this telemetry data is indeed anomalous. Answer: anomalous"
+  },
+  {
+    "index": 107,
+    "record_id": "id_134-channel_46-135-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 108,
+    "record_id": "id_134-channel_46-136-pos",
+    "channel": "channel_46",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_46 over the six-hour window displays a consistent pattern without any signs of abnormal behavior. The level of the data remains within a narrow range, centered around 0.77, indicating stability in the system's performance. The trend is steady, with no significant upward or downward movement over the observed period, suggesting that the subsystem is maintaining its expected operational state. The noise level appears to be low, with minor fluctuations that are typical for this type of data and do not indicate any underlying issues. There are no pronounced spikes that would suggest transient disturbances or errors in the system, and the absence of any gaps indicates continuous data collection without interruptions. The overall shape and characteristics of the data strongly suggest that the system is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 109,
+    "record_id": "id_134-channel_46-136-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 110,
+    "record_id": "id_175-channel_41-182-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 111,
+    "record_id": "id_175-channel_41-182-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_41 exhibits a consistent pattern over the six-hour window, indicating stable operations. The level of the data fluctuates within a narrow range, maintaining a consistent amplitude and frequency, suggesting a regular cyclic trend without any abrupt changes. The noise level appears to be low, with minor variations that do not deviate significantly from the main trend, indicating good signal integrity. There are no significant spikes or drops that would suggest transient disturbances or errors, and the data does not show any signs of drift, maintaining a steady mean value over time. Additionally, there are no gaps in the data, ensuring continuous monitoring without any missing information. These characteristics collectively point to a well-functioning subsystem with expected behavior. Answer: nominal"
+  },
+  {
+    "index": 112,
+    "record_id": "id_175-channel_41-183-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 113,
+    "record_id": "id_175-channel_41-183-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 114,
+    "record_id": "id_175-channel_42-182-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 shows a consistent oscillatory pattern over the six-hour window, with the levels fluctuating between approximately 0.76 and 0.80. There is a noticeable cyclical trend, suggesting a repeating pattern in the data collection, which is typical for many satellite operations. The noise level appears to be relatively stable, with minor variations that do not significantly deviate from the overall pattern. However, there are several prominent spikes that intermittently break the smooth oscillations, indicating sudden and unexpected changes in the data. These spikes occur at irregular intervals, which further highlights their anomalous nature. There is no evident drift in the data, as the baseline level remains consistent throughout the window. Additionally, there are no gaps in the data, ensuring continuous monitoring without any missing information. The presence of these sharp, irregular spikes amidst an otherwise stable oscillatory pattern suggests an underlying issue in the subsystem's behavior. Answer: anomalous"
+  },
+  {
+    "index": 115,
+    "record_id": "id_175-channel_42-182-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_42 over the six-hour window exhibits a consistent pattern with minor fluctuations around a stable level, indicating a stable trend without any significant drift. The noise level appears to be low, with minor variations that are expected in normal operations. The data does contain occasional spikes, but they are brief and return quickly to the baseline, suggesting transient disturbances that do not indicate any underlying issues. There are no gaps in the data, ensuring continuous monitoring without any loss of information. The overall behavior of the telemetry suggests that the system is functioning as expected without any anomalies. Answer: nominal"
+  },
+  {
+    "index": 116,
+    "record_id": "id_175-channel_42-183-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 117,
+    "record_id": "id_175-channel_42-183-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 118,
+    "record_id": "id_175-channel_43-181-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 119,
+    "record_id": "id_175-channel_43-181-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 120,
+    "record_id": "id_175-channel_43-182-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 121,
+    "record_id": "id_175-channel_43-182-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window shows a consistent pattern with minor fluctuations around a stable level, indicating a stable trend without any significant deviations. The data exhibits normal noise levels, typical of expected operational variability, and there are no excessive spikes or abrupt changes that would suggest transient anomalies. The overall shape of the data remains steady and predictable, with no signs of drift that might indicate a gradual system degradation. Additionally, there are no gaps in the data, ensuring continuous monitoring and suggesting that the data transmission is intact. Given these observations, the telemetry is consistent with expected operational behavior. Answer: nominal"
+  },
+  {
+    "index": 122,
+    "record_id": "id_175-channel_44-180-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 of subsystem_5 exhibits a consistent pattern over the six-hour window. The level of the data remains within a narrow range, indicating stability in the readings without any significant deviations. The trend is steady, with no discernible upward or downward drift, suggesting that the system is maintaining its operational state without any unexpected changes. The noise level appears consistent throughout the window, with minor fluctuations that are typical for this type of data and do not indicate any underlying issues. There are occasional spikes, but they are evenly distributed and do not exceed expected limits, implying they are likely within normal operational variability. There are no gaps in the data, ensuring continuous monitoring without any interruptions. Overall, the telemetry data reflects a stable and expected performance of the subsystem. Answer: nominal"
+  },
+  {
+    "index": 123,
+    "record_id": "id_175-channel_44-180-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 124,
+    "record_id": "id_175-channel_44-181-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 125,
+    "record_id": "id_175-channel_44-181-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 126,
+    "record_id": "id_175-channel_45-178-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 127,
+    "record_id": "id_175-channel_45-178-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 128,
+    "record_id": "id_175-channel_45-179-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 129,
+    "record_id": "id_175-channel_45-179-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 130,
+    "record_id": "id_175-channel_46-172-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_46 over the six-hour window shows a consistent pattern that suggests normal operations. The level of the data fluctuates within a narrow range, centered around 0.76, indicating stability in the readings. There is a noticeable cyclical trend, suggesting a regular oscillation that is likely due to normal operational cycles or environmental influences. The noise level appears consistent throughout the window, without any sudden increases that would suggest transient disturbances. The presence of spikes is minimal and does not deviate significantly from the overall pattern, indicating they are likely within expected operational limits. There is no evidence of drift, as the data returns to its baseline level consistently over time. Additionally, the data does not exhibit any gaps, which would suggest missing data or communication issues. Overall, the combination of these observations supports the conclusion that the telemetry is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 131,
+    "record_id": "id_175-channel_46-172-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 132,
+    "record_id": "id_175-channel_46-173-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 133,
+    "record_id": "id_175-channel_46-173-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 134,
+    "record_id": "id_182-channel_41-198-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 135,
+    "record_id": "id_182-channel_41-198-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 136,
+    "record_id": "id_182-channel_41-199-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 137,
+    "record_id": "id_182-channel_41-199-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_41 over the six-hour window displays a consistent and repeating pattern, indicating a stable and predictable behavior. The level of the data oscillates between 0.810 and 0.820, suggesting a controlled environment without any unexpected deviations. The trend remains steady throughout the window, with no signs of drift, which would indicate a gradual change in the system's state. The noise level is relatively low, allowing the periodic patterns to be clearly visible without any interference. Occasional spikes are present, but they are uniform in height and frequency, suggesting they are part of the normal operational behavior rather than anomalies. There are no gaps in the data, ensuring continuous monitoring without any interruptions. The overall shape and characteristics of the data align with expected operational parameters, confirming the conclusion that the telemetry is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 138,
+    "record_id": "id_182-channel_41-200-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 139,
+    "record_id": "id_182-channel_41-200-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 140,
+    "record_id": "id_182-channel_42-198-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_42 over the six-hour window displays a consistent and stable pattern, indicative of nominal behavior. The level of the data oscillates between 0.78 and 0.80, maintaining a regular and predictable amplitude throughout the entire period. This suggests that the subsystem is operating within expected limits without any sudden deviations. The trend is steady, with no noticeable upward or downward drift, indicating stability in the system's baseline performance. The noise level appears consistent, showing minor fluctuations around the mean value, which is typical for operational data and does not suggest any underlying issues. Occasional spikes are present but are neither extreme nor frequent enough to suggest any malfunction or anomaly, as they quickly return to baseline levels. There are no gaps in the data, ensuring continuous monitoring and confirming that the telemetry is complete and reliable. Given these observations, the telemetry data can be confidently assessed as normal. Answer: nominal"
+  },
+  {
+    "index": 141,
+    "record_id": "id_182-channel_42-198-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 142,
+    "record_id": "id_182-channel_42-199-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 143,
+    "record_id": "id_182-channel_42-199-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 144,
+    "record_id": "id_182-channel_43-197-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 145,
+    "record_id": "id_182-channel_43-197-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_43 shows a consistent pattern over the six-hour window. The level of the signal remains stable, oscillating around a central value without any significant deviation, indicating stability in the subsystem's performance. The trend appears to be cyclical, with regular peaks and troughs that suggest a predictable and repeating pattern, likely due to normal operational cycles or environmental influences. The noise level is relatively low, with minor fluctuations that do not disrupt the overall pattern, suggesting that the system is functioning within expected operational limits. Occasional spikes are present but are not extreme or frequent enough to suggest any underlying issues, and there is no evidence of drift, as the data does not show any long-term increase or decrease. Additionally, the data is continuous with no gaps, indicating uninterrupted data transmission and reception. The combination of these observations supports the conclusion that the telemetry data is behaving as expected. Answer: nominal"
+  },
+  {
+    "index": 146,
+    "record_id": "id_182-channel_43-198-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 147,
+    "record_id": "id_182-channel_43-198-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 148,
+    "record_id": "id_182-channel_43-199-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 149,
+    "record_id": "id_182-channel_43-199-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 150,
+    "record_id": "id_182-channel_44-196-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 151,
+    "record_id": "id_182-channel_44-196-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 152,
+    "record_id": "id_182-channel_44-197-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 153,
+    "record_id": "id_182-channel_44-197-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 154,
+    "record_id": "id_182-channel_44-198-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 155,
+    "record_id": "id_182-channel_44-198-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_44 exhibits a consistent oscillatory pattern throughout the six-hour window, indicating a stable cyclical behavior. The level of the data remains centered around 0.795, with no significant deviations that would suggest instability. The trend is steady, showing no signs of drift upwards or downwards over time. The noise level appears to be uniform, with minor fluctuations around the central trend line, which is typical for operational telemetry data and does not indicate any underlying issues. The presence of occasional spikes is noticeable but remains within expected limits, suggesting transient events that are likely part of normal operations rather than anomalies. There are no gaps in the data, indicating continuous and reliable telemetry transmission. Overall, the combination of these observations supports the conclusion that the telemetry data is behaving as expected. Answer: nominal"
+  },
+  {
+    "index": 156,
+    "record_id": "id_182-channel_45-194-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_45 shows a consistent pattern over the six-hour window. The level of the signal remains within a narrow range, indicating stability in the system's performance. The trend does not show any significant upward or downward movement, suggesting that there are no underlying drifts or shifts in the data. The noise level appears to be uniform throughout the window, with no excessive or unexpected fluctuations that would indicate instability or interference. The presence of spikes is consistent and appears to be part of the normal operational behavior rather than random or unexpected deviations. There are no gaps in the data, ensuring that the telemetry is continuous and reliable. Overall, the telemetry data reflects a well-functioning system with expected behavior. Answer: nominal"
+  },
+  {
+    "index": 157,
+    "record_id": "id_182-channel_45-194-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 158,
+    "record_id": "id_182-channel_45-195-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 159,
+    "record_id": "id_182-channel_45-195-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 160,
+    "record_id": "id_182-channel_45-196-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 161,
+    "record_id": "id_182-channel_45-196-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 162,
+    "record_id": "id_182-channel_46-190-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 163,
+    "record_id": "id_182-channel_46-190-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 164,
+    "record_id": "id_182-channel_46-191-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 165,
+    "record_id": "id_182-channel_46-191-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_46 over the six-hour window shows a consistent pattern that suggests normal operations. The level of the data oscillates between 0.765 and 0.775, indicating a stable range without any significant deviations. The trend appears to be cyclical, with regular peaks and troughs that suggest a predictable and expected behavior of the subsystem. The noise level is consistent throughout the window, with small fluctuations that are typical for this type of data and do not indicate any underlying issues. Occasional spikes are present, but they are neither frequent nor extreme, falling within the expected range of variability for this type of telemetry. There is no evidence of drift, as the data does not show any long-term increase or decrease in values, maintaining a steady mean level over time. Additionally, there are no gaps in the data, which confirms continuous data transmission without interruptions. Given these observations, the telemetry data aligns with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 166,
+    "record_id": "id_26-channel_41-40-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 shows a consistent pattern over the six-hour window, with values oscillating between 0.805 and 0.815. This indicates a stable and expected level of operation for this subsystem. The trend remains steady throughout the duration, showing no signs of drift or unexpected shifts in the baseline. The noise level appears to be uniform, with minor fluctuations around the central trend line, which is typical for operational data and suggests normal variability. There are occasional spikes, but they are not extreme or frequent enough to suggest any system instability or malfunction. Importantly, there are no gaps in the data, indicating uninterrupted data transmission and reception. Overall, the telemetry data aligns with expected operational parameters and does not indicate any anomalies. Answer: nominal"
+  },
+  {
+    "index": 167,
+    "record_id": "id_26-channel_41-40-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 168,
+    "record_id": "id_26-channel_42-43-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 169,
+    "record_id": "id_26-channel_42-43-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 170,
+    "record_id": "id_26-channel_43-41-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 171,
+    "record_id": "id_26-channel_43-41-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 172,
+    "record_id": "id_26-channel_44-41-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 exhibits a consistent and repeating pattern throughout the six-hour window, suggesting a stable cyclical behavior typical of many operational systems. The level of the data fluctuates between approximately 0.785 and 0.810, indicating a stable range without any unexpected deviations. The trend remains steady over time, with no noticeable upward or downward drift, which would have suggested a potential issue. The noise level appears to be consistent, with minor variations that are expected in normal operations and do not indicate any underlying problems. The presence of spikes is observed but is uniform and regular, suggesting they are part of the expected operational behavior rather than anomalies. There are no gaps in the data, indicating a continuous and reliable data stream without any transmission issues. Overall, the combination of these observations supports the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 173,
+    "record_id": "id_26-channel_44-41-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 174,
+    "record_id": "id_26-channel_45-40-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_45 over the six-hour window shows a consistent pattern with a stable level, oscillating between 0.80 and 0.82. The trend appears to be cyclical, with regular peaks and troughs occurring at predictable intervals, suggesting a periodic behavior typical for many satellite subsystems. The noise level is low, indicating minimal random fluctuations that are expected in normal operations. There are occasional spikes, but they do not deviate significantly from the overall pattern and appear to be part of the normal operational noise rather than anomalies. The data does not exhibit any signs of drift, maintaining a consistent mean level throughout the window. There are no gaps in the data, indicating continuous and reliable data transmission. Overall, the telemetry data is well-behaved and consistent with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 175,
+    "record_id": "id_26-channel_45-40-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_45 exhibits a consistent oscillating pattern throughout the six-hour window, indicating a stable cyclical behavior typical for this subsystem. The level of the data remains centered around a mean value, showing no signs of abrupt or sustained shifts that would suggest a drift or a trend. The noise level appears to be uniform and consistent, with minor fluctuations that are expected in normal operations and do not indicate any underlying issues. Occasional spikes are present but are neither frequent nor significant enough to suggest a malfunction or anomaly, as they quickly return to the baseline oscillation. There are no gaps in the data, ensuring continuous monitoring without interruptions. Overall, the combination of these characteristics\u2014stable level, consistent trend, expected noise, and absence of drift or data gaps\u2014supports the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 176,
+    "record_id": "id_26-channel_46-40-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_46 displays a consistent oscillatory pattern throughout the six-hour window, suggesting a stable cyclical behavior. The amplitude of the oscillations remains relatively constant, indicating no significant drift or trend that would suggest a deviation from expected behavior. The noise level appears to be uniform, with minor fluctuations around the central trend line, which is typical for operational data and does not indicate any underlying issues. Occasional spikes are present but do not deviate significantly from the expected range, suggesting transient events that are likely part of normal operations. There are no gaps in the data, indicating continuous monitoring without any loss of signal. Overall, the telemetry data exhibits stability and adherence to expected operational patterns. Answer: nominal"
+  },
+  {
+    "index": 177,
+    "record_id": "id_26-channel_46-40-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 178,
+    "record_id": "id_29-channel_41-43-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 shows a consistent oscillatory pattern over the six-hour window, with no significant deviations in the overall level. The trend remains steady throughout the window, indicating stable system behavior. The noise level appears to be low, with minor fluctuations around the central oscillation, suggesting minimal interference or random variation. Occasional spikes are present, but they are consistent in magnitude and frequency, likely representing normal operational transients rather than anomalies. There is no evidence of drift, as the baseline of the oscillation does not shift over time. Additionally, the data is continuous without any gaps, implying reliable data transmission and reception. Given these observations, the telemetry data is consistent with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 179,
+    "record_id": "id_29-channel_41-43-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data from channel_41 over the six-hour window shows a consistent and repeating pattern, indicative of a stable system behavior. The level of the data fluctuates within a narrow range, maintaining a steady oscillation that suggests regular cyclic activity. The trend is stable over time, with no noticeable upward or downward drift, indicating that there is no gradual degradation or improvement in the system's performance. The noise level appears to be low, with minor variations that are expected in normal operations and do not suggest any underlying issues. Occasional spikes are present but are consistent in magnitude and frequency, suggesting they are part of the normal operational behavior rather than anomalies. There are no gaps in the data, ensuring continuous monitoring without any interruptions. Overall, the telemetry data reflects a system that is functioning as expected without any signs of malfunctions or deviations. Answer: nominal"
+  },
+  {
+    "index": 180,
+    "record_id": "id_29-channel_42-46-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 181,
+    "record_id": "id_29-channel_42-46-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 182,
+    "record_id": "id_29-channel_43-44-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 183,
+    "record_id": "id_29-channel_43-44-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 184,
+    "record_id": "id_29-channel_44-44-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_44 shows a consistent and repeating pattern throughout the six-hour window, indicating a stable and predictable behavior of the subsystem. The level of the data oscillates between 0.785 and 0.805, suggesting a controlled and expected range of operation. The trend appears steady, with no signs of drift, which would indicate a gradual deviation from the expected state. The noise level is minimal, characterized by small fluctuations that do not disrupt the overall pattern, suggesting a system that is well-regulated and stable. There are occasional spikes, but they are neither frequent nor large enough to suggest any malfunction or anomaly, as they quickly return to the baseline. Importantly, there are no gaps in the data, which confirms continuous data transmission and reception without interruption. Given these observations, the telemetry data is consistent with normal operational parameters. Answer: nominal"
+  },
+  {
+    "index": 185,
+    "record_id": "id_29-channel_44-44-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_44 over the six-hour window shows a consistent pattern without any significant deviations that would indicate an anomaly. The level of the data remains within a narrow range, centered around 0.80, suggesting stability in the system's performance. The trend appears to be cyclical, with regular oscillations that are likely due to normal operational fluctuations rather than any underlying issue. The noise level is low, indicating minimal random variations that would typically be expected in operational data. There are no abrupt spikes or drops that might suggest transient faults or unexpected events, and the data continuity is intact with no gaps, ensuring that the telemetry stream is complete and reliable. The absence of any concerning trends, unexpected noise, or irregularities leads to the conclusion that the system is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 186,
+    "record_id": "id_29-channel_45-43-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_45 over the six-hour window shows a consistent and regular oscillatory pattern, indicative of a stable and predictable system behavior. The amplitude of the oscillations remains constant throughout the period, suggesting no underlying drift or gradual change in the system state. The frequency of the oscillations appears steady, with no signs of erratic or unexpected fluctuations. The noise level is relatively low, maintaining a consistent level of variability around the central trend, which further supports the stability of the system. There are occasional spikes, but they are small and infrequent, likely representing expected transient events that do not affect the overall system performance. Importantly, there are no gaps in the data, indicating continuous and reliable telemetry transmission. Overall, the telemetry data exhibits expected behavior without any anomalies. Answer: nominal"
+  },
+  {
+    "index": 187,
+    "record_id": "id_29-channel_45-43-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 188,
+    "record_id": "id_29-channel_46-43-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 189,
+    "record_id": "id_29-channel_46-43-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 190,
+    "record_id": "id_33-channel_41-46-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_41 displays a consistent oscillating pattern throughout the six-hour window, indicating a stable and repeating cycle. The level of the data remains within a narrow range between 0.800 and 0.815, suggesting no significant drift or deviation from expected values. The trend is steady, with no upward or downward movement over time, further supporting the absence of any gradual changes. The noise level is low, characterized by small, regular fluctuations that are likely inherent to the system's operation rather than indicative of any underlying issues. Occasional spikes are present but appear to be isolated and do not persist, indicating transient disturbances that are not indicative of broader problems. There are no gaps in the data, ensuring continuous monitoring without any interruptions. Overall, the combination of these characteristics, including the consistent level, stable trend, low noise, and absence of significant anomalies, supports the conclusion that the telemetry data is behaving as expected. Answer: nominal"
+  },
+  {
+    "index": 191,
+    "record_id": "id_33-channel_41-46-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 192,
+    "record_id": "id_33-channel_42-49-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 193,
+    "record_id": "id_33-channel_42-49-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 194,
+    "record_id": "id_33-channel_43-47-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_43 over the six-hour window shows a consistent pattern without any significant anomalies. The level of the data remains stable, oscillating between 0.765 and 0.780, indicating a steady state with no sudden changes or drifts. The trend is cyclical, suggesting regular and expected fluctuations, likely due to normal operational cycles or environmental interactions. The noise level is minimal and consistent, showing no erratic or unexpected variations. There are occasional spikes, but they are evenly distributed and do not deviate significantly from the overall pattern, suggesting they are within acceptable limits. No gaps are present in the data, indicating continuous and reliable telemetry transmission. The absence of any irregularities or unexpected behavior supports the conclusion that the system is operating as expected. Answer: nominal"
+  },
+  {
+    "index": 195,
+    "record_id": "id_33-channel_43-47-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 196,
+    "record_id": "id_33-channel_44-47-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_44 over the six-hour window displays a consistent pattern that suggests normal operations. The level of the data fluctuates within a narrow range, indicating stability in the subsystem's performance. The trend remains steady throughout the window, with no signs of drift that might suggest a gradual deviation from expected behavior. The noise level appears consistent with normal operational variability, showing minor fluctuations that do not indicate any underlying issues. There are occasional spikes, but they are neither frequent nor significant enough to suggest any malfunction or anomaly. The data is continuous, with no gaps that might indicate transmission errors or data loss. Overall, the telemetry characteristics align with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 197,
+    "record_id": "id_33-channel_44-47-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 198,
+    "record_id": "id_33-channel_45-46-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 199,
+    "record_id": "id_33-channel_45-46-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 200,
+    "record_id": "id_33-channel_46-46-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 201,
+    "record_id": "id_33-channel_46-46-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 202,
+    "record_id": "id_41-channel_41-53-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 203,
+    "record_id": "id_41-channel_41-53-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_41 over the six-hour window shows a consistent pattern with minor fluctuations around a stable level, indicating normal operational variability. The trend remains steady, with no significant upward or downward drift, suggesting stability in the system's performance over time. The noise level appears to be within expected limits, with minor spikes that do not deviate significantly from the overall pattern, indicating transient disturbances that are likely within normal operational parameters. There are no gaps in the data, ensuring continuous monitoring without any interruptions. The combination of these observations supports the conclusion that the telemetry data is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 204,
+    "record_id": "id_41-channel_42-56-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data from channel_42 over the six-hour window shows a consistent oscillatory pattern, suggesting a stable cyclical behavior typical of many operational subsystems. The amplitude of the oscillations remains uniform throughout the window, indicating no significant deviations or trends that might suggest a malfunction or unexpected behavior. The noise level appears to be low and consistent, with minor fluctuations that do not disrupt the overall pattern or suggest any underlying issues. Occasional spikes are present but are neither extreme nor frequent enough to indicate an anomaly, as they quickly return to baseline levels. There is no evidence of drift, as the data does not show any long-term increase or decrease in value, maintaining a steady mean level over time. Additionally, there are no gaps in the data, suggesting continuous data transmission without interruptions. Given these observations, the telemetry data is consistent with expected operational parameters. Answer: nominal"
+  },
+  {
+    "index": 205,
+    "record_id": "id_41-channel_42-56-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 206,
+    "record_id": "id_41-channel_45-53-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 207,
+    "record_id": "id_41-channel_45-53-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 208,
+    "record_id": "id_41-channel_46-52-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 209,
+    "record_id": "id_41-channel_46-52-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 210,
+    "record_id": "id_42-channel_41-54-pos",
+    "channel": "channel_41",
+    "category": "Anomaly",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 211,
+    "record_id": "id_42-channel_41-54-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_41 over the six-hour window shows a consistent pattern with minor fluctuations around a baseline level of approximately 0.810. The trend remains stable throughout the period, with no noticeable upward or downward drift, suggesting that the system is maintaining its operational state without any significant deviation. The noise level appears to be low, with the data points closely following the baseline, indicating minimal random variation. Occasional spikes are present but are neither extreme nor frequent enough to suggest any malfunction or anomaly. There are no gaps in the data, which implies continuous data transmission and reception without interruptions. The overall behavior of the telemetry suggests that the subsystem is functioning as expected. Answer: nominal"
+  },
+  {
+    "index": 212,
+    "record_id": "id_47-channel_41-56-pos",
+    "channel": "channel_41",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 213,
+    "record_id": "id_47-channel_41-56-neg",
+    "channel": "channel_41",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 214,
+    "record_id": "id_47-channel_42-58-pos",
+    "channel": "channel_42",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 215,
+    "record_id": "id_47-channel_42-58-neg",
+    "channel": "channel_42",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "anomalous",
+    "correct": false,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 216,
+    "record_id": "id_47-channel_43-55-pos",
+    "channel": "channel_43",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 217,
+    "record_id": "id_47-channel_43-55-neg",
+    "channel": "channel_43",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "The telemetry data for channel_43 over the six-hour window shows a consistent oscillating pattern, indicating a stable cyclical behavior typical for many satellite subsystems. The level of the data fluctuates between approximately 0.760 and 0.780, suggesting a controlled operational range without any significant deviations. The trend appears to be stable, with no discernible upward or downward drift over the observed period. Noise is present but remains within expected limits, showing minor variations that are typical for this type of data and do not indicate any underlying issues. There are occasional spikes, but they are infrequent and do not persist, indicating transient events that are likely within normal operational parameters. Importantly, there are no gaps in the data, ensuring continuous monitoring and suggesting that the data acquisition system is functioning correctly. Given the consistent behavior, absence of drift, manageable noise, and lack of gaps, the telemetry data can be confidently assessed as normal. Answer: nominal"
+  },
+  {
+    "index": 218,
+    "record_id": "id_47-channel_44-55-pos",
+    "channel": "channel_44",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 219,
+    "record_id": "id_47-channel_44-55-neg",
+    "channel": "channel_44",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 220,
+    "record_id": "id_47-channel_45-55-pos",
+    "channel": "channel_45",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "anomalous",
+    "correct": true,
+    "generated_text": "Answer: anomalous"
+  },
+  {
+    "index": 221,
+    "record_id": "id_47-channel_45-55-neg",
+    "channel": "channel_45",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  },
+  {
+    "index": 222,
+    "record_id": "id_47-channel_46-54-pos",
+    "channel": "channel_46",
+    "category": "Rare Event",
+    "true_label": "anomalous",
+    "predicted_label": "nominal",
+    "correct": false,
+    "generated_text": "The telemetry data for channel_46 over the six-hour window shows a consistent pattern with minor fluctuations around a stable level, indicating nominal behavior. The data exhibits a regular oscillatory trend without any significant drift, suggesting that the system is maintaining its expected operational state. The noise level appears to be within acceptable limits, with minor variations that do not suggest any underlying issues. There are occasional spikes, but they are neither frequent nor large enough to suggest any malfunction or external interference. Importantly, there are no gaps in the data, ensuring continuous monitoring without any interruptions. Overall, the telemetry data aligns with expected operational parameters, supporting the conclusion that the system is functioning as intended. Answer: nominal"
+  },
+  {
+    "index": 223,
+    "record_id": "id_47-channel_46-54-neg",
+    "channel": "channel_46",
+    "category": null,
+    "true_label": "nominal",
+    "predicted_label": "nominal",
+    "correct": true,
+    "generated_text": "Answer: nominal"
+  }
+]
