@@ -3,8 +3,14 @@
   "checkpoint_id": "01M2CZRF7Q9M6NH7ZP97Z9REG7",
   "strategy": "manual-commit",
   "branch": "feature/periodicity-telecommand-signals",
-  "checkpoints_count": 3,
-  "files_touched": null,
+  "checkpoints_count": 16,
+  "files_touched": [
+    "OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/esa_mission1_cot_loader.py",
+    "PITCH_REQUIREMENTS_CHECKLIST.md",
+    "RETRAIN_ON_FIXED_SPLIT.md",
+    "scripts/classical_baseline.py",
+    "scripts/zeroshot_baseline.py"
+  ],
   "sessions": [
     {
       "metadata": "/0/metadata.json",
@@ -12,14 +18,21 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 866,
-    "cache_creation_tokens": 2209427,
-    "cache_read_tokens": 141593955,
-    "output_tokens": 337108,
-    "api_call_count": 436,
+    "input_tokens": 1544,
+    "cache_creation_tokens": 3321033,
+    "cache_read_tokens": 231914152,
+    "output_tokens": 584145,
+    "api_call_count": 776,
     "subagent_tokens": {
       "input_tokens": 0,
       "cache_creation_tokens": 0,
