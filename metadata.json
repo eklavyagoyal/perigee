@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2CMKCC9Z3RAXK0SCWPD9DJX",
   "strategy": "manual-commit",
   "branch": "feature/periodicity-telecommand-signals",
-  "checkpoints_count": 17,
+  "checkpoints_count": 24,
   "files_touched": null,
   "sessions": [
     {
@@ -12,14 +12,21 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 730,
-    "cache_creation_tokens": 1549873,
-    "cache_read_tokens": 102756494,
-    "output_tokens": 281877,
-    "api_call_count": 368,
+    "input_tokens": 1232,
+    "cache_creation_tokens": 2227869,
+    "cache_read_tokens": 155740880,
+    "output_tokens": 454660,
+    "api_call_count": 620,
     "subagent_tokens": {
       "input_tokens": 0,
       "cache_creation_tokens": 0,
