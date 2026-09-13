@@ -1,18 +1,21 @@
+import Link from 'next/link';
+import { Arrow } from './brand';
 import { pitchBenchmark } from '@/lib/pitch-content';
 
 export function Evidence() {
-  return <section className="evidence-section pitch-evidence" id="evidence" tabIndex={-1} aria-labelledby="evidence-title">
-    <div className="section-top"><span className="eyebrow"><span className="section-number">01</span> THE RESULTS</span><span className="mono section-label">REPORTED EXPERIMENT · NOT FLIGHT VALIDATION</span></div>
-    <div className="pitch-section-heading"><h2 id="evidence-title">A useful model starts<br /><span>with an honest comparison.</span></h2><p>The pitch-checklist experiment pairs ESA telemetry with command context. Here is what its classification benchmark actually shows.</p></div>
-    <div className="pitch-metrics">
-      <article><span className="mono">THE TEST SET</span><strong>{pitchBenchmark.testWindows}</strong><h3>Telemetry windows.</h3><p>{pitchBenchmark.positiveWindows} positive examples in one curated test split.</p></article>
-      <article><span className="mono">FINE-TUNED · v13</span><strong>{pitchBenchmark.results[1].accuracy}</strong><h3>Classification accuracy.</h3><p>OpenTSLM with a Llama-3.2-3B backbone and LoRA fine-tuning.</p></article>
-      <article><span className="mono">CLASSICAL BASELINE</span><strong>{pitchBenchmark.results[3].accuracy}</strong><h3>The baseline is still ahead.</h3><p>Logistic regression on the five engineered features supplied in the prompt.</p></article>
+  return <section className="landing-evidence" id="evidence" tabIndex={-1} aria-labelledby="evidence-title">
+    <div className="landing-evidence-heading"><div><span className="eyebrow">THE RESEARCH</span><h2 id="evidence-title">Find the signal.<br /><span>Understand the context.</span></h2></div><p>ESA telemetry. Command history. OpenTSLM.<br />For the engineers behind the mission.</p></div>
+    <div className="landing-metrics">
+      <article><strong>{pitchBenchmark.testWindows}</strong><span>Test windows</span></article>
+      <article><strong>{pitchBenchmark.results[1].accuracy}</strong><span>OpenTSLM · accuracy</span></article>
+      <article><strong>{pitchBenchmark.results[0].accuracy}</strong><span>Restricted baseline · accuracy</span></article>
     </div>
-    <div className="pitch-comparison">
-      <table><caption>Same 246-row test split · reported accuracy</caption><thead><tr><th scope="col">Approach</th><th scope="col">Accuracy</th></tr></thead><tbody>{pitchBenchmark.results.map(result => <tr key={result.name} className={result.name.endsWith('v13') ? 'highlight-result' : undefined}><th scope="row">{result.name}<small>{result.detail}</small></th><td>{result.accuracy}</td></tr>)}</tbody></table>
-      <aside className="pitch-learning"><span className="eyebrow">THE KEY LEARNING</span><h3>Classification is only<br />part of the question.</h3><p>The fine-tuned model does not beat the classical baseline here. Its generated rationale is a candidate aid for human review, not a validated explanation.</p><p>The next research question: can the time-series encoder add information beyond the engineered text features?</p></aside>
-    </div>
-    <div className="pitch-caveats"><h3>Read these numbers with their limits.</h3><p>The 80/10/10 anomaly-pair split is shuffled, not strictly time-separated. These window-level results do not establish performance on independent events, unseen missions or future operations.</p><p>Zero-shot accuracy includes all 246 rows; 111 answers (45%) were unparseable. Rationale reliability and live inference are not demonstrated by this page.</p><span className="mono">SOURCE · {pitchBenchmark.source} · BASELINE RESULTS</span></div>
+    <p className="landing-result-note">Same accuracy. Similar F1. An event-overlapping test split — not flight validation.</p>
+    <div className="landing-next"><Link className="button button-light" href="/mission-control">Open mission control <Arrow /></Link><span>Telemetry. Context. Human judgement.</span></div>
+    <details className="landing-method"><summary>Experiment details &amp; limitations <span aria-hidden="true">+</span></summary>
+      <div className="landing-method-body"><table><caption>Same 246-row test split · reported results</caption><thead><tr><th scope="col">Approach</th><th scope="col">Accuracy / F1</th></tr></thead><tbody>{pitchBenchmark.results.map(result => <tr key={result.name}><th scope="row">{result.name}<small>{result.detail}<br />Precision {result.precision} · recall {result.recall}</small></th><td>{result.accuracy}<br /><small>F1 {result.f1}</small></td></tr>)}</tbody></table>
+        <div><p>The restricted logistic baseline uses window mean, standard deviation, command presence and minutes since command. OpenTSLM (Llama-3.2-3B, LoRA) additionally receives the time series and channel identifier. The F1 difference of 0.002 does not establish a meaningful advantage.</p><p>The 80/10/10 anomaly-pair split is shuffled, not strictly time-separated. Of 246 test windows, 123 are positive: Anomaly and Rare Event are grouped together. The split audit found 68 of 69 test event IDs also in training. An independent-event or chronological holdout is still needed.</p><p>Mission Control replays an earlier saved run (F1 0.840), not this newly reported run. A generated rationale is a candidate aid for review, not a validated explanation.</p><p>Source: {pitchBenchmark.source}, reproduced in the web documentation. Reported checklist results, not independently reproduced here.</p></div>
+      </div>
+    </details>
   </section>;
 }

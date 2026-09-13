@@ -2,6 +2,8 @@
 
 Next.js App Router + React + TypeScript, with accessible website-only text over the cinematic satellite scene and a separate **empty demo layout**. The exported MP4 and PowerPoint stay text-free. Landing copy and reported benchmark numbers are scoped to [the pitch requirements checklist snapshot](Docs/PITCH_REQUIREMENTS_CHECKLIST.md), not mixed with other experiments. The snapshot keeps a web-only checkout self-contained; the original lives in the local research workspace's root `Docs/`. Dataset preparation and model training remain independent.
 
+The landing page now uses a minimal, unbranded cinematic opening: “Years of work. One mission.” through “An anomaly shouldn’t end a mission.” Only the Mission Control link remains in the header. Scene controls and benchmark methodology are expandable; three figures and a visible baseline/split caveat remain below the scene. The approach grid, submission checklist and placeholder showcase illustration are no longer mounted. `src/app/landing.css` is scoped to `.landing`, leaving Mission Control styling independent. This presentation-only revision does not change the workspace, pipeline routes, movie or PowerPoint.
+
 ## Run
 
 Use Node.js 22.12+ and npm (tested locally on Node 26).
@@ -107,7 +109,7 @@ This is now a Node.js application, **not** a `dist/` directory to upload to a st
 
 ## Scientific and visual boundaries
 
-The trajectory, timing and heating are illustrative, not orbital simulation. There are no simulated model outputs on the current pages. The landing page reports the checklist's 246-window experiment: v13 accuracy 86.99%, v14 82.52%, zero-shot 23.6% overall, and logistic regression 89.84%. The stronger classical baseline, shuffled non-temporal split and 45% zero-shot parse failures are visible. These are reported results, not reproduced here, not independent-event validation, and not proof that generated rationales are reliable. No forecasting, causal diagnosis, prevented-loss or flight-safety guarantee is claimed.
+The trajectory, timing and heating are illustrative, not orbital simulation. There are no simulated model outputs on the current pages. The landing page reports the updated checklist's 246-window comparison: restricted logistic regression and sub-category-balanced OpenTSLM both achieve 86.99% accuracy, with F1 0.850 and 0.852 respectively. The baseline uses the current prompt's four numerical features; OpenTSLM additionally receives the time series and channel identifier. This is effectively a tie, not demonstrated superiority. The shuffled split has event overlap (68/69 test event IDs also in training). These are reported results, not reproduced here, not independent-event validation, and not proof that generated rationales are reliable. Mission Control retains the earlier saved predictions (trained-task F1 0.840), clearly separated from the new aggregate results. No forecasting, causal diagnosis, prevented-loss or flight-safety guarantee is claimed.
 
 Research documentation remains authoritative about dataset channels and model readiness; additional local research files outside `web/` are not part of this web-only publication. Anonymous telemetry IDs are not assigned physical subsystem meanings based on historical failure statistics. Historical sources and their caveats are preserved in [CLAIMS.md](CLAIMS.md); visual provenance is in [ASSETS.md](ASSETS.md).
 

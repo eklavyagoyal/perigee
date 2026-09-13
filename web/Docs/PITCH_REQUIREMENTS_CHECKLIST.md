@@ -1,10 +1,6 @@
 # Web publication snapshot
 
-Unmodified checklist content copied from the local research workspace's
-`Docs/PITCH_REQUIREMENTS_CHECKLIST.md` on 2026-09-13. This copy keeps the web-only
-checkout and its source-parity tests self-contained. It describes the v13/v14
-experiment, not every later research run. Refresh it explicitly when the pitch's
-reported experiment changes.
+User-updated research checklist, copied on 2026-09-13. Reported results are not independently reproduced here. The landing page uses the restricted-baseline comparison; Mission Control preserves its earlier saved run. Historical claims elsewhere in this checklist are not all reconciled with later runs.
 
 ---
 
@@ -64,14 +60,58 @@ Two baselines, run against the identical 246-row test split used for every fine-
 | **Zero-shot Llama-3.2-3B** (`scripts/zeroshot_baseline.py`) — no fine-tuning, no time-series encoder, text-only prompt | 23.6% overall (42.96% of the 55% it could even answer) | 0.374 | 0.896 | 0.528 | 111/246 (45%) never produced a parseable `Answer:` at all — degenerated into echoing the instructions back. Of the rows it did answer, worse than a coin flip, heavily biased toward guessing "anomalous." |
 | v13 (fine-tuned, mean/std + periodicity + telecommand) | 86.99% | 1.000 | 0.740 | 0.850 | For reference — see `PITCH_REQUIREMENTS_CHECKLIST.md`'s sibling artifact for the full v10–v14 ablation. |
 | v14 (fine-tuned, mean/std + telecommand, no periodicity) | 82.52% | 0.817 | 0.837 | 0.827 | |
-| **Classical baseline** (`scripts/classical_baseline.py`) — logistic regression on the same 5 engineered numbers stated in the prompt text (`level_zscore`, `scale_ratio`, periodicity drop, telecommand presence/timing), no LLM, no GPU at inference | **89.84%** | **0.990** | 0.805 | **0.888** | Strongest predictors: `scale_ratio` (+5.43), `has_telecommand` (+3.68), periodicity drop (+1.63), `level_zscore` (−1.36). |
+| **Classical baseline** (`scripts/classical_baseline.py`) — logistic regression on 5 engineered numbers (`level_zscore`, `scale_ratio`, periodicity drop, telecommand presence/timing), no LLM, no GPU at inference | **89.84%** | **0.990** | 0.805 | **0.888** | Strongest predictors: `scale_ratio` (+5.43), `has_telecommand` (+3.68), periodicity drop (+1.63), `level_zscore` (−1.36). **Caveat below — not apples-to-apples with the prompt actually in use now.** |
+
+### Apples-to-apples: the baseline vs. the *current* prompt
+
+The prompt was later refined (`ESAMission1CoTQADataset.py`) to remove `level_zscore`, `scale_ratio`,
+and the periodicity sentence as answer-leaking shortcuts — a naive threshold classifier scored
+62–68% on those numbers alone. So the 5-feature classical baseline above is being compared against
+an LLM that no longer sees 3 of those 5 numbers; that's not a fair comparison. Re-running the
+classical baseline restricted to only what the current prompt actually states (`scripts/classical_baseline_restricted.py`:
+window mean, window std, telecommand presence/timing) against the current fine-tuned model (SP,
+sub-category-balanced training) gives:
+
+| Approach (same 4 inputs: mean, std, telecommand presence/timing) | Accuracy | Precision | Recall | F1 |
+|---|---|---|---|---|
+| Classical logistic regression (restricted) | 86.99% | 1.000 | 0.740 | 0.850 |
+| **Fine-tuned LLM (current prompt, sub-category-balanced)** | **86.99%** | 0.989 | **0.748** | **0.852** |
+
+Under matched inputs, the two are essentially tied — the LLM edges ahead very slightly on recall
+and F1 (at the cost of one false positive the classical model doesn't make). `window_std` alone
+has a standardized coefficient of **+10.4** in the restricted model, dwarfing every other feature
+(`has_telecommand` +2.34, `window_mean` +0.29, `minutes_since_command` −0.23) — almost this entire
+task reduces to "does this window have unusually high variance."
+
+### All fine-tuned runs on the current (refined) prompt
+
+Every run below uses the same 246-window test set and the same refined prompt (mean/std +
+telecommand only — no `level_zscore`, `scale_ratio`, or periodicity text):
+
+| Run | Model | Accuracy | Precision | Recall | F1 | Notes |
+|---|---|---|---|---|---|---|
+| SP + gradient checkpointing, batch 16 | Llama-3.2-3B, LoRA | 86.18% | 1.000 | 0.724 | 0.840 | First run on the refined prompt; confirms `--gradient_checkpointing` now actually works for OpenTSLMSP (was a silent no-op before). |
+| Flamingo, frozen backbone | Llama-3.1-8B | 86.59% | 1.000 | 0.732 | 0.845 | Ran on the *original* (pre-refinement) prompt, kept here for the model-size comparison — see the caveat above about not mixing prompt versions. |
+| **SP + sub-category-balanced sampling** | Llama-3.2-3B, LoRA | **86.99%** | 0.989 | **0.748** | **0.852** | Best result on the refined prompt. Training batches balanced 3-way (nominal / Rare Event / True Anomaly) instead of just nominal/anomalous — True-Anomaly recall specifically improved from 67.6%→73.0%. |
+| SP, refined prompt (local, `pre_levelscale`) | Llama-3.2-3B, LoRA | 87.80% | 1.000 | 0.756 | 0.861 | Best result overall so far, from a separate local run — not yet reconciled with the sub-category-balanced run above (different sampling, same prompt). |
+
+Across every one of these, precision sits at 0.99–1.00 and recall sits at 0.72–0.76 — the model
+essentially never raises a false alarm, but consistently misses roughly a quarter of real
+anomalies. That pattern held before and after the sub-category rebalancing, before and after
+gradient checkpointing, and across both model sizes — it looks like a property of this training
+setup (or of checkpoint selection by validation loss, which rewards fluent wording over
+recall) rather than something any single lever fixes on its own.
 
 **Honest takeaway:** fine-tuning is clearly necessary — the zero-shot base model can't even
-reliably follow the output format, let alone reason about anomalies. But the fine-tuned LLM still
-doesn't beat a logistic regression on the same five numbers it's told in text. The LLM's real
-value-add here is the natural-language rationale a classical model can't produce at all, not raw
-classification accuracy — the next milestone is getting the time-series encoder to add signal
-beyond what the text features already give away.
+reliably follow the output format, let alone reason about anomalies. Against a *fair*, same-inputs
+baseline, the fine-tuned LLM+encoder ties a simple logistic regression rather than losing to it —
+but tying is itself the finding: the trainable time-series encoder, reading the full raw 6-hour
+series, isn't yet demonstrating it extracts anomaly-relevant signal beyond what `window_std` and
+telecommand timing already give away as two plain numbers. The LLM's clear, undisputed value-add
+remains the natural-language rationale a classical model can't produce at all — the next milestone
+is closing that gap: getting the encoder to actually pull ahead on classification, not just match
+it, which would be real evidence it's reading shape (trend, spikes, drift) rather than
+re-deriving the same summary statistics.
 
 ## Priority before presenting
 
