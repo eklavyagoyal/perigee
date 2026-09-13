@@ -593,3 +593,76 @@ if val loass will be higher stop training and evaluate the result. also, tell me
 ---
 
 I mean the one we used for training flamingo not local version
+
+---
+
+<task-notification>
+<task-id>bow42yiwx</task-id>
+<summary>Monitor event: "Flamingo eval_only run: finish + auto-score against ground truth"</summary>
+<event>=== eval process exited, final log tail ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bow42yiwx</task-id>
+<summary>Monitor event: "Flamingo eval_only run: finish + auto-score against ground truth"</summary>
+<event>Epoch	Train_Loss	Val_Loss
+------------------------------
+1	1.112122	1.135969
+2	0.860580	0.489534
+3	0.807394	0.532276
+4	0.756821	0.472968
+5	0.673251	0.477297
+⏭️  Skipping training loop (eval_only mode)
+📂 Using existing checkpoint for evaluation
+📂 Loaded best checkpoint from epoch 4 for evaluation.
+🏁 Training completed for stage6_esa_cot
+Total epochs run: 4
+Best validation loss: 0.4730
+Epochs without improvement: 0
+[Eval] rank=0, world_size=1
+Saving per-rank test predictions to: results/Llama_3_1_8B/OpenTSLMFlamingo/stage6_esa_cot/results/test_predictions_rank_0.jsonl
+Evaluating stage6_esa_cot:   0%|          | 0/246 [00:00&lt;?, ?it/s]Evaluating stage6_esa_cot:   0%|          | 0/246 [00:00&lt;?, ?it/s]
+Traceback (most recent call last):
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1784, in &lt;module&gt;
+main()
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1769, in main
+results = trainer.run_curriculum(args.stages, args.batch_size, args.eval_only)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1473, in run_curriculum
+stage_results = self.stage6_esa_cot(
+^^^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1392, in stage6_esa_cot
+return self._train_stage(
+^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1247, in _train_stage
+metrics = self._evaluate_stage(
+^^^^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 768, in _evaluate_stage
+predictions = self._get_model().generate(
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/src/opentslm/model/llm/OpenTSLMFlamingo.py", line 258, in generate
+gen_ids = self.llm.generate(
+^^^^^^^^^^^^^^^^^^
+TypeError: Flamingo.generate() got an unexpected keyword argument 'eos_token_id'
+=== scoring ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bow42yiwx</task-id>
+<summary>Monitor event: "Flamingo eval_only run: finish + auto-score against ground truth"</summary>
+<event>=== FLAMINGO EVAL + SCORE DONE ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bow42yiwx</task-id>
+<tool-use-id>toolu_01W71bXa6QzzqwK2Wt8o2FFp</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/bow42yiwx.output</output-file>
+<status>completed</status>
+<summary>Monitor "Flamingo eval_only run: finish + auto-score against ground truth" stream ended</summary>
+</task-notification>
