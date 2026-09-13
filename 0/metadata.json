@@ -1,0 +1,25 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2C3WXVP3JN1WNQG42SG28FS",
+  "session_id": "13f12110-8fc1-4a84-80af-9976981ecdc4",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-13T00:50:26.914889852Z",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 4,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5",
+  "turn_id": "543a3a795f9a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 158,
+    "cache_creation_tokens": 109257,
+    "cache_read_tokens": 8345419,
+    "output_tokens": 54890,
+    "api_call_count": 79
+  },
+  "session_metrics": {
+    "turn_count": 9
+  }
+}

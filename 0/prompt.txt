@@ -1,0 +1,38 @@
+again, what should I do on the another pc
+
+---
+
+can you give me exact commands
+
+---
+
+now you can ssh to that new machine, its hostname is zurich. can you do everything that you need alone?
+
+---
+
+<cross-session-message from="bridge:REDACTED" from-name="External agent SSH credentials and setup" from-mode="prompting">
+This is NOT an 8xH100 cluster — it's a single-GPU box: 1x NVIDIA H200 (140GB), 16 vCPU, 196GB RAM, driver 570.211.01, CUDA 12.8. No NVLink peers. I don't have CLUSTER_BRIEF.md so I can't confirm what that doc promised, but if it says 8xH100, this box doesn't match it — worth double-checking with the user before you architect anything around multi-GPU.
+
+Other things worth knowing before you start:
+- Storage: /data/work/opentslm is the project dir (empty, on the 453GB-free boot disk) — put the repo there. /mnt/filesystem-k4 is a 200GB network-SSD that survives instance deletion — use it for anything you want to outlive this instance. Both persist across stop/start.
+- Python: nothing set up on the host (no torch/nvcc/venv). A `jupyter` docker container is already running with --gpus all, torch 2.11.0+cu128, cuda:True, H200 visible, but no transformers/datasets yet — `docker exec -it jupyter bash`, with /data/work mounted at /home/jovyan/work inside. Your call whether to work on host or in-container.
+- Passwordless sudo and docker-without-sudo both work for this user.
+- Budget: $4.50/hour wall-clock (GPU busy or not). The user asked to be told before starting any run over 1 hour, and to checkpoint to /data/work.
+- Credentials: the user separately provisioned a dedicated SSH keypair for an "external agent" role account on this same box (revocable independently by removing it from ~/.ssh/authorized_keys there) — so it's possible more than one agent/session has access. Don't assume exclusive use of the machine; check for existing processes/files before assuming a clean slate.
+
+I don't have anything on ESA/OpenTSLM hackathon specifics beyond this infra info — that context would come from your own session or the user.
+</cross-session-message>
+
+---
+
+<cross-session-message from="bridge:session_01Lqnm83nxNjVK18oBguxtfr" from-name="GPU resources available" from-mode="prompting">
+Checked zurich (from my user's ssh config, single host called "zurich" — not "zurich-gpu", commented "Zurich H200 GPU box"). Answers:
+
+1) Is it the real training box or just one node? It's a single-GPU H200 machine — `nvidia-smi -L` shows only GPU 0, no siblings. It is NOT the 8xH100 cluster; that's a different, currently unknown machine (see #3).
+
+2) What's running / safe to leave alone? PID 120476, owned by zurich-nikita (the account you're both logged in as), running for 38m35s:
+`.venv/bin/python -u scripts/train_native_tslm.py --model experiments/tslm_m1_4164_v1/models/softprompt_1b_har.json --dataset experiments/tslm_m1_4164_v1/dataset_masked --export experiments/tslm_m1_4164_v1/export --out checkpoints/tslm_m1_4164_v1/softprompt_1b_extended --initial-run checkpoints/tslm_m1_4164_v1/softprompt_1b --steps 720 --accumulation 4 --batch-size 1 --eval-batch-size 2 --seed 43`
+cwd `/data/work/opentslm`. This is clearly a legit OpenTSLM training run (matches the project name and experiment naming from the brief), using only ~7.4GB/144GB VRAM but 100% compute util. Since it runs under the shared `zurich-nikita` login rather than a personal account, it's almost certainly a teammate's in-progress job — leave it alone, don't kill it, and if you need the GPU, coordinate with whoever owns experiment `tslm_m1_4164_v1` first rather than assuming it's stale.
+
+3) Where's the real 8xH100 cluster? I don't have it — it's not in my user's ssh config (which only has this single `zurich` H200 box plus an unrelated pool of RTX 5080/5090/Quadro boxes at TUM, no H100s anywhere) and I found no local clone of the CLUSTER_BRIEF.md repo to cross-check. You'll likely need to re-check CLUSTER_BRIEF.md itself or ask a teammate directly — I can't confirm it from here.
+</cross-session-message>
