@@ -109,6 +109,10 @@ def load_esa_mission1_cot_splits() -> Tuple[Dataset, Dataset, Dataset]:
                     "values": record.time_series[0].to_numpy().tolist(),
                     "channel": _annotation(record, "channel"),
                     "label": _annotation(record, "label"),
+                    # "Anomaly" or "Rare Event" for the anomalous side of a pair, None for the
+                    # nominal side -- ESA's own sub-category, used to oversample the harder
+                    # "Anomaly" sub-category specifically (see stage6_esa_cot's sampler).
+                    "category": _annotation(record, "category"),
                     "answer": task.target,
                     # Mean/std say nothing about whether a channel is oscillating, and several
                     # subsystem_5 channels are periodic in some windows and not others. These two
