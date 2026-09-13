@@ -110,6 +110,7 @@ class CurriculumTrainer:
         model_type: str,
         device: str = None,
         gradient_checkpointing: bool = False,
+        accumulation_steps: int = 1,
         dist_url: str = "env://",
         dist_backend: str = "nccl",
         local_rank: int = int(os.environ.get("LOCAL_RANK", 0)),
@@ -122,6 +123,8 @@ class CurriculumTrainer:
             model_type: Either 'OpenTSLMSP' or 'OpenTSLMFlamingo'
             device: Device to use for training ('cuda', 'mps', or 'cpu')
             gradient_checkpointing: Enable gradient checkpointing
+            accumulation_steps: Number of steps to accumulate gradients over before
+                an optimizer step (effective batch size = batch_size * accumulation_steps)
             dist_url: URL used to set up distributed training
             dist_backend: Distributed backend
             local_rank: Local GPU rank
@@ -138,6 +141,7 @@ class CurriculumTrainer:
 
         # Distributed training parameters
         self.gradient_checkpointing = gradient_checkpointing
+        self.accumulation_steps = accumulation_steps
         self.dist_url = dist_url
         self.dist_backend = dist_backend
         self.local_rank = local_rank
@@ -164,7 +168,11 @@ class CurriculumTrainer:
     def _initialize_model(self):
         """Initialize the specified model type."""
         if self.model_type == "OpenTSLMSP":
-            model = OpenTSLMSP(llm_id=self.llm_id, device=self.device).to(self.device)
+            model = OpenTSLMSP(
+                llm_id=self.llm_id,
+                device=self.device,
+                gradient_checkpointing=self.gradient_checkpointing,
+            ).to(self.device)
 
         elif self.model_type == "OpenTSLMFlamingo":
             model = OpenTSLMFlamingo(
@@ -1119,17 +1127,22 @@ class CurriculumTrainer:
                             if torch.cuda.is_available()
                             else "No CUDA"
                         )
-                    optimizer.zero_grad()
                     loss = self._get_model().compute_loss(batch)
-                    loss.backward()
-
-                    # Handle gradient clipping for distributed training
-                    clip_grad_norm_(self._get_model().parameters(), GRAD_CLIP_NORM)
-
-                    optimizer.step()
-                    scheduler.step()
-
+                    (loss / self.accumulation_steps).backward()
                     running_loss += loss.item()
+
+                    is_last_batch_in_epoch = i == len(train_loader) - 1
+                    if (
+                        (i + 1) % self.accumulation_steps == 0
+                        or is_last_batch_in_epoch
+                    ):
+                        # Handle gradient clipping for distributed training
+                        clip_grad_norm_(
+                            self._get_model().parameters(), GRAD_CLIP_NORM
+                        )
+                        optimizer.step()
+                        scheduler.step()
+                        optimizer.zero_grad()
                     if self.rank == 0:
                         prog.set_postfix(
                             loss=f"{loss.item():.4f}",
@@ -1682,6 +1695,13 @@ def main():
         default=None,
         help="Batch size for training (default: use value from model_config.py)",
     )
+    parser.add_argument(
+        "--accumulation_steps",
+        type=int,
+        default=1,
+        help="Number of steps to accumulate gradients over before an optimizer step "
+        "(effective batch size = batch_size * accumulation_steps, no extra memory cost)",
+    )
 
     # Evaluation arguments
     parser.add_argument(
@@ -1738,6 +1758,7 @@ def main():
         args.model,
         args.device,
         gradient_checkpointing=args.gradient_checkpointing,
+        accumulation_steps=args.accumulation_steps,
         dist_url=args.dist_url,
         dist_backend=args.dist_backend,
         local_rank=args.local_rank,

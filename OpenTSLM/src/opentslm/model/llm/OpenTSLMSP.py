@@ -32,6 +32,7 @@ class OpenTSLMSP(TimeSeriesLLM):
         self,
         llm_id: str = "meta-llama/Llama-3.2-1B",
         device: str = "cuda",
+        gradient_checkpointing: bool = False,
     ):
         super().__init__(device)
 
@@ -48,6 +49,9 @@ class OpenTSLMSP(TimeSeriesLLM):
             attn_implementation="eager",
         )
         self.llm.resize_token_embeddings(len(self.tokenizer))
+        if gradient_checkpointing:
+            self.llm.gradient_checkpointing_enable()
+            self.llm.enable_input_require_grads()
 
         # 3) encoder + projector (now internal)
         self.encoder = TransformerCNNEncoder().to(device)
