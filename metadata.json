@@ -3,7 +3,7 @@
   "checkpoint_id": "01M2C28RJ79PZ1C2SMQ88RHARJ",
   "strategy": "manual-commit",
   "branch": "feature/periodicity-telecommand-signals",
-  "checkpoints_count": 5,
+  "checkpoints_count": 11,
   "files_touched": [
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json",
     "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/checkpoints/loss_history.txt",
@@ -22,20 +22,27 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
-    "input_tokens": 44,
-    "cache_creation_tokens": 40306,
-    "cache_read_tokens": 1426937,
-    "output_tokens": 12109,
-    "api_call_count": 22,
+    "input_tokens": 132,
+    "cache_creation_tokens": 247308,
+    "cache_read_tokens": 5541266,
+    "output_tokens": 47406,
+    "api_call_count": 66,
     "subagent_tokens": {
-      "input_tokens": 22,
-      "cache_creation_tokens": 24898,
-      "cache_read_tokens": 583216,
-      "output_tokens": 9120,
-      "api_call_count": 11
+      "input_tokens": 82,
+      "cache_creation_tokens": 215598,
+      "cache_read_tokens": 2558387,
+      "output_tokens": 30981,
+      "api_call_count": 41
     }
   }
 }
