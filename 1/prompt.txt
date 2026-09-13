@@ -362,3 +362,12 @@ okay, but still save checkpoints for version 13
 <summary>Monitor event: "Stream train/val loss, new-best, and error signatures from stage6_esa_cot v14 retrain log"</summary>
 <event>Epoch 2 — train loss: 0.4613</event>
 </task-notification>
+
+---
+
+<task-notification>
+<task-id>b9hmiouuv</task-id>
+<summary>Monitor event: "Stream train/val loss, new-best, and error signatures from stage6_esa_cot v14 retrain log"</summary>
+<event>Epoch 2 — val   loss: 0.5100
+✔️  New best model saved.</event>
+</task-notification>
