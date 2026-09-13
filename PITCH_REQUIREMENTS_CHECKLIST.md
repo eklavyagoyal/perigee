@@ -77,6 +77,25 @@ has a standardized coefficient of **+10.4** in the restricted model, dwarfing ev
 (`has_telecommand` +2.34, `window_mean` +0.29, `minutes_since_command` −0.23) — almost this entire
 task reduces to "does this window have unusually high variance."
 
+### All fine-tuned runs on the current (refined) prompt
+
+Every run below uses the same 246-window test set and the same refined prompt (mean/std +
+telecommand only — no `level_zscore`, `scale_ratio`, or periodicity text):
+
+| Run | Model | Accuracy | Precision | Recall | F1 | Notes |
+|---|---|---|---|---|---|---|
+| SP + gradient checkpointing, batch 16 | Llama-3.2-3B, LoRA | 86.18% | 1.000 | 0.724 | 0.840 | First run on the refined prompt; confirms `--gradient_checkpointing` now actually works for OpenTSLMSP (was a silent no-op before). |
+| Flamingo, frozen backbone | Llama-3.1-8B | 86.59% | 1.000 | 0.732 | 0.845 | Ran on the *original* (pre-refinement) prompt, kept here for the model-size comparison — see the caveat above about not mixing prompt versions. |
+| **SP + sub-category-balanced sampling** | Llama-3.2-3B, LoRA | **86.99%** | 0.989 | **0.748** | **0.852** | Best result on the refined prompt. Training batches balanced 3-way (nominal / Rare Event / True Anomaly) instead of just nominal/anomalous — True-Anomaly recall specifically improved from 67.6%→73.0%. |
+| SP, refined prompt (local, `pre_levelscale`) | Llama-3.2-3B, LoRA | 87.80% | 1.000 | 0.756 | 0.861 | Best result overall so far, from a separate local run — not yet reconciled with the sub-category-balanced run above (different sampling, same prompt). |
+
+Across every one of these, precision sits at 0.99–1.00 and recall sits at 0.72–0.76 — the model
+essentially never raises a false alarm, but consistently misses roughly a quarter of real
+anomalies. That pattern held before and after the sub-category rebalancing, before and after
+gradient checkpointing, and across both model sizes — it looks like a property of this training
+setup (or of checkpoint selection by validation loss, which rewards fluent wording over
+recall) rather than something any single lever fixes on its own.
+
 **Honest takeaway:** fine-tuning is clearly necessary — the zero-shot base model can't even
 reliably follow the output format, let alone reason about anomalies. Against a *fair*, same-inputs
 baseline, the fine-tuned LLM+encoder ties a simple logistic regression rather than losing to it —
