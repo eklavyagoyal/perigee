@@ -674,3 +674,11 @@ TypeError: Flamingo.generate() got an unexpected keyword argument 'eos_token_id'
 <summary>Monitor event: "Flamingo eval_only retry (post-generate fix): finish + auto-score"</summary>
 <event>Evaluating stage6_esa_cot:   0%|          | 0/246 [00:00&lt;?, ?it/s]The following generation flags are not valid and may be ignored: ['top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.</event>
 </task-notification>
+
+---
+
+<task-notification>
+<task-id>bd4wnk0yg</task-id>
+<summary>Monitor event: "Flamingo eval_only retry (post-generate fix): finish + auto-score"</summary>
+<event>Evaluating stage6_esa_cot:   0%|          | 1/246 [01:23&lt;5:41:23, 83.61s/it]Setting `pad_token_id` to `eos_token_id`:128256 for open-end generation.</event>
+</task-notification>
