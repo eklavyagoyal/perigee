@@ -1,0 +1,75 @@
+.skip-link:not(:focus) { clip-path: inset(50%); }
+
+.evidence-section {
+  position: relative;
+  background: #0c141c;
+  padding: 68px 7.6% 56px;
+  border-top: 1px solid #7d929c21;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(220px, 1fr);
+  gap: 8%;
+  align-items: center;
+  padding: 64px 0 68px;
+}
+
+.case-kicker { color: #b9a17f; font-size: 8px; }
+.case-copy h2 { font-size: clamp(35px, 3.6vw, 58px); line-height: 1.12; letter-spacing: -.05em; margin: 19px 0 24px; }
+.case-copy h2 span { color: #a5b6bf; }
+.case-copy p { color: #b6c1c8; font-size: 14px; line-height: 1.85; max-width: 575px; }
+.case-copy .case-caveat { font-size: 11px; color: #8399a8; margin: 17px 0 23px; }
+.case-copy .text-link { color: #d0b58d; }
+
+.regulator-figure {
+  margin: 0;
+  padding: 31px 30px;
+  background: linear-gradient(140deg, #21303950, #131f2840);
+  border: 1px solid #8aa0b031;
+  position: relative;
+}
+.regulator-figure > .mono { color: #90a2ad; font-size: 8px; }
+.regulator-count { font-size: clamp(86px, 8vw, 124px); line-height: 1.2; letter-spacing: -.06em; color: #ddc29c; margin: 12px 0 18px; }
+.regulator-count span { font-size: .46em; color: #536775; margin-left: 8px; }
+.regulator-indicators { display: flex; gap: 13px; padding-bottom: 26px; border-bottom: 1px solid #8aa0b030; }
+.regulator-indicators i { width: 27px; height: 27px; border: 1px solid #cfa784; border-radius: 50%; position: relative; }
+.regulator-indicators i:not(.connected)::before { content: ''; position: absolute; width: 9px; height: 1px; background: #cfa784; left: 8px; top: 12px; }
+.regulator-indicators .connected { background: #95b4a4; border-color: #95b4a4; box-shadow: 0 0 18px #95b4a422; }
+.regulator-figure figcaption { color: #c1cbd0; font-size: 12px; padding-top: 19px; line-height: 1.6; }
+.regulator-figure small { display: block; font-size: 9px; color: #718995; margin-top: 5px; }
+
+.evidence-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #8aa0b031; }
+.evidence-metrics article { padding: 30px 30px 26px 0; display: flex; flex-direction: column; }
+.evidence-metrics article + article { padding-left: 30px; border-left: 1px solid #8aa0b020; }
+.evidence-metrics .mono { font-size: 7px; color: #849aa7; letter-spacing: .12em; }
+.evidence-metrics strong { display: block; font-size: clamp(61px, 6vw, 89px); line-height: 1.2; letter-spacing: -.06em; font-weight: 350; color: #e0c29c; margin: 22px 0 15px; }
+.evidence-metrics strong span { font-size: .55em; margin: 0 3px; }
+.evidence-metrics h3 { font-size: 16px; letter-spacing: -.02em; color: #ccd5d9; }
+.evidence-metrics p { font-size: 11px; color: #95a7b2; line-height: 1.85; margin: 12px 0 20px; }
+.evidence-metrics a { font-size: 9px; color: #c1b295; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; line-height: 1.6; }
+.evidence-metrics a svg { width: 13px; height: 13px; }
+.evidence-boundary { border-top: 1px solid #8aa0b022; padding-top: 22px; color: #7892a1; font-size: 10px; line-height: 1.8; }
+
+@media (min-width: 1600px) {
+  .evidence-section { padding-left: max(7.6%, calc((100% - 1400px)/2)); padding-right: max(7.6%, calc((100% - 1400px)/2)); }
+}
+
+@media (max-width: 760px) {
+  .evidence-section { padding: 42px 6% 35px; }
+  .case-study { grid-template-columns: 1fr; gap: 28px; padding: 34px 0; }
+  .case-copy h2 { font-size: 36px; }
+  .case-copy p { font-size: 13px; }
+  .case-copy .case-caveat { font-size: 11px; }
+  .case-copy .text-link { font-size: 10px; }
+  .case-kicker { font-size: 7px; }
+  .regulator-figure { padding: 23px; }
+  .regulator-count { font-size: 80px; }
+  .evidence-metrics { grid-template-columns: 1fr; }
+  .evidence-metrics article { padding: 25px 0; }
+  .evidence-metrics article + article { padding-left: 0; border-left: 0; border-top: 1px solid #8aa0b022; }
+  .evidence-metrics strong { font-size: 67px; margin: 14px 0 11px; }
+  .evidence-metrics p { font-size: 12px; margin-bottom: 15px; }
+  .evidence-metrics a { font-size: 10px; justify-content: flex-start; }
+  .evidence-boundary { font-size: 10px; }
+}

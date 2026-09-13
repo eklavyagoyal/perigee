@@ -1,0 +1,12 @@
+node_modules
+dist/
+test-results/
+playwright-report/
+.film-frames/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+archive/
