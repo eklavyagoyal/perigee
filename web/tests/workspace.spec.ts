@@ -86,7 +86,8 @@ test('evaluation separates rare events from true anomalies across the full cohor
   await page.getByRole('navigation', { name: 'Mission control' }).getByRole('button', { name: 'Evaluation' }).click();
   await expect(page.locator('.mc-metric-row')).toContainText('72.4%');
   await expect(page.locator('.mc-metric-row')).toContainText('100.0%');
-  await expect(page.getByText('68 of 69 test event IDs also occur in training.', { exact: false })).toBeVisible();
+  await expect(page.getByText('Saved predictions from the old split', { exact: false })).toBeVisible();
+  await expect(page.locator('body')).not.toContainText('68 of 69');
   await page.getByRole('button', { name: 'Anomaly only', exact: true }).click();
   await expect(page.locator('.mc-metric-row')).toContainText('67.6%');
   await expect(page.locator('.mc-metric-row')).toContainText('28.1%');

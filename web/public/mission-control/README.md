@@ -31,8 +31,11 @@ behavior and are not a random performance sample. Metrics use the full cohort.
 
 The trained task maps Anomaly and Rare Event to positive. Its 246 test rows give
 TP 89 / FP 0 / FN 34 / TN 123. Anomaly-only rescoring gives TP 25 / FP 64 / FN 12 /
-TN 145; that is a different target, not a retrained model. The balanced pair split
-has 68 of 69 test event IDs also present in training. Results do not establish
+TN 145; that is a different target, not a retrained model. The split is
+historical and predates the event-grouping correction. These saved 246 rows are
+not the new 224-window evaluation; they must not be relabeled as fixed-split results.
+The pitch checklist now reports a retrained OpenTSLM result of 75.89% accuracy and
+F1 0.727 on the corrected split; that separate run is not this replay. Results do not establish
 generalization to unseen events or deployment precision.
 
 To reproduce the export, run `scripts/export_mission_control_replay.py` from the

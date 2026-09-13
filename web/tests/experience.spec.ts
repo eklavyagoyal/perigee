@@ -35,18 +35,24 @@ test('three checklist figures remain honest with expandable methodology', async 
   const evidence = page.locator('#evidence');
   await expect(evidence.getByRole('heading', { name: 'Find the signal. Understand the context.' })).toBeVisible();
   await expect(evidence.locator('.landing-metrics article')).toHaveCount(3);
-  await expect(evidence).toContainText('Same accuracy. Similar F1.');
+  await expect(evidence).toContainText('75.89%');
+  await expect(evidence).not.toContainText('retraining pending');
   await expect(evidence).toContainText('not flight validation');
   await expect(evidence.getByRole('table')).not.toBeVisible();
   await expect(page.locator('#approach, .pitch-window-preview, .brand')).toHaveCount(0);
   await evidence.screenshot({ path: 'test-results/evidence-desktop.png' });
   await page.getByText('Experiment details & limitations', { exact: false }).click();
   await expect(evidence.getByRole('table')).toBeVisible();
-  for (const [name, accuracy] of [['OpenTSLM · balanced sampling', '86.99%'], ['Logistic regression · restricted', '86.99%']]) {
+  for (const [name, accuracy] of [['OpenTSLM · balanced sampling', '75.89%'], ['Two-shot Llama-3.2-3B', '50.45%'], ['Classical · current prompt features', '90.18%'], ['Classical · five engineered features', '92.86%'], ['Classical · raw values only', '57.59%']]) {
     await expect(evidence.getByRole('row').filter({ hasText: name })).toContainText(accuracy);
   }
   await expect(evidence).toContainText('not strictly time-separated');
-  await expect(evidence).toContainText('68 of 69 test event IDs also in training');
+  await expect(evidence).toContainText('112 nominal and 112 positive');
+  await expect(evidence).not.toContainText('68 of 69');
+  await expect(evidence).toContainText('F1 and a new parsing count are not reported');
+  await expect(evidence).toContainText('extremely few positive predictions');
+  await expect(evidence).not.toContainText('23.6%');
+  await expect(evidence).toContainText('not an isolated measure');
   await expect(evidence).toContainText('not a validated explanation');
   await expect(evidence).toContainText('Docs/PITCH_REQUIREMENTS_CHECKLIST.md');
   await evidence.screenshot({ path: 'test-results/methodology-desktop.png' });
@@ -99,5 +105,6 @@ test('WebGL fallback preserves the dramatic headline and research', async ({ pag
   await page.goto('/');
   await expect(page.locator('.flight-stage')).toHaveClass(/static-fallback/);
   await expect(page.getByRole('heading', { name: 'Years of work. One mission.' })).toBeVisible();
-  await expect(page.locator('#evidence')).toContainText('86.99%');
+  await expect(page.locator('#evidence')).toContainText('50.45%');
+  await expect(page.locator('#evidence')).not.toContainText('86.99%');
 });
