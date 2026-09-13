@@ -1471,3 +1471,71 @@ check
 ---
 
 check
+
+---
+
+<task-notification>
+<task-id>b50byt0e6</task-id>
+<summary>Monitor event: "SP fixedsplit eval_only: finish + auto-score against non-leaky test set"</summary>
+<event>=== eval process exited, final log tail ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b50byt0e6</task-id>
+<summary>Monitor event: "SP fixedsplit eval_only: finish + auto-score against non-leaky test set"</summary>
+<event>Evaluating stage6_esa_cot:  97%|█████████▋| 217/224 [08:01&lt;00:03,  1.99it/s]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot:  97%|█████████▋| 218/224 [08:08&lt;00:14,  2.40s/it]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot:  98%|█████████▊| 219/224 [08:08&lt;00:08,  1.75s/it]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot:  98%|█████████▊| 220/224 [08:09&lt;00:05,  1.28s/it]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot:  99%|█████████▊| 221/224 [08:09&lt;00:02,  1.04it/s]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot:  99%|█████████▉| 222/224 [08:09&lt;00:01,  1.37it/s]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot: 100%|█████████▉| 223/224 [08:14&lt;00:01,  2.00s/it]Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Evaluating stage6_esa_cot: 100%|██████████| 224/224 [08:14&lt;00:00,  1.46s/it]Evaluating stage6_esa_cot: 100%|██████████| 224/224 [08:14&lt;00:00,  2.21s/it]
+Merged per-rank predictions into: results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl
+✅ stage6_esa_cot evaluation complete:
+Test predictions saved to: results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/test_predictions.jsonl
+Metrics saved to: results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot/results/metrics.json
+Max tokens used for generation: 2000
+test_loss: nan
+epoch: 10.0000
+✅ Stage stage6_esa_cot marked as completed
+🎉 Curriculum Learning Complete!
+📁 All results saved to: results/Llama_3_2_3B/OpenTSLMSP/
+📊 Overall results: results/Llama_3_2_3B/OpenTSLMSP/curriculum_results.json
+=== scoring ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b50byt0e6</task-id>
+<summary>Monitor event: "SP fixedsplit eval_only: finish + auto-score against non-leaky test set"</summary>
+<event>Scored 224/224 test examples (100.0% of full test set)
+Unparsed (no 'Answer: nominal/anomalous' found): 0
+Accuracy: 170/224 = 75.89%
+Confusion matrix (rows=true, cols=predicted):
+nominal  anomalous
+nominal         98         14
+anomalous         40         72
+Anomalous-class precision: 0.837  recall: 0.643  F1: 0.727</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b50byt0e6</task-id>
+<summary>Monitor event: "SP fixedsplit eval_only: finish + auto-score against non-leaky test set"</summary>
+<event>=== FIXEDSPLIT SCORE DONE ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b50byt0e6</task-id>
+<tool-use-id>toolu_01E7WB8wBXZi332RNV2bDtBz</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/b50byt0e6.output</output-file>
+<status>completed</status>
+<summary>Monitor "SP fixedsplit eval_only: finish + auto-score against non-leaky test set" stream ended</summary>
+</task-notification>
