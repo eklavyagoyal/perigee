@@ -349,3 +349,50 @@ how would you consider these results, are they good?
 ---
 
 got access to 8b model
+
+---
+
+<task-notification>
+<task-id>bbflu6cmk</task-id>
+<summary>Monitor event: "Flamingo Llama-3.1-8B training on zurich: progress + errors (real attempt)"</summary>
+<event>=== flamingo process exited, final log tail ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bbflu6cmk</task-id>
+<summary>Monitor event: "Flamingo Llama-3.1-8B training on zurich: progress + errors (real attempt)"</summary>
+<event>Flamingo Using device: cuda
+Fetching 4 files:   0%|          | 0/4 [00:00&lt;?, ?it/s]Fetching 4 files:  25%|██▌       | 1/4 [00:10&lt;00:30, 10.22s/it]Fetching 4 files: 100%|██████████| 4/4 [00:10&lt;00:00,  2.55s/it]
+Loading checkpoint shards:   0%|          | 0/4 [00:00&lt;?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00&lt;00:02,  1.15it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:01&lt;00:01,  1.17it/s]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:02&lt;00:00,  1.17it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02&lt;00:00,  1.68it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:02&lt;00:00,  1.45it/s]
+The new embeddings will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+The new lm_head weights will be initialized from a multivariate normal distribution that has old embeddings' mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
+Traceback (most recent call last):
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1763, in &lt;module&gt;
+main()
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 1737, in main
+trainer = CurriculumTrainer(
+^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 151, in __init__
+self.model = self._initialize_model()
+^^^^^^^^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/curriculum_learning.py", line 170, in _initialize_model
+model = OpenTSLMFlamingo(
+^^^^^^^^^^^^^^^^^
+File "/data/work/ehl-zurich-hackathon-submission/OpenTSLM/src/opentslm/model/llm/OpenTSLMFlamingo.py", line 149, in __init__
+model.vision_encoder.requires_grad_(True)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'types.SimpleNamespace' object has no attribute 'requires_grad_'
+=== FLAMINGO PROCESS EXITED ===</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>bbflu6cmk</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/tmp/claude-6139/-u-halle-hrm-home-at-Documents-Hackathons-zurich-hackathon/13f12110-8fc1-4a84-80af-9976981ecdc4/tasks/bbflu6cmk.output</output-file>
+<status>completed</status>
+<summary>Monitor "Flamingo Llama-3.1-8B training on zurich: progress + errors (real attempt)" stream ended</summary>
+</task-notification>
