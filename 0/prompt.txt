@@ -1051,3 +1051,23 @@ how is it possible that we have 100% precision
 ---
 
 can you try other approach and not 3?
+
+---
+
+<task-notification>
+<task-id>b23n4c7mx</task-id>
+<summary>Monitor event: "SP + sub-category balanced sampling on zurich: per-epoch loss + errors"</summary>
+<event>Epoch	Train_Loss	Val_Loss
+------------------------------
+1	0.917278	0.503645
+2	0.470311	0.491606
+3	0.399338	0.491853</event>
+</task-notification>
+
+---
+
+<task-notification>
+<task-id>b23n4c7mx</task-id>
+<summary>Monitor event: "SP + sub-category balanced sampling on zurich: per-epoch loss + errors"</summary>
+<event>1	0.991201	4.116001</event>
+</task-notification>
