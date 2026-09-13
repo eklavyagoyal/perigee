@@ -1,0 +1,1 @@
+I mean prediction for every test instance
