@@ -255,17 +255,23 @@ class OpenTSLMFlamingo(TimeSeriesLLM):
                     batch, include_labels=True
                 )
 
-                # open_flamingo's Flamingo.generate() has a fixed signature with no
-                # eos_token_id/pad_token_id params (and no **kwargs catch-all) -- it already
-                # stops generation at self.eoc_token_id internally via the wrapped HF
-                # lang_encoder.generate() call. Passing either kwarg here raises TypeError.
-                gen_ids = self.llm.generate(
-                    vision_x=images,
-                    lang_x=input_ids,
+                # Bypass open_flamingo's Flamingo.generate(): it hardcodes
+                # eos_token_id=self.eoc_token_id (the "<|endofchunk|>" multi-turn image
+                # separator) with no way to override it, and no **kwargs catch-all either.
+                # This single-turn CoT task never emits that token, so generation would
+                # otherwise always run the full max_new_tokens instead of stopping at the
+                # model's real EOS -- 83s/window instead of a fraction of a second. Replicate
+                # Flamingo.generate()'s three steps ourselves with the correct eos_token_id.
+                self.llm._encode_vision_x(vision_x=images)
+                gen_ids = self.llm.lang_encoder.generate(
+                    input_ids,
                     attention_mask=attention_mask,
+                    eos_token_id=self.text_tokenizer.eos_token_id,
+                    pad_token_id=self.text_tokenizer.pad_token_id,
                     max_new_tokens=max_new_tokens,
                     **generate_kwargs,
                 )
+                self.llm.lang_encoder.clear_conditioned_layers()
 
                 # Remove input ids from generation
                 answer_only_ids = gen_ids[:, input_ids.shape[1] :]
