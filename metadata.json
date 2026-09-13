@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.10.2",
+  "checkpoint_id": "01M2D48JH07XJ0C09HAXBWF8AK",
+  "strategy": "manual-commit",
+  "branch": "feature/periodicity-telecommand-signals",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "OpenTSLM/results/Llama_3_2_3B/OpenTSLMSP/stage6_esa_cot_fixedsplit_subcatbalanced_20260913/results/scored_metrics.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 10,
+    "cache_creation_tokens": 7874,
+    "cache_read_tokens": 3444512,
+    "output_tokens": 3322,
+    "api_call_count": 5
+  }
+}
