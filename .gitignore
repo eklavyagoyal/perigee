@@ -1,8 +1,29 @@
-.env
+# ---- OS / editor ----
+.DS_Store
+*.swp
+
+# ---- Python ----
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---- Secrets ----
+.env
+.env.local
+
+# ---- Model weights (never in git) ----
 *.pt
 *.safetensors
 *.ckpt
 *.bin
+
+# ---- Raw datasets (10+ GB, fetched from Zenodo — see docs/DATA.md) ----
+/data/
+
+# ---- Node / Next.js (web demo) ----
+node_modules/
+.next/
+out/
