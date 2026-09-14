@@ -9,7 +9,7 @@ the Zurich "Temporal AI Challenge" hackathon). Repo root:
 
 **A data-leakage bug in the train/val/test split was just fixed, and every fine-tuned model
 result reported so far (v10 through v14, the sub-category-balanced run, the Flamingo/8B run —
-see `PITCH_REQUIREMENTS_CHECKLIST.md` for the full history) was trained and evaluated on the
+see [`RESULTS.md`](RESULTS.md) for the full history) was trained and evaluated on the
 *old, leaky* split. Those numbers are no longer trustworthy and need to be reproduced on the
 fixed split before they go in the final pitch.**
 
@@ -64,7 +64,7 @@ of thing that could exploit cross-channel correlation on a repeated event).
 
 ## What to do
 
-1. **Read `PITCH_REQUIREMENTS_CHECKLIST.md` in full first** — it has the complete history of every
+1. **Read [`RESULTS.md`](RESULTS.md) in full first** — it has the complete history of every
    run so far (v10-v14 prompt-design ablation, the sub-category-balanced sampler, the
    gradient-checkpointing fix, the Flamingo/8B comparison), what's already covered vs. gapped
    against the hackathon's requirements slides, and the baseline results. Don't re-derive any of
@@ -86,7 +86,7 @@ of thing that could exploit cross-channel correlation on a repeated event).
    checklist, the best candidate on the *old* split was either the sub-category-balanced SP run
    (86.99% acc, 0.989 precision, 0.748 recall) or v14 (mean/std + telecommand only, no
    periodicity — 82.52% acc, 0.817 precision, 0.837 recall, the higher-recall option). Check
-   `PITCH_REQUIREMENTS_CHECKLIST.md`'s "All fine-tuned runs" table and the sibling pitch artifact
+   [`RESULTS.md`](RESULTS.md)'s "All fine-tuned runs" table and the sibling pitch artifact
    for the exact current prompt design and hyperparameters before picking which to reproduce —
    don't guess; the prompt in `ESAMission1CoTQADataset.py` is the source of truth for what's
    "current."
@@ -132,7 +132,7 @@ of thing that could exploit cross-channel correlation on a repeated event).
    ESA `category` annotation, "Anomaly" vs "Rare Event", via the TimeNet client the same way
    earlier category breakdowns in this project were computed).
 
-5. **Update `PITCH_REQUIREMENTS_CHECKLIST.md`** with the new, fixed-split numbers, clearly
+5. **Update [`RESULTS.md`](RESULTS.md)** with the new, fixed-split numbers, clearly
    labeled as "fixed split" vs. the old numbers (which should stay in the doc but be clearly
    marked as measured under the leaky split, for transparency, not deleted).
 

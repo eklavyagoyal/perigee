@@ -1,9 +1,24 @@
-# Requirements checklist — vs. slides 16 & 17 (Temporal AI Challenge deck)
+# Evaluation record
 
-Source: `Aionic_Temporal_AI_Hackathon.pdf`, slides "From Problem to Proof" (16) and
-"What You Get, What You Submit" (17).
+The complete measurement history for Perigee: every baseline, every fine-tuning
+run, the prompt ablation, and the data-leak investigation — including the runs
+that were discarded and the numbers that got worse once the split was fixed.
 
-## Slide 16 — From Problem to Proof
+**The headline, on the corrected event-grouped split (224 test windows):**
+OpenTSLM SP reaches **75.89%** accuracy / F1 **0.727**; a logistic regression on
+the same four prompt inputs reaches **90.18%** / F1 **0.891**. The classical
+baseline wins. See [Data leakage found and
+fixed](#data-leakage-found-and-fixed-split-was-by-per-channel-pair-not-by-event)
+for why the earlier 86.99% number should not be used.
+
+Written during the hackathon against the challenge brief
+(`challenge/`, slides "From Problem to Proof" and "What You Get, What You
+Submit"), so it is structured as a requirements checklist. It is kept in that
+form deliberately — it records what was and was not done at submission time.
+
+---
+
+## Deliverables — From Problem to Proof
 
 | Step | Requirement | Status | Notes |
 |---|---|---|---|
@@ -17,7 +32,7 @@ Source: `Aionic_Temporal_AI_Hackathon.pdf`, slides "From Problem to Proof" (16) 
 | 04 Demonstrate | Real inputs/outputs, evidence + limitations | ✅ | Real prompts and generated rationales exist (`test_predictions.jsonl`); the pitch artifact states limitations honestly (small test set, `test_loss: NaN` bug, precision/recall tradeoff). |
 | 04 Demonstrate | How the result helps the target user | ⚠️ | Implicit in the prompt framing, not yet stated as an explicit takeaway for the pitch. |
 
-## Slide 17 — What You Get, What You Submit
+## Deliverables — What You Get, What You Submit
 
 | Item | Status | Notes |
 |---|---|---|
@@ -54,7 +69,7 @@ Three baseline variants plus the classical one, run against the identical 246-ro
 | **Two-shot Llama-3.2-3B, text stats only** (`scripts/zeroshot_baseline.py`) — no fine-tuning, no time-series encoder, no raw series, two worked examples (one nominal, one anomalous) | 50.81% | 1.000⚠️ | 0.016 | 0.032 | Format issue from the first (true zero-shot) pass fixed: 0/246 unparsed now, vs. 111/246 before. But the base (non-instruct) model just copies one demonstration's rationale almost verbatim on 244/246 rows regardless of the actual input — a known base-model in-context-learning limitation, not a prompt bug. Recall 0.016 = 2/123 real anomalies caught. |
 | **Two-shot Llama-3.2-3B, + raw series as text** (same script, series downsampled to 120 points, comma-separated, added to the prompt) | 50.41% | 1.000⚠️ | 0.008 | 0.016 | Giving the frozen model the *actual digits* changes essentially nothing — still collapses to "nominal" on 245/246 rows. This is the clean showcase of what TSLM's approach specifically adds: a frozen LLM with the raw numbers in its context still can't extract anomaly signal from them; it takes a *trained* encoder (+ fine-tuning) to turn those same numbers into something the model can act on. |
 | ⚠️ **Both baselines' 1.0 precision is a different phenomenon than v13/v14's.** Here it's degenerate — the model almost never predicts "anomalous" at all (1–2 times out of 246), so the rare guess can't be wrong. v13/v14's 1.0/0.82 precision comes from confidently calling "anomalous" on 91+ different windows and being right every time. Don't present these as comparable numbers. | | | | | |
-| v13 (fine-tuned, mean/std + periodicity + telecommand) | 86.99% | 1.000 | 0.740 | 0.850 | For reference — see `PITCH_REQUIREMENTS_CHECKLIST.md`'s sibling artifact for the full v10–v14 ablation. |
+| v13 (fine-tuned, mean/std + periodicity + telecommand) | 86.99% | 1.000 | 0.740 | 0.850 | For reference — see the full v10–v14 ablation below. |
 | v14 (fine-tuned, mean/std + telecommand, no periodicity) | 82.52% | 0.817 | 0.837 | 0.827 | |
 | **Classical baseline** (`scripts/classical_baseline.py`) — logistic regression on 5 engineered numbers (`level_zscore`, `scale_ratio`, periodicity drop, telecommand presence/timing), no LLM, no GPU at inference | **89.84%** | **0.990** | 0.805 | **0.888** | Strongest predictors: `scale_ratio` (+5.43), `has_telecommand` (+3.68), periodicity drop (+1.63), `level_zscore` (−1.36). **Caveat below — not apples-to-apples with the prompt actually in use now.** |
 | **Classical, RAW values only** (`scripts/classical_baseline_raw.py`) — logistic regression on 120 resampled raw points, zero engineered features, not even mean/std | 57.59% | 0.623 | 0.384 | 0.475 | The important negative result: a plain linear model **cannot** find the signal directly in raw digits — it needs mean/std computed *for* it (see the 90%+ restricted-features baseline above/below). This is the real bar the trained time-series encoder needs to clear: if the fine-tuned LLM (reading the raw series through its encoder) lands meaningfully above 57.59%, that's evidence the encoder does something a plain linear model over raw values fundamentally can't. |
@@ -192,7 +207,7 @@ see [the table above](#apples-to-apples-the-baseline-vs-the-current-prompt), ret
 the leaky split, and now clearly behind the fixed-split classical baseline (90.18%/0.891 F1) —
 confirms the encoder *was* benefiting from the leak on this run.
 
-**Still not reproduced**: v10-v14 and the Flamingo/8B run. Per `RETRAIN_ON_FIXED_SPLIT.md`, these
+**Still not reproduced**: v10-v14 and the Flamingo/8B run. Per [`RETRAIN_ON_FIXED_SPLIT.md`](RETRAIN_ON_FIXED_SPLIT.md), these
 don't need redoing unless there's spare time — the *relative* prompt-design comparisons between
 them likely still hold since the leak affected every run roughly equally. Only the headline
 candidate needed reproducing for the pitch, and that's now done.
