@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
+import os
 from typing import List, Literal, Tuple
 
 from datasets import Dataset
@@ -97,7 +98,23 @@ class ESAMission1CoTQADataset(QADataset):
         # simple level/variance readout and telecommand timing is an external event, not a
         # statistic of the window's own values.
 
-        return [TextTimeSeriesPrompt(text, series_norm.tolist())]
+        # ABLATION SWITCH (ESA_ABLATION).
+        #   no_series    text intact, encoder input zeroed -- what does the telemetry add?
+        #   encoder_only RAW window to the encoder, no statistics in the text -- can the encoder
+        #                carry the task alone? RETRAIN_ON_FIXED_SPLIT.md asks exactly this: a linear
+        #                model over raw values manages only 57.59% accuracy, so beating that with no
+        #                mean/std in the prompt is the evidence that the encoder reads shape.
+        ablation = os.environ.get("ESA_ABLATION", "none").lower()
+        encoder_input = series_norm
+        if ablation == "no_series":
+            encoder_input = np.zeros_like(series_norm)
+        elif ablation == "encoder_only":
+            text = f"This is telemetry from {row['channel']}."
+            encoder_input = series
+        elif ablation != "none":
+            raise ValueError(f"unknown ESA_ABLATION={ablation!r}")
+
+        return [TextTimeSeriesPrompt(text, encoder_input.tolist())]
 
     def _format_sample(self, row):
         sample = super()._format_sample(row)
