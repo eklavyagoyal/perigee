@@ -205,23 +205,24 @@ recorded run.
 ## Repository map
 
 ```
-├── TimeNet/                  Fork of Aionic's TimeNet. Our work:
+├── TimeNet/                  Upstream fork (github.com/OpenTSLM/TimeNet). Ours:
 │   └── …/datasets/esa/mission1_subsystem5/
 │                             ★ the connector — windowing, pairing, causal
 │                               context features, telecommand lookback, tests
-├── OpenTSLM/                 Fork of Stanford BDHG's OpenTSLM. Our work:
+├── OpenTSLM/                 Upstream fork (Stanford / ETH Zurich). Ours:
 │   ├── …/esa_mission1/       ★ dataset loader (event-grouped split) + prompt
 │   ├── curriculum_learning.py  stage6_esa_cot — standalone LoRA fine-tune
 │   └── results/              ★ every run's metrics and per-window predictions
 ├── pipeline/step1_hunt/      ★ agentic dataset hunter — searches Zenodo,
 │                               HuggingFace and NASA, scores and validates
 │                               candidates, writes a ranked report
-├── scripts/                  ★ CoT generation + all four baselines + scoring
+├── scripts/                  ★ CoT generation, every baseline, scoring
 ├── web/                      ★ Next.js landing page and Mission Control replay
 ├── docs/
 │   ├── RESULTS.md            ★ the full evaluation record — read this one
 │   ├── adr/                  architecture decision records
-│   ├── PLAN.md · CLUSTER_BRIEF.md · RETRAIN_ON_FIXED_SPLIT.md
+│   ├── perigee-jury-pitch.pdf  the pitch as delivered
+│   └── PLAN.md · CLUSTER_BRIEF.md · RETRAIN_ON_FIXED_SPLIT.md
 ├── artifacts/                GPT-4o-generated chain-of-thought rationales
 └── challenge/                the original challenge brief
 ```
