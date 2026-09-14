@@ -14,9 +14,10 @@ window need a human?* — in a sentence they can act on.
 [![Model: OpenTSLM](https://img.shields.io/badge/model-OpenTSLM%20SP%20·%20Llama--3.2--3B-1f6f5c)](https://arxiv.org/abs/2510.02410)
 [![Pipeline: TimeNet](https://img.shields.io/badge/pipeline-TimeNet%20connector-444)](https://github.com/OpenTSLM/TimeNet)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Result: Top 5](https://img.shields.io/badge/result-top%205-b8860b)](#at-a-glance)
 
 Built at the **Temporal AI Challenge** — Aionic Labs × ETH Agentic Systems Lab,
-European Hackathon League, Zurich, 12–13 September 2026.
+European Hackathon League, Zurich, 12–13 September 2026. **Top 5.**
 
 **[Jury pitch deck (PDF)](docs/perigee-jury-pitch.pdf)** · **[Evaluation
 record](docs/RESULTS.md)** · **[Mission Control demo](#mission-control)** ·
@@ -30,6 +31,7 @@ record](docs/RESULTS.md)** · **[Mission Control demo](#mission-control)** ·
 
 |  |  |
 |---|---|
+| **Placement** | **Top 5** at the Temporal AI Challenge, Zurich, 13 September 2026. |
 | **What it does** | Reads six hours of real ESA satellite telemetry and says, in plain language, whether the window needs a human — not just a threshold flag. |
 | **The result** | **75.89%** accuracy on a leak-free split. A logistic regression on the same four inputs gets **90.18%**. We lead with the baseline's win, because it is the true one. |
 | **Why trust it** | We found a data leak *in our own split*, fixed it, and reported the 11-point drop it had been hiding. Every prediction on all 224 test windows is published. |
