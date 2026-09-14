@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 442" width="980" height="442" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" role="img" aria-label="Accuracy on 224 held-out ESA telemetry windows: two-shot Llama-3.2-3B 50.45 percent (F1 0.018), logistic regression on raw values 57.59 (F1 0.475), OpenTSLM SP 75.89 (F1 0.727), logistic regression on prompt-matched features 90.18 (F1 0.891), logistic regression on all five engineered features 92.86 (F1 0.923).">
+<rect width="980" height="442" rx="10" fill="#f4f1ea" stroke="#ddd8cd"/>
+<text x="34" y="46" font-size="21" font-weight="600" fill="#17211f">Accuracy on 224 held-out telemetry windows</text>
+<text x="34" y="70" font-size="13.5" fill="#5f5a52">ESA Mission1 · subsystem_5 · event-grouped split · 50/50 balanced, so 50% is chance</text>
+<text x="950" y="88" font-size="11.5" fill="#5f5a52" text-anchor="end" letter-spacing="0.5">F1</text>
+<line x1="513.5" y1="94" x2="513.5" y2="362" stroke="#5f5a52" stroke-width="1" stroke-dasharray="3 3" opacity="0.55"/>
+<text x="519.5" y="88" font-size="11.5" fill="#5f5a52">chance</text>
+<line x1="286" y1="94" x2="286" y2="362" stroke="#ddd8cd" stroke-width="1.5"/>
+<text x="270" y="119" font-size="14.5" font-weight="500" fill="#17211f" text-anchor="end">Two-shot Llama-3.2-3B</text>
+<text x="270" y="136" font-size="12" fill="#5f5a52" text-anchor="end">no fine-tuning</text>
+<rect x="286" y="104" width="229.5" height="26" rx="4" fill="#8c8780"/>
+<text x="526.5" y="123" font-size="15" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">50.45%</text>
+<text x="950" y="123" font-size="13" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" text-anchor="end">0.018</text>
+<text x="270" y="173" font-size="14.5" font-weight="500" fill="#17211f" text-anchor="end">Logistic regression</text>
+<text x="270" y="190" font-size="12" fill="#5f5a52" text-anchor="end">raw values only</text>
+<rect x="286" y="158" width="262.0" height="26" rx="4" fill="#8c8780"/>
+<text x="559.0" y="177" font-size="15" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">57.59%</text>
+<text x="950" y="177" font-size="13" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" text-anchor="end">0.475</text>
+<text x="270" y="227" font-size="14.5" font-weight="700" fill="#17211f" text-anchor="end">OpenTSLM SP</text>
+<text x="270" y="244" font-size="12" fill="#5f5a52" text-anchor="end">Llama-3.2-3B + LoRA</text>
+<rect x="286" y="212" width="345.3" height="26" rx="4" fill="#0d6b47"/>
+<text x="642.3" y="231" font-size="16.5" font-weight="700" fill="#0d6b47" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">75.89%</text>
+<text x="719.3" y="231" font-size="12.5" font-weight="700" fill="#0d6b47">◀ ours</text>
+<text x="950" y="231" font-size="13" font-weight="700" fill="#0d6b47" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" text-anchor="end">0.727</text>
+<text x="270" y="281" font-size="14.5" font-weight="500" fill="#17211f" text-anchor="end">Logistic regression</text>
+<text x="270" y="298" font-size="12" fill="#5f5a52" text-anchor="end">prompt-matched features</text>
+<rect x="286" y="266" width="410.3" height="26" rx="4" fill="#8c8780"/>
+<text x="707.3" y="285" font-size="15" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">90.18%</text>
+<text x="950" y="285" font-size="13" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" text-anchor="end">0.891</text>
+<text x="270" y="335" font-size="14.5" font-weight="500" fill="#17211f" text-anchor="end">Logistic regression</text>
+<text x="270" y="352" font-size="12" fill="#5f5a52" text-anchor="end">all 5 engineered features</text>
+<rect x="286" y="320" width="422.5" height="26" rx="4" fill="#8c8780"/>
+<text x="719.5" y="339" font-size="15" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">92.86%</text>
+<text x="950" y="339" font-size="13" fill="#5f5a52" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" text-anchor="end">0.923</text>
+<text x="34" y="418" font-size="12.5" fill="#5f5a52">A logistic regression on the same four inputs the prompt states beats the fine-tuned model by <tspan font-weight="700" fill="#17211f">14.3 points</tspan>. That is the honest result.</text>
+</svg>

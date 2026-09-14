@@ -25,6 +25,19 @@ record](docs/RESULTS.md)** · **[Mission Control demo](#mission-control)**
 
 ---
 
+## At a glance
+
+|  |  |
+|---|---|
+| **What it does** | Reads six hours of real ESA satellite telemetry and says, in plain language, whether the window needs a human — not just a threshold flag. |
+| **The result** | **75.89%** accuracy on a leak-free split. A logistic regression on the same four inputs gets **90.18%**. We lead with the baseline's win, because it is the true one. |
+| **Why trust it** | We found a data leak *in our own split*, fixed it, and reported the 11-point drop it had been hiding. Every prediction on all 224 test windows is published. |
+| **What's here** | A reusable [TimeNet connector](TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/mission1_subsystem5/connector.py), an [agentic dataset hunter](pipeline/step1_hunt/), four baselines, a [Next.js replay demo](#mission-control), and an [evaluation record](docs/RESULTS.md) that keeps the runs that failed. |
+
+<img src="docs/assets/results.svg" alt="Horizontal bar chart of accuracy on 224 held-out telemetry windows: two-shot Llama-3.2-3B 50.45%, logistic regression on raw values 57.59%, OpenTSLM SP (ours) 75.89%, logistic regression on prompt-matched features 90.18%, logistic regression on all five engineered features 92.86%." width="100%">
+
+---
+
 ## The problem
 
 On 30 January 2026, SpaceX applied for permission to launch and operate up to
@@ -135,6 +148,8 @@ anomaly-relevant signal beyond what two summary statistics already give away.
 Its undisputed value-add is the rationale — which the logistic regression
 cannot produce at all.
 
+<img src="docs/assets/telemetry.svg" alt="Two real six-hour telemetry windows from channel 45, both labelled anomalies. The first shows a single sharp spike and was correctly flagged anomalous; the second shows five hours of sustained oscillation at a lower standard deviation and was missed, called nominal." width="100%">
+
 <details>
 <summary><b>Confusion matrix and per-category breakdown (OpenTSLM SP)</b></summary>
 
@@ -199,6 +214,14 @@ cd web && npm ci && npm run dev
 
 No GPU, credentials, or dataset download needed — the replay ships with its
 recorded run.
+
+> **Note on the replay.** The bundled run was recorded on 2026-09-13 at 05:13 UTC,
+> *before* the split fix, so its 246 scored rows are the leaky split — not the
+> 224-window numbers reported above. It is published as an interface and
+> provenance demo, not as the headline result.
+> [`web/public/mission-control/README.md`](web/public/mission-control/README.md)
+> documents exactly what the bundle does and does not establish, down to the
+> SHA-256 of the predictions file.
 
 ---
 
