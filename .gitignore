@@ -20,7 +20,7 @@ venv/
 *.ckpt
 *.bin
 
-# ---- Raw datasets (10+ GB, fetched from Zenodo — see docs/DATA.md) ----
+# ---- Raw datasets (10+ GB, fetched from Zenodo — see README "Reproducing") ----
 /data/
 
 # ---- Node / Next.js (web demo) ----
