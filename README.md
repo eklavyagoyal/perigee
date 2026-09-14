@@ -19,7 +19,8 @@ Built at the **Temporal AI Challenge** — Aionic Labs × ETH Agentic Systems La
 European Hackathon League, Zurich, 12–13 September 2026.
 
 **[Jury pitch deck (PDF)](docs/perigee-jury-pitch.pdf)** · **[Evaluation
-record](docs/RESULTS.md)** · **[Mission Control demo](#mission-control)**
+record](docs/RESULTS.md)** · **[Mission Control demo](#mission-control)** ·
+**[Limitations](#limitations)**
 
 </div>
 
