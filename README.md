@@ -339,6 +339,14 @@ encoder is reading shape or just recomputing `window_std`.
 
 ---
 
+## Team
+
+Built over 24 hours in Zurich by
+**[Mykyta Hrebeniuk](https://github.com/oedfio)** — data pipeline, connector, training and evaluation ·
+**[Eklavya Goyal](https://github.com/eklavyagoyal)** ·
+**[Annie Bhalla](https://github.com/Anniebhalla16)** ·
+**[Luraxx](https://github.com/Luraxx)** — Next.js landing page and Mission Control replay.
+
 ## Credits
 
 **Data** — [ESA Anomaly Dataset](https://zenodo.org/records/12528696), Airbus

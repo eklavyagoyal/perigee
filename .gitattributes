@@ -1,0 +1,14 @@
+# GitHub's language bar should reflect the code written for this project, not the
+# two upstream forks it builds on. Mark the forks vendored, then un-mark the
+# directories that are ours (see the repo map in README.md).
+TimeNet/**                                                              linguist-vendored
+OpenTSLM/**                                                             linguist-vendored
+TimeNet/packages/timenet-connectors/src/timenet_connectors/datasets/esa/** -linguist-vendored
+OpenTSLM/src/opentslm/time_series_datasets/esa_mission1/**              -linguist-vendored
+OpenTSLM/evaluation/baseline/**                                         -linguist-vendored
+
+# Generated / data artifacts: keep out of language stats and collapse in diffs.
+artifacts/*.json                                                        linguist-generated
+web/public/mission-control/replay.json                                  linguist-generated
+pipeline/step1_hunt/outputs/**                                          linguist-generated
+docs/assets/*.svg                                                       linguist-generated

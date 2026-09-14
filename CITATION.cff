@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+title: "Perigee: plain-language anomaly triage for spacecraft telemetry"
+message: "If you use this work, please cite it as below."
+type: software
+authors:
+  - family-names: Hrebeniuk
+    given-names: Mykyta
+  - family-names: Goyal
+    given-names: Eklavya
+  - family-names: Bhalla
+    given-names: Annie
+  - alias: Luraxx
+repository-code: "https://github.com/eklavyagoyal/ehl-zurich-hackathon-submission"
+abstract: >-
+  A time-series language model (OpenTSLM SoftPrompt, Llama-3.2-3B, LoRA)
+  fine-tuned on ESA Mission1 subsystem_5 telemetry to classify six-hour windows
+  as nominal or anomalous and explain the verdict in natural language. Includes a
+  reusable TimeNet connector, an agentic dataset-sourcing pipeline, and a
+  four-way baseline comparison on an event-grouped, leak-free split, on which a
+  classical logistic regression outperforms the fine-tuned model.
+keywords:
+  - time series
+  - anomaly detection
+  - satellite telemetry
+  - time-series language model
+  - spacecraft operations
+license: MIT
+date-released: "2026-09-13"
+references:
+  - type: data
+    title: "ESA Anomaly Dataset (ESA-AD)"
+    doi: "10.5281/zenodo.12528696"
+    license: CC-BY-3.0
+    notes: "Airbus Defence and Space, KP Labs, and ESA/ESOC. Not redistributed here."
+  - type: article
+    title: "OpenTSLM: Time-Series Language Models for Reasoning over Multivariate Medical Text- and Time-Series Data"
+    url: "https://arxiv.org/abs/2510.02410"
+  - type: article
+    title: "European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry"
+    url: "https://arxiv.org/abs/2406.17826"
