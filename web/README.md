@@ -1,8 +1,18 @@
-# PERIGEE — Next.js research website
+# Perigee — web
 
-Next.js App Router + React + TypeScript, with accessible website-only text over the cinematic satellite scene and a separate **empty demo layout**. The exported MP4 and PowerPoint stay text-free. Landing copy and reported benchmark numbers are scoped to [the pitch requirements checklist snapshot](Docs/PITCH_REQUIREMENTS_CHECKLIST.md), not mixed with other experiments. The snapshot keeps a web-only checkout self-contained; the original lives in the local research workspace's root `Docs/`. Dataset preparation and model training remain independent.
+The public face of [Perigee](../README.md): a Next.js App Router site with a
+cinematic landing page and **Mission Control**, a static replay that walks one
+real telemetry window through all five inference stages.
 
-The landing page now uses a minimal, unbranded cinematic opening: “Years of work. One mission.” through “An anomaly shouldn’t end a mission.” Only the Mission Control link remains in the header. Scene controls and benchmark methodology are expandable; three figures and a visible baseline/split caveat remain below the scene. The approach grid, submission checklist and placeholder showcase illustration are no longer mounted. `src/app/landing.css` is scoped to `.landing`, leaving Mission Control styling independent. This presentation-only revision does not change the workspace, pipeline routes, movie or PowerPoint.
+Accessible React typography and controls render *above* the visual, so the
+exported MP4 and the PowerPoint stay text-free. Reported benchmark numbers are
+scoped to a single snapshot ([`Docs/PITCH_REQUIREMENTS_CHECKLIST.md`](Docs/PITCH_REQUIREMENTS_CHECKLIST.md))
+rather than mixed across experiments; dataset preparation and model training are
+independent of this app and live in the repository root.
+
+Mission Control needs no GPU, credentials or dataset download — it serves a
+recorded run. See [`public/mission-control/README.md`](public/mission-control/README.md)
+for exactly what that bundle does and does not establish.
 
 ## Run
 
@@ -113,6 +123,4 @@ The trajectory, timing and heating are illustrative, not orbital simulation. Cur
 
 Research documentation remains authoritative about dataset channels and model readiness; additional local research files outside `web/` are not part of this web-only publication. Anonymous telemetry IDs are not assigned physical subsystem meanings based on historical failure statistics. Historical sources and their caveats are preserved in [CLAIMS.md](CLAIMS.md); visual provenance is in [ASSETS.md](ASSETS.md).
 
-The browser skill guided desktop/mobile and navigation verification. The integrated browser was unavailable, so a separate local Playwright/Chromium process was used. Safari/Firefox and real video delivery still need their own device testing.
-
-Verification for the empty-preview revision: 40 unit tests and eight Chromium browser tests pass, alongside TypeScript, ESLint and the standalone production build. Desktop/mobile screenshots were inspected; tests assert no pipeline traffic from either page. Worker adapter tests use mocks, not a real endpoint. Run the commands above after changes. The current satellite visual is the existing Three.js scene; no external cinematic master has been supplied.
+Verification: 40 unit tests and eight Chromium browser tests pass, alongside TypeScript, ESLint and the standalone production build; the tests assert that neither page makes pipeline requests. Worker adapter tests use mocks, not a real endpoint. Browser coverage is Chromium only — Safari, Firefox and real video delivery still need their own device testing.
