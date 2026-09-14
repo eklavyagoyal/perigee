@@ -101,7 +101,7 @@ class ESAMission1CoTQADataset(QADataset):
         # ABLATION SWITCH (ESA_ABLATION).
         #   no_series    text intact, encoder input zeroed -- what does the telemetry add?
         #   encoder_only RAW window to the encoder, no statistics in the text -- can the encoder
-        #                carry the task alone? RETRAIN_ON_FIXED_SPLIT.md asks exactly this: a linear
+        #                carry the task alone? docs/RETRAIN_ON_FIXED_SPLIT.md asks exactly this: a linear
         #                model over raw values manages only 57.59% accuracy, so beating that with no
         #                mean/std in the prompt is the evidence that the encoder reads shape.
         ablation = os.environ.get("ESA_ABLATION", "none").lower()

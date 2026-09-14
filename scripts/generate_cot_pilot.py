@@ -28,7 +28,7 @@ from timenet.client import TimeNet
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ENV_PATH = PROJECT_ROOT / ".env"
 REGISTRY = "/var/tmp/hrm/zurich-hackathon/timenet_registry"
-OUT_PATH = PROJECT_ROOT / "cot_rationales_pilot.json"
+OUT_PATH = PROJECT_ROOT / "artifacts" / "cot_rationales_pilot.json"
 MODEL = "gpt-4o"
 N_PAIRS = 20  # -> 20 anomalous + 20 nominal
 SEED = 20260912

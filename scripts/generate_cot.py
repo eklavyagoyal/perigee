@@ -33,8 +33,8 @@ from timenet.client import TimeNet
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ENV_PATH = PROJECT_ROOT / ".env"
 REGISTRY = "/var/tmp/hrm/zurich-hackathon/timenet_registry"
-DEFAULT_OUT = PROJECT_ROOT / "cot_rationales.json"
-DEFAULT_SEED_FROM = PROJECT_ROOT / "cot_rationales_pilot.json"
+DEFAULT_OUT = PROJECT_ROOT / "artifacts" / "cot_rationales.json"
+DEFAULT_SEED_FROM = PROJECT_ROOT / "artifacts" / "cot_rationales_pilot.json"
 MODEL = "gpt-4o"
 SEED = 20260912
 MAX_RETRIES = 3

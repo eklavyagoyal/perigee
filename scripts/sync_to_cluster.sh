@@ -22,9 +22,9 @@
 #                        ~/ehl-zurich-hackathon-submission (only used for --with-checkpoint, to
 #                        place best_model.pt at the right path inside your clone)
 #
-# After this runs, set on the cluster (see CLUSTER_BRIEF.md §3):
+# After this runs, set on the cluster (see docs/CLUSTER_BRIEF.md §3):
 #   export ESA_MISSION1_SUBSYSTEM5_REGISTRY=<remote-root>/timenet_registry
-#   export ESA_MISSION1_SUBSYSTEM5_RATIONALES=<remote-repo>/cot_rationales.json
+#   export ESA_MISSION1_SUBSYSTEM5_RATIONALES=<remote-repo>/artifacts/cot_rationales.json
 #   export ESA_MISSION1_DIR=<remote-root>/data/ESA-Mission1   # only if --with-raw-data
 
 set -euo pipefail
@@ -84,7 +84,7 @@ cat <<EOF
 
 Done. On the cluster (after \`git clone --branch hackathon-submission ...\` into $REMOTE_REPO), set:
   export ESA_MISSION1_SUBSYSTEM5_REGISTRY=$REMOTE_ROOT/timenet_registry
-  export ESA_MISSION1_SUBSYSTEM5_RATIONALES=$REMOTE_REPO/cot_rationales.json
+  export ESA_MISSION1_SUBSYSTEM5_RATIONALES=$REMOTE_REPO/artifacts/cot_rationales.json
 EOF
 if $WITH_RAW_DATA; then
   echo "  export ESA_MISSION1_DIR=$REMOTE_ROOT/data/ESA-Mission1"
